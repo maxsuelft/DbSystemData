@@ -2,7 +2,7 @@
   <img src="assets/logo.svg" alt="Databasus Logo" width="250"/>
 
   <h3>Backup tool for PostgreSQL, MySQL and MongoDB</h3>
-  <p>Databasus is a free, open source and self-hosted tool to backup databases (with focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.). Previously known as Postgresus (see migration guide).</p>
+  <p>Databasus is a free, open source and self-hosted tool to backup databases (with focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)</p>
   
   <!-- Badges -->
    [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
@@ -41,7 +41,7 @@
 
 - **PostgreSQL**: 12, 13, 14, 15, 16, 17 and 18
 - **MySQL**: 5.7, 8 and 9
-- **MariaDB**: 10 and 11
+- **MariaDB**: 10, 11 and 12
 - **MongoDB**: 4, 5, 6, 7 and 8
 
 ### 🔄 **Scheduled backups**
