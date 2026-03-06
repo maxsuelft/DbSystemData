@@ -120,6 +120,10 @@ func (uc *CreateMysqlBackupUsecase) buildMysqldumpArgs(my *mysqltypes.MysqlDatab
 
 	args = append(args, uc.getNetworkCompressionArgs(my.Version)...)
 
+	if !config.GetEnv().IsCloud {
+		args = append(args, "--max-allowed-packet=1G")
+	}
+
 	if my.IsHttps {
 		args = append(args, "--ssl-mode=REQUIRED")
 	}
