@@ -14,10 +14,18 @@ linters:
 
 formatters:
   enable:
-    - gofmt
+    - gofumpt
     - golines
-    - goimports
+    - gci
 
   settings:
     golines:
       max-len: 120
+    gofumpt:
+      module-path: databasus-backend
+      extra-rules: true
+    gci:
+      sections:
+        - standard
+        - default
+        - localmodule
