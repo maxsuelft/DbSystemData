@@ -26,6 +26,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Get version
+        id: version
+        run: echo "version=$(jq -r .version frontend/package.json)" >> $GITHUB_OUTPUT
+
       - name: Set up QEMU (multi-arch)
         uses: docker/setup-qemu-action@v3
 
@@ -58,5 +62,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64
+          build-args: |
+            APP_VERSION=${{ steps.version.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

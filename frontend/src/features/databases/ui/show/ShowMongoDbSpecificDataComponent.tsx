@@ -1,10 +1,16 @@
-﻿import { type Database } from '../../../../entity/databases';
+import { useTranslation } from 'react-i18next';
+
+import { type Database } from '../../../../entity/databases';
 
 interface Props {
   database: Database;
 }
 
 export const ShowMongoDbSpecificDataComponent = ({ database }: Props) => {
+  const { t } = useTranslation();
+  const dbName =
+    database.mongodb?.database?.trim() || t('databases.dbNameFullDump');
+
   return (
     <div>
       <div className="mb-1 flex w-full items-center">
@@ -29,7 +35,7 @@ export const ShowMongoDbSpecificDataComponent = ({ database }: Props) => {
 
       <div className="mb-1 flex w-full items-center">
         <div className="min-w-[150px]">DB name</div>
-        <div>{database.mongodb?.database || ''}</div>
+        <div>{dbName}</div>
       </div>
 
       <div className="mb-1 flex w-full items-center">

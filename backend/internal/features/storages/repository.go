@@ -1,4 +1,4 @@
-﻿package storages
+package storages
 
 import (
 	"github.com/google/uuid"
@@ -177,7 +177,7 @@ func (r *StorageRepository) FindByWorkspaceID(workspaceID uuid.UUID) ([]*Storage
 		Preload("FTPStorage").
 		Preload("SFTPStorage").
 		Preload("RcloneStorage").
-		Where("workspace_id = ? OR is_system = TRUE", workspaceID).
+		Where("workspace_id = ? OR is_system = TRUE OR is_global = TRUE", workspaceID).
 		Order("name ASC").
 		Find(&storages).Error; err != nil {
 		return nil, err

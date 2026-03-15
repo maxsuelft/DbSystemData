@@ -1,4 +1,4 @@
-﻿import type { AzureBlobStorage } from './AzureBlobStorage';
+import type { AzureBlobStorage } from './AzureBlobStorage';
 import type { DropboxStorage } from './DropboxStorage';
 import type { FTPStorage } from './FTPStorage';
 import type { GoogleDriveStorage } from './GoogleDriveStorage';
@@ -16,6 +16,7 @@ export interface Storage {
   lastSaveError?: string;
   workspaceId: string;
   isSystem: boolean;
+  isGlobal?: boolean;
 
   // specific storage types
   localStorage?: LocalStorage;

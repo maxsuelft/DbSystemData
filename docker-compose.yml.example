@@ -17,7 +17,13 @@ services:
     #   dockerfile: Dockerfile
     ports:
       - "4005:4005"
+    # Obrigatório para persistência: sem este volume, ao remover o container todos os dados
+    # (PostgreSQL interno, Valkey, backups locais) são perdidos. Named volume persiste.
     volumes:
-      - ./dbsystemdata-data:/dbsystemdata-data
+      - dbsystemdata-data:/dbsystemdata-data
     container_name: dbsystemdata
     restart: unless-stopped
+
+# Volume nomeado: dados persistem ao remover/recriar o container.
+volumes:
+  dbsystemdata-data: {}

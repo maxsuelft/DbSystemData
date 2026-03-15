@@ -1,4 +1,4 @@
-﻿package notifiers
+package notifiers
 
 import (
 	"fmt"
@@ -448,6 +448,61 @@ func Test_CrossWorkspaceSecurity_CannotAccessNotifierFromAnotherWorkspace(t *tes
 	deleteNotifier(t, router, savedNotifier.ID, workspace1.ID, owner1.Token)
 	workspaces_testing.RemoveTestWorkspace(workspace1, router)
 	workspaces_testing.RemoveTestWorkspace(workspace2, router)
+}
+
+func Test_GetNotifiers_GlobalNotifierIncludedInAllWorkspaces(t *testing.T) {
+	ownerA := users_testing.CreateTestUser(users_enums.UserRoleMember)
+	ownerB := users_testing.CreateTestUser(users_enums.UserRoleMember)
+	router := createRouter()
+	workspaceA := workspaces_testing.CreateTestWorkspace("Workspace A", ownerA, router)
+	workspaceB := workspaces_testing.CreateTestWorkspace("Workspace B", ownerB, router)
+
+	// Owner B creates a global notifier in workspace B
+	globalNotifierB := &Notifier{
+		WorkspaceID:  workspaceB.ID,
+		Name:         "Test Global Notifier B " + uuid.New().String(),
+		IsGlobal:     true,
+		NotifierType: NotifierTypeWebhook,
+		WebhookNotifier: &webhook_notifier.WebhookNotifier{
+			WebhookURL:    "https://webhook.site/test-" + uuid.New().String(),
+			WebhookMethod: webhook_notifier.WebhookMethodPOST,
+		},
+	}
+	var savedGlobalNotifierB Notifier
+	test_utils.MakePostRequestAndUnmarshal(
+		t,
+		router,
+		"/api/v1/notifiers",
+		"Bearer "+ownerB.Token,
+		*globalNotifierB,
+		http.StatusOK,
+		&savedGlobalNotifierB,
+	)
+
+	// User from workspace A should see the global notifier from B
+	var notifiersForWorkspaceA []Notifier
+	test_utils.MakeGetRequestAndUnmarshal(
+		t,
+		router,
+		fmt.Sprintf("/api/v1/notifiers?workspace_id=%s", workspaceA.ID.String()),
+		"Bearer "+ownerA.Token,
+		http.StatusOK,
+		&notifiersForWorkspaceA,
+	)
+
+	foundGlobalB := false
+	for _, n := range notifiersForWorkspaceA {
+		if n.ID == savedGlobalNotifierB.ID {
+			foundGlobalB = true
+			assert.True(t, n.IsGlobal, "notifier should be marked global")
+			break
+		}
+	}
+	assert.True(t, foundGlobalB, "User from workspace A should see global notifier from workspace B")
+
+	deleteNotifier(t, router, savedGlobalNotifierB.ID, workspaceB.ID, ownerB.Token)
+	workspaces_testing.RemoveTestWorkspace(workspaceA, router)
+	workspaces_testing.RemoveTestWorkspace(workspaceB, router)
 }
 
 func Test_NotifierSensitiveDataLifecycle_AllTypes(t *testing.T) {

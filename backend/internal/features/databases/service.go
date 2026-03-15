@@ -1,4 +1,4 @@
-﻿package databases
+package databases
 
 import (
 	"context"
@@ -145,7 +145,7 @@ func (s *DatabaseService) UpdateDatabase(
 	}
 
 	for _, notifier := range database.Notifiers {
-		if notifier.WorkspaceID != *existingDatabase.WorkspaceID {
+		if notifier.WorkspaceID != *existingDatabase.WorkspaceID && !notifier.IsGlobal {
 			return errors.New("notifier does not belong to this workspace")
 		}
 	}

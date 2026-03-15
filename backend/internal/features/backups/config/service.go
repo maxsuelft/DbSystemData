@@ -1,4 +1,4 @@
-﻿package backups_config
+package backups_config
 
 import (
 	"errors"
@@ -77,7 +77,7 @@ func (s *BackupConfigService) SaveBackupConfigWithAuth(
 		if err != nil {
 			return nil, err
 		}
-		if storage.WorkspaceID != *database.WorkspaceID && !storage.IsSystem {
+		if storage.WorkspaceID != *database.WorkspaceID && !storage.IsSystem && !storage.IsGlobal {
 			return nil, errors.New("storage does not belong to the same workspace as the database")
 		}
 	}
@@ -374,7 +374,7 @@ func (s *BackupConfigService) validateTargetNotifiers(request *TransferDatabaseR
 			return err
 		}
 
-		if notifier.WorkspaceID != request.TargetWorkspaceID {
+		if notifier.WorkspaceID != request.TargetWorkspaceID && !notifier.IsGlobal {
 			return ErrTargetNotifierNotInTargetWorkspace
 		}
 	}

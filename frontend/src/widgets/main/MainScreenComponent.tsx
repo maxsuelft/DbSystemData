@@ -355,9 +355,9 @@ export const MainScreenComponent = () => {
           )}
 
           <div className="absolute bottom-1 left-2 mb-[0px] hidden text-sm text-gray-400 md:block">
-            v{APP_VERSION}
+            <span className="font-medium">v{APP_VERSION}</span>
             <br />
-            {CONTAINER_ARCH}
+            <span className="text-xs">{CONTAINER_ARCH}</span>
           </div>
         </div>
       )}

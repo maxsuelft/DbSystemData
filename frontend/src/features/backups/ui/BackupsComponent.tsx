@@ -1,4 +1,4 @@
-﻿import {
+import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   CloudUploadOutlined,
@@ -60,14 +60,19 @@ export const BackupsComponent = ({ database, isCanManageDBs, scrollContainerRef 
   const isBackupsRequestInFlightRef = useRef(false);
 
   const [downloadingBackupId, setDownloadingBackupId] = useState<string | undefined>();
+  const downloadInProgressRef = useRef(false);
   const [cancellingBackupId, setCancellingBackupId] = useState<string | undefined>();
 
-  const downloadBackup = async (backupId: string) => {
+  const runDownloadBackup = async (backupId: string) => {
+    if (downloadInProgressRef.current) return;
+    downloadInProgressRef.current = true;
+    setDownloadingBackupId(backupId);
     try {
       await backupsApi.downloadBackup(backupId);
     } catch (e) {
       alert((e as Error).message);
     } finally {
+      downloadInProgressRef.current = false;
       setDownloadingBackupId(undefined);
     }
   };
@@ -201,12 +206,6 @@ export const BackupsComponent = ({ database, isCanManageDBs, scrollContainerRef 
 
     return () => clearInterval(intervalId);
   }, [currentLimit]);
-
-  useEffect(() => {
-    if (downloadingBackupId) {
-      downloadBackup(downloadingBackupId);
-    }
-  }, [downloadingBackupId]);
 
   useEffect(() => {
     if (!scrollContainerRef?.current) {
@@ -358,10 +357,7 @@ export const BackupsComponent = ({ database, isCanManageDBs, scrollContainerRef 
                   ) : (
                     <DownloadOutlined
                       className="cursor-pointer"
-                      onClick={() => {
-                        if (downloadingBackupId) return;
-                        setDownloadingBackupId(record.id);
-                      }}
+                      onClick={() => runDownloadBackup(record.id)}
                       style={{
                         opacity: downloadingBackupId ? 0.2 : 1,
                         color: '#155dfc',

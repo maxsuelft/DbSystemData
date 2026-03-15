@@ -159,6 +159,27 @@ A imagem usada será `ghcr.io/SEU_USUARIO/dbsystemdata:latest` (gerada pelo work
 
 **Build da imagem no GitHub:** o workflow `.github/workflows/docker-build-push.yml` faz build e push da imagem no push para `main` ou `master`. Para o build concluir, o repositório precisa ter os binários em `assets/tools/x64` e `assets/tools/arm` (PostgreSQL, MySQL, MariaDB); veja `assets/tools/README.md`. Se esses diretórios não existirem, o build falhará até você adicioná-los.
 
+### Persistência de dados (Docker)
+
+Para **não perder dados** ao apagar o container e subir de novo, o DbSystemData precisa gravar em um **volume**:
+
+- **Docker Compose:** o `docker-compose.yml.example` já usa o volume nomeado `dbsystemdata-data`. Ao rodar `docker compose up -d`, os dados (banco interno PostgreSQL, Valkey, backups locais) ficam nesse volume e **persistem** quando você remove o container e sobe de novo. Não use `docker compose down -v` se quiser manter os dados (o `-v` apaga volumes nomeados).
+- **Docker run:** use sempre `-v ./dbsystemdata-data:/dbsystemdata-data` (ou um volume nomeado). Sem o `-v`, tudo fica só dentro do container e é **perdido** ao remover o container.
+
+Resumo: **com o volume configurado**, você pode apagar o container e subir de novo que usuários, bancos, storages e agendamentos continuam lá. Para usar uma pasta no host (ex. `./dbsystemdata-data`) em vez do volume nomeado, no `docker-compose.yml` troque `dbsystemdata-data:/dbsystemdata-data` por `./dbsystemdata-data:/dbsystemdata-data` e remova a seção `volumes:` no final do arquivo.
+
+**Se a pasta do volume ficar vazia** (container sobe mas não aparecem arquivos em `pgdata`, `backups`, etc.):
+
+1. **Crie a pasta no host antes de subir** (e garanta permissão de escrita):  
+   `mkdir -p /caminho/para/data && chmod 755 /caminho/para/data`
+2. **SELinux (RHEL/CentOS/Rocky)**  
+   Adicione `:z` ao volume para o container poder escrever:  
+   `- /www/wwwroot/docker/dbsystemdata/data:/dbsystemdata-data:z`
+3. **Logs do container**  
+   Verifique se o script de inicialização falhou:  
+   `docker logs dbsystemdata`  
+   Erros de "Permission denied" indicam problema de permissão ou SELinux.
+
 ### Opção 4: Kubernetes com Helm
 
 Consulte o [README do chart Helm](deploy/helm/README.md) para instalação via OCI registry e opções (ClusterIP, LoadBalancer, Ingress).

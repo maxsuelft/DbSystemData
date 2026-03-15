@@ -1,5 +1,7 @@
-﻿import { Button, Input, Select } from 'antd';
+import { Button, Input, Select, Switch, Tooltip } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
   type Notifier,
@@ -42,6 +44,7 @@ export function EditNotifierComponent({
   editingNotifier,
   onChanged,
 }: Props) {
+  const { t } = useTranslation();
   const [notifier, setNotifier] = useState<Notifier | undefined>();
   const [isUnsaved, setIsUnsaved] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -161,6 +164,7 @@ export function EditNotifierComponent({
             id: undefined as unknown as string,
             name: '',
             workspaceId,
+            isGlobal: false,
             notifierType: NotifierType.TELEGRAM,
             telegramNotifier: {
               botToken: '',
@@ -249,6 +253,25 @@ export function EditNotifierComponent({
           />
 
           <img src={getNotifierLogoFromType(notifier?.notifierType)} className="ml-2 h-4 w-4" />
+        </div>
+      </div>
+
+      <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
+        <div className="mb-1 min-w-[150px] sm:mb-0">{t('notifiers.global')}</div>
+
+        <div className="flex items-center">
+          <Switch
+            checked={notifier?.isGlobal || false}
+            onChange={(checked) => {
+              setNotifier({ ...notifier, isGlobal: checked });
+              setIsUnsaved(true);
+            }}
+            size="small"
+          />
+
+          <Tooltip className="cursor-pointer" title={t('notifiers.globalTooltip')}>
+            <InfoCircleOutlined className="ml-2" style={{ color: 'gray' }} />
+          </Tooltip>
         </div>
       </div>
 

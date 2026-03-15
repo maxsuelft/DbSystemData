@@ -1,4 +1,4 @@
-﻿package storages
+package storages
 
 import (
 	"fmt"
@@ -199,7 +199,7 @@ func (s *StorageService) GetStorage(
 		return nil, err
 	}
 
-	if !storage.IsSystem {
+	if !storage.IsSystem && !storage.IsGlobal {
 		canView, _, err := s.workspaceService.CanUserAccessWorkspace(storage.WorkspaceID, user)
 		if err != nil {
 			return nil, err

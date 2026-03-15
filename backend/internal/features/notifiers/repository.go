@@ -1,4 +1,4 @@
-﻿package notifiers
+package notifiers
 
 import (
 	"github.com/google/uuid"
@@ -152,7 +152,7 @@ func (r *NotifierRepository) FindByWorkspaceID(workspaceID uuid.UUID) ([]*Notifi
 		Preload("SlackNotifier").
 		Preload("DiscordNotifier").
 		Preload("TeamsNotifier").
-		Where("workspace_id = ?", workspaceID).
+		Where("workspace_id = ? OR is_global = TRUE", workspaceID).
 		Order("name ASC").
 		Find(&notifiers).Error; err != nil {
 		return nil, err

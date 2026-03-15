@@ -1,4 +1,4 @@
-﻿package notifiers
+package notifiers
 
 import (
 	"errors"
@@ -21,6 +21,7 @@ type Notifier struct {
 	Name          string       `json:"name"          gorm:"column:name;not null;type:varchar(255)"`
 	NotifierType  NotifierType `json:"notifierType"  gorm:"column:notifier_type;not null;type:varchar(50)"`
 	LastSendError *string      `json:"lastSendError" gorm:"column:last_send_error;type:text"`
+	IsGlobal      bool         `json:"isGlobal"      gorm:"column:is_global;not null;default:false"`
 
 	// specific notifier
 	TelegramNotifier *telegram_notifier.TelegramNotifier `json:"telegramNotifier"        gorm:"foreignKey:NotifierID"`
@@ -72,6 +73,7 @@ func (n *Notifier) EncryptSensitiveData(encryptor encryption.FieldEncryptor) err
 func (n *Notifier) Update(incoming *Notifier) {
 	n.Name = incoming.Name
 	n.NotifierType = incoming.NotifierType
+	n.IsGlobal = incoming.IsGlobal
 
 	switch n.NotifierType {
 	case NotifierTypeTelegram:

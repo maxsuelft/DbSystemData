@@ -1,4 +1,4 @@
-﻿package storages
+package storages
 
 import (
 	"fmt"
@@ -910,6 +910,61 @@ func Test_GetStorages_SystemStorageIncludedForAllUsers(t *testing.T) {
 	// Cleanup
 	deleteStorage(t, router, savedPrivateStorageA.ID, ownerA.Token)
 	deleteStorage(t, router, savedSystemStorageB.ID, admin.Token)
+	workspaces_testing.RemoveTestWorkspace(workspaceA, router)
+	workspaces_testing.RemoveTestWorkspace(workspaceB, router)
+}
+
+func Test_GetStorages_GlobalStorageIncludedInAllWorkspaces(t *testing.T) {
+	router := createRouter()
+	GetStorageService().SetStorageDatabaseCounter(&mockStorageDatabaseCounter{})
+
+	ownerA := users_testing.CreateTestUser(users_enums.UserRoleMember)
+	ownerB := users_testing.CreateTestUser(users_enums.UserRoleMember)
+	workspaceA := workspaces_testing.CreateTestWorkspace("Workspace A", ownerA, router)
+	workspaceB := workspaces_testing.CreateTestWorkspace("Workspace B", ownerB, router)
+
+	// Owner B creates a global storage in workspace B
+	globalStorageB := &Storage{
+		WorkspaceID:  workspaceB.ID,
+		Type:         StorageTypeLocal,
+		Name:         "Test Global Storage B " + uuid.New().String(),
+		IsGlobal:     true,
+		LocalStorage: &local_storage.LocalStorage{},
+	}
+	var savedGlobalStorageB Storage
+	test_utils.MakePostRequestAndUnmarshal(
+		t,
+		router,
+		"/api/v1/storages",
+		"Bearer "+ownerB.Token,
+		*globalStorageB,
+		http.StatusOK,
+		&savedGlobalStorageB,
+	)
+
+	// User from workspace A should see the global storage from B
+	var storagesForWorkspaceA []Storage
+	test_utils.MakeGetRequestAndUnmarshal(
+		t,
+		router,
+		fmt.Sprintf("/api/v1/storages?workspace_id=%s", workspaceA.ID.String()),
+		"Bearer "+ownerA.Token,
+		http.StatusOK,
+		&storagesForWorkspaceA,
+	)
+
+	foundGlobalB := false
+	for _, s := range storagesForWorkspaceA {
+		if s.ID == savedGlobalStorageB.ID {
+			foundGlobalB = true
+			assert.True(t, s.IsGlobal, "storage should be marked global")
+			break
+		}
+	}
+	assert.True(t, foundGlobalB, "User from workspace A should see global storage from workspace B")
+
+	// Cleanup
+	deleteStorage(t, router, savedGlobalStorageB.ID, ownerB.Token)
 	workspaces_testing.RemoveTestWorkspace(workspaceA, router)
 	workspaces_testing.RemoveTestWorkspace(workspaceB, router)
 }

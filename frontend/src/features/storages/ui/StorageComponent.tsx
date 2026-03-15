@@ -160,6 +160,11 @@ export const StorageComponent = ({
                     System storage
                   </span>
                 )}
+                {storage.isGlobal && (
+                  <span className="ml-2 mt-2 inline-block rounded-xl bg-[#00000010] px-2 py-1 text-xs text-gray-700 dark:bg-[#ffffff10] dark:text-gray-300">
+                    {t('storages.globalBadge')}
+                  </span>
+                )}
               </>
             ) : (
               <div>

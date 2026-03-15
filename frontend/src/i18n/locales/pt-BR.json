@@ -116,7 +116,10 @@
     "noDatabasesFound": "Nenhum banco encontrado para \"{{query}}\"",
     "backToDatabases": "← Voltar para bancos de dados",
     "addDatabaseForBackup": "Adicionar banco para backup",
-    "databaseDescription": "Banco de dados - é o que estamos fazendo backup"
+    "databaseDescription": "Banco de dados - é o que estamos fazendo backup",
+    "dbNameOptional": "Nome do DB (opcional)",
+    "dbNamePlaceholderFullDump": "Deixe vazio para backup completo (todos os DBs)",
+    "dbNameFullDump": "Todos (full dump)"
   },
   "storages": {
     "title": "Armazenamentos",
@@ -138,12 +141,18 @@
     "appSecret": "Segredo do app",
     "token": "Token",
     "backToStorages": "← Voltar para armazenamentos",
-    "storageDescription": "Armazenamento - é onde os backups serão guardados (disco local, S3, etc.)"
+    "storageDescription": "Armazenamento - é onde os backups serão guardados (disco local, S3, etc.)",
+    "global": "Tornar global",
+    "globalTooltip": "Recurso global fica visível em todos os workspaces (novos e existentes).",
+    "globalBadge": "Global"
   },
   "notifiers": {
     "title": "Notificadores",
     "newNotifier": "Novo notificador",
-    "addNotifier": "Adicionar notificador"
+    "addNotifier": "Adicionar notificador",
+    "global": "Tornar global",
+    "globalTooltip": "Recurso global fica visível em todos os workspaces (novos e existentes).",
+    "globalBadge": "Global"
   },
   "backups": {
     "title": "Backups",

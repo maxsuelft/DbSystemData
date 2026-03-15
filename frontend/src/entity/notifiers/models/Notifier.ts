@@ -1,4 +1,4 @@
-﻿import type { NotifierType } from './NotifierType';
+import type { NotifierType } from './NotifierType';
 import type { DiscordNotifier } from './discord/DiscordNotifier';
 import type { EmailNotifier } from './email/EmailNotifier';
 import type { SlackNotifier } from './slack/SlackNotifier';
@@ -12,6 +12,7 @@ export interface Notifier {
   notifierType: NotifierType;
   lastSendError?: string;
   workspaceId: string;
+  isGlobal?: boolean;
 
   // specific notifier
   telegramNotifier?: TelegramNotifier;

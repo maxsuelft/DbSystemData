@@ -1,4 +1,4 @@
-﻿package storages
+package storages
 
 import (
 	"context"
@@ -27,6 +27,7 @@ type Storage struct {
 	Name          string      `json:"name"          gorm:"column:name;not null;type:text"`
 	LastSaveError *string     `json:"lastSaveError" gorm:"column:last_save_error;type:text"`
 	IsSystem      bool        `json:"isSystem"      gorm:"column:is_system;not null;default:false"`
+	IsGlobal      bool        `json:"isGlobal"      gorm:"column:is_global;not null;default:false"`
 
 	// specific storage
 	LocalStorage       *local_storage.LocalStorage              `json:"localStorage"       gorm:"foreignKey:StorageID"`
@@ -110,6 +111,7 @@ func (s *Storage) Update(incoming *Storage) {
 	s.Name = incoming.Name
 	s.Type = incoming.Type
 	s.IsSystem = incoming.IsSystem
+	s.IsGlobal = incoming.IsGlobal
 
 	switch s.Type {
 	case StorageTypeLocal:

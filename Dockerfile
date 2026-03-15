@@ -447,6 +447,9 @@ WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'dbsystemdata')
 \\q
 SQL
 
+# Force app to use the persisted data path (same as mounted volume)
+export DATA_FOLDER=/dbsystemdata-data
+
 # Start the main application
 echo "Starting DbSystemData application..."
 

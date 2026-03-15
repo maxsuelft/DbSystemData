@@ -1,4 +1,4 @@
-﻿package backups_controllers
+package backups_controllers
 
 import (
 	"context"
@@ -176,7 +176,7 @@ func (c *BackupController) CancelBackup(ctx *gin.Context) {
 
 // GenerateDownloadToken
 // @Summary Generate short-lived download token
-// @Description Generate a token for downloading a backup file (valid for 5 minutes)
+// @Description Generate a token for downloading a backup file (valid for 15 minutes)
 // @Tags backups
 // @Param id path string true "Backup ID"
 // @Success 200 {object} backups_download.GenerateDownloadTokenResponse
@@ -257,6 +257,14 @@ func (c *BackupController) GetFile(ctx *gin.Context) {
 					"error": "download already in progress for this user. Please wait until previous download completed or cancel it",
 				},
 			)
+			return
+		}
+		if errors.Is(err, backups_download.ErrTokenExpired) {
+			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "download token expired. Please try downloading again."})
+			return
+		}
+		if errors.Is(err, backups_download.ErrTokenAlreadyUsed) {
+			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "download token was already used. Please request a new download."})
 			return
 		}
 

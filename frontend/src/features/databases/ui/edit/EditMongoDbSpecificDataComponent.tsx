@@ -1,6 +1,7 @@
 import { CopyOutlined, DownOutlined, InfoCircleOutlined, UpOutlined } from '@ant-design/icons';
 import { App, Button, Input, InputNumber, Switch, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { IS_CLOUD } from '../../../../constants';
 import { type Database, databaseApi } from '../../../../entity/databases';
@@ -37,6 +38,7 @@ export const EditMongoDbSpecificDataComponent = ({
   onSaved,
   isShowDbName = true,
 }: Props) => {
+  const { t } = useTranslation();
   const { message } = App.useApp();
 
   const [editingDatabase, setEditingDatabase] = useState<Database>();
@@ -304,7 +306,7 @@ export const EditMongoDbSpecificDataComponent = ({
 
       {isShowDbName && (
         <div className="mb-1 flex w-full items-center">
-          <div className="min-w-[150px]">DB name (optional)</div>
+          <div className="min-w-[150px]">{t('databases.dbNameOptional')}</div>
           <Input
             value={editingDatabase.mongodb?.database}
             onChange={(e) => {
@@ -318,7 +320,7 @@ export const EditMongoDbSpecificDataComponent = ({
             }}
             size="small"
             className="max-w-[200px] grow"
-            placeholder="Leave empty for full dump (all DBs)"
+            placeholder={t('databases.dbNamePlaceholderFullDump')}
           />
         </div>
       )}

@@ -1,4 +1,6 @@
-﻿import { type Storage, StorageType } from '../../../../entity/storages';
+import { useTranslation } from 'react-i18next';
+
+import { type Storage, StorageType } from '../../../../entity/storages';
 import { getStorageLogoFromType } from '../../../../entity/storages/models/getStorageLogoFromType';
 import { getStorageNameFromType } from '../../../../entity/storages/models/getStorageNameFromType';
 import { type UserProfile, UserRole } from '../../../../entity/users';
@@ -17,6 +19,7 @@ interface Props {
 }
 
 export function ShowStorageComponent({ storage, user }: Props) {
+  const { t } = useTranslation();
   if (!storage) return null;
 
   if (storage?.isSystem && user.role !== UserRole.ADMIN) return <div />;
@@ -38,6 +41,13 @@ export function ShowStorageComponent({ storage, user }: Props) {
       {storage.isSystem && user.role === UserRole.ADMIN && (
         <div className="mb-1 flex items-center">
           <div className="min-w-[110px]">System storage</div>
+          <div>Yes</div>
+        </div>
+      )}
+
+      {storage.isGlobal && (
+        <div className="mb-1 flex items-center">
+          <div className="min-w-[110px]">{t('storages.globalBadge')}</div>
           <div>Yes</div>
         </div>
       )}

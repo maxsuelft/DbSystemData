@@ -1,4 +1,5 @@
-﻿import { InfoCircleOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
 import { type Notifier } from '../../../entity/notifiers';
 import { getNotifierLogoFromType } from '../../../entity/notifiers/models/getNotifierLogoFromType';
@@ -15,6 +16,7 @@ export const NotifierCardComponent = ({
   selectedNotifierId,
   setSelectedNotifierId,
 }: Props) => {
+  const { t } = useTranslation();
   return (
     <div
       className={`mb-3 cursor-pointer rounded p-3 shadow ${selectedNotifierId === notifier.id ? 'bg-blue-100 dark:bg-blue-800' : 'bg-white dark:bg-gray-800'}`}
@@ -38,6 +40,12 @@ export const NotifierCardComponent = ({
         <div className="mt-1 flex items-center text-sm text-red-600 underline dark:text-red-400">
           <InfoCircleOutlined className="mr-1" style={{ color: 'red' }} />
           Has send error
+        </div>
+      )}
+
+      {notifier.isGlobal && (
+        <div className="mt-2 inline-block rounded-xl bg-[#00000010] px-2 py-1 text-xs text-gray-700 dark:bg-[#ffffff10] dark:text-gray-300">
+          {t('notifiers.globalBadge')}
         </div>
       )}
     </div>

@@ -206,6 +206,7 @@ export function EditStorageComponent({
             name: '',
             type: IS_CLOUD ? StorageType.S3 : StorageType.LOCAL,
             isSystem: false,
+            isGlobal: false,
             localStorage: IS_CLOUD ? undefined : {},
             s3Storage: IS_CLOUD
               ? {
@@ -428,6 +429,28 @@ export function EditStorageComponent({
           </div>
         </div>
       )}
+
+      <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
+        <div className="mb-1 min-w-[110px] sm:mb-0">{t('storages.global')}</div>
+
+        <div className="flex items-center">
+          <Switch
+            checked={storage?.isGlobal || false}
+            onChange={(checked) => {
+              setStorage({ ...storage, isGlobal: checked });
+              setIsUnsaved(true);
+            }}
+            size="small"
+          />
+
+          <Tooltip
+            className="cursor-pointer"
+            title={t('storages.globalTooltip')}
+          >
+            <InfoCircleOutlined className="ml-2" style={{ color: 'gray' }} />
+          </Tooltip>
+        </div>
+      </div>
 
       <div className="mt-5" />
 

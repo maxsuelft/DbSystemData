@@ -1,9 +1,15 @@
-﻿package backups_download
+package backups_download
 
 import (
+	"errors"
 	"time"
 
 	"github.com/google/uuid"
+)
+
+var (
+	ErrTokenExpired   = errors.New("token expired")
+	ErrTokenAlreadyUsed = errors.New("token already used")
 )
 
 type DownloadToken struct {

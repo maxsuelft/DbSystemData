@@ -54,6 +54,8 @@ type EnvVariables struct {
 	DataFolder    string
 	TempFolder    string
 	SecretKeyPath string
+	// DataFolderBase: se definido (ex.: DATA_FOLDER=/dbsystemdata-data no Docker), as pastas de dados usam este caminho (persistência garantida no volume).
+	DataFolderBase string `env:"DATA_FOLDER"`
 
 	TestGoogleDriveClientID     string `env:"TEST_GOOGLE_DRIVE_CLIENT_ID"`
 	TestGoogleDriveClientSecret string `env:"TEST_GOOGLE_DRIVE_CLIENT_SECRET"`
@@ -315,10 +317,14 @@ func loadEnvVariables() {
 	}
 
 	// Store the data and temp folders one level below the root
-	// (projectRoot/dbsystemdata-data -> /dbsystemdata-data)
-	env.DataFolder = filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data", "backups")
-	env.TempFolder = filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data", "temp")
-	env.SecretKeyPath = filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data", "secret.key")
+	// (projectRoot/dbsystemdata-data -> /dbsystemdata-data). Se DATA_FOLDER estiver definido (Docker), usa esse caminho.
+	dataBase := filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data")
+	if env.DataFolderBase != "" {
+		dataBase = filepath.Clean(env.DataFolderBase)
+	}
+	env.DataFolder = filepath.Join(dataBase, "backups")
+	env.TempFolder = filepath.Join(dataBase, "temp")
+	env.SecretKeyPath = filepath.Join(dataBase, "secret.key")
 
 	if env.IsTesting {
 		if env.TestPostgres12Port == "" {

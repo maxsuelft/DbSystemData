@@ -1,4 +1,4 @@
-﻿package notifiers
+package notifiers
 
 import (
 	"fmt"
@@ -162,12 +162,14 @@ func (s *NotifierService) GetNotifier(
 		return nil, err
 	}
 
-	canView, _, err := s.workspaceService.CanUserAccessWorkspace(notifier.WorkspaceID, user)
-	if err != nil {
-		return nil, err
-	}
-	if !canView {
-		return nil, ErrInsufficientPermissionsToViewNotifier
+	if !notifier.IsGlobal {
+		canView, _, err := s.workspaceService.CanUserAccessWorkspace(notifier.WorkspaceID, user)
+		if err != nil {
+			return nil, err
+		}
+		if !canView {
+			return nil, ErrInsufficientPermissionsToViewNotifier
+		}
 	}
 
 	notifier.HideSensitiveData()
@@ -211,12 +213,14 @@ func (s *NotifierService) SendTestNotification(
 		return err
 	}
 
-	canView, _, err := s.workspaceService.CanUserAccessWorkspace(notifier.WorkspaceID, user)
-	if err != nil {
-		return err
-	}
-	if !canView {
-		return ErrInsufficientPermissionsToTestNotifier
+	if !notifier.IsGlobal {
+		canView, _, err := s.workspaceService.CanUserAccessWorkspace(notifier.WorkspaceID, user)
+		if err != nil {
+			return err
+		}
+		if !canView {
+			return ErrInsufficientPermissionsToTestNotifier
+		}
 	}
 
 	err = notifier.Send(s.fieldEncryptor, s.logger, "Test message", "This is a test message")

@@ -1,4 +1,4 @@
-﻿import {
+import {
   ArrowRightOutlined,
   CloseOutlined,
   DeleteOutlined,
@@ -7,6 +7,7 @@
 import { Button, Input, Spin } from 'antd';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { databaseApi } from '../../../entity/databases';
 import { notifierApi } from '../../../entity/notifiers';
@@ -32,6 +33,7 @@ export const NotifierComponent = ({
   onNotifierTransferred,
   isCanManageNotifiers,
 }: Props) => {
+  const { t } = useTranslation();
   const [notifier, setNotifier] = useState<Notifier | undefined>();
 
   const [isEditName, setIsEditName] = useState(false);
@@ -148,6 +150,11 @@ export const NotifierComponent = ({
                   <div className="ml-2 cursor-pointer" onClick={() => startEdit('name')}>
                     <img src="/icons/pen-gray.svg" />
                   </div>
+                )}
+                {notifier.isGlobal && (
+                  <span className="ml-2 inline-block rounded-xl bg-[#00000010] px-2 py-1 text-xs text-gray-700 dark:bg-[#ffffff10] dark:text-gray-300">
+                    {t('notifiers.globalBadge')}
+                  </span>
                 )}
               </div>
             ) : (

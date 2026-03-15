@@ -1,4 +1,4 @@
-﻿package backups_download
+package backups_download
 
 import (
 	"errors"
@@ -26,7 +26,7 @@ func (s *DownloadTokenService) Generate(backupID, userID uuid.UUID) (string, err
 		Token:     token,
 		BackupID:  backupID,
 		UserID:    userID,
-		ExpiresAt: time.Now().UTC().Add(5 * time.Minute),
+		ExpiresAt: time.Now().UTC().Add(15 * time.Minute),
 		Used:      false,
 	}
 
@@ -51,11 +51,11 @@ func (s *DownloadTokenService) ValidateAndConsume(
 	}
 
 	if dt.Used {
-		return nil, nil, errors.New("token already used")
+		return nil, nil, ErrTokenAlreadyUsed
 	}
 
 	if time.Now().UTC().After(dt.ExpiresAt) {
-		return nil, nil, errors.New("token expired")
+		return nil, nil, ErrTokenExpired
 	}
 
 	if err := s.downloadTracker.AcquireDownloadLock(dt.UserID); err != nil {
