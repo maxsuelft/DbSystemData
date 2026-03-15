@@ -1,4 +1,4 @@
-export interface SignInResponse {
+﻿export interface SignInResponse {
   userId: string;
   token: string;
 }

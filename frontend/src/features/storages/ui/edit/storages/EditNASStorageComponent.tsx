@@ -1,4 +1,4 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
+﻿import { InfoCircleOutlined } from '@ant-design/icons';
 import { Input, InputNumber, Switch, Tooltip } from 'antd';
 
 import type { Storage } from '../../../../../entity/storages';
@@ -86,7 +86,7 @@ export function EditNASStorageComponent({ storage, setStorage, setUnsaved }: Pro
           {shareHasSlash && (
             <div className="mt-1 max-w-[250px] text-xs text-yellow-600">
               Share must be a single share name. Use the Path field for subdirectories (e.g. Share:
-              Databasus, Path: DB1)
+              DbSystemData, Path: DB1)
             </div>
           )}
         </div>

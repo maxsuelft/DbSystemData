@@ -1,4 +1,4 @@
-import type { MariadbVersion } from './MariadbVersion';
+﻿import type { MariadbVersion } from './MariadbVersion';
 
 export interface MariadbDatabase {
   id: string;

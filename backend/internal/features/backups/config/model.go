@@ -1,4 +1,4 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"errors"
@@ -7,11 +7,11 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/intervals"
-	plans "databasus-backend/internal/features/plan"
-	"databasus-backend/internal/features/storages"
-	"databasus-backend/internal/util/period"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/intervals"
+	plans "dbsystemdata-backend/internal/features/plan"
+	"dbsystemdata-backend/internal/features/storages"
+	"dbsystemdata-backend/internal/util/period"
 )
 
 type BackupConfig struct {

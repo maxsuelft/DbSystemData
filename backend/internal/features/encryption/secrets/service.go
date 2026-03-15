@@ -1,4 +1,4 @@
-package secrets
+﻿package secrets
 
 import (
 	"errors"
@@ -8,9 +8,9 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/config"
-	user_models "databasus-backend/internal/features/users/models"
-	"databasus-backend/internal/storage"
+	"dbsystemdata-backend/internal/config"
+	user_models "dbsystemdata-backend/internal/features/users/models"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type SecretKeyService struct {

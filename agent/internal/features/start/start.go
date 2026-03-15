@@ -1,4 +1,4 @@
-package start
+﻿package start
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"databasus-agent/internal/config"
+	"dbsystemdata-agent/internal/config"
 )
 
 const (
@@ -42,8 +42,8 @@ func Run(cfg *config.Config, log *slog.Logger) error {
 }
 
 func validateConfig(cfg *config.Config) error {
-	if cfg.DatabasusHost == "" {
-		return errors.New("argument databasus-host is required")
+	if cfg.DbSystemDataHost == "" {
+		return errors.New("argument dbsystemdata-host is required")
 	}
 
 	if cfg.DbID == "" {

@@ -1,8 +1,8 @@
-package backups_controllers
+﻿package backups_controllers
 
 import (
-	backups_services "databasus-backend/internal/features/backups/backups/services"
-	"databasus-backend/internal/features/databases"
+	backups_services "dbsystemdata-backend/internal/features/backups/backups/services"
+	"dbsystemdata-backend/internal/features/databases"
 )
 
 var backupController = &BackupController{

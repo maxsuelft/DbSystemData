@@ -1,4 +1,4 @@
-package audit_logs
+﻿package audit_logs
 
 import (
 	"fmt"
@@ -9,9 +9,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
 
-	user_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	"databasus-backend/internal/storage"
+	user_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	"dbsystemdata-backend/internal/storage"
 )
 
 func Test_CleanOldAuditLogs_DeletesLogsOlderThanOneYear(t *testing.T) {

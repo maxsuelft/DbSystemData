@@ -1,4 +1,4 @@
-export interface WebhookHeader {
+﻿export interface WebhookHeader {
   key: string;
   value: string;
 }

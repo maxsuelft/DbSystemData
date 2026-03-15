@@ -1,4 +1,4 @@
-package tools
+﻿package tools
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"strings"
 
-	env_utils "databasus-backend/internal/util/env"
+	env_utils "dbsystemdata-backend/internal/util/env"
 )
 
 // GetPostgresqlExecutable returns the full path to a specific PostgreSQL executable

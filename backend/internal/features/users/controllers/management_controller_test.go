@@ -1,4 +1,4 @@
-package users_controllers
+﻿package users_controllers
 
 import (
 	"net/http"
@@ -9,16 +9,16 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/features/audit_logs"
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_GetUsersList_WhenUserIsAdmin_ReturnsUsers(t *testing.T) {

@@ -1,4 +1,4 @@
-package workspaces_repositories
+﻿package workspaces_repositories
 
 import (
 	"errors"
@@ -7,10 +7,10 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	users_enums "databasus-backend/internal/features/users/enums"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_models "databasus-backend/internal/features/workspaces/models"
-	"databasus-backend/internal/storage"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_models "dbsystemdata-backend/internal/features/workspaces/models"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type MembershipRepository struct{}

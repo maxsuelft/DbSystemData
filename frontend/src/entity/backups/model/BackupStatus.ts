@@ -1,4 +1,4 @@
-export enum BackupStatus {
+﻿export enum BackupStatus {
   IN_PROGRESS = 'IN_PROGRESS',
   COMPLETED = 'COMPLETED',
   FAILED = 'FAILED',

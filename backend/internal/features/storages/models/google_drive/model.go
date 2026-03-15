@@ -19,7 +19,7 @@ import (
 	"google.golang.org/api/googleapi"
 	"google.golang.org/api/option"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (
@@ -91,7 +91,7 @@ func (s *GoogleDriveStorage) SaveFile(
 			"name",
 			fileName,
 			"folder",
-			"databasus_backups",
+			"dbsystemdata_backups",
 		)
 		return nil
 	})
@@ -231,7 +231,7 @@ func (s *GoogleDriveStorage) TestConnection(encryptor encryption.FieldEncryptor)
 		testFilename := "test-connection-" + uuid.New().String()
 		testData := []byte("test")
 
-		// Ensure the databasus_backups folder exists
+		// Ensure the dbsystemdata_backups folder exists
 		folderID, err := s.ensureBackupsFolderExists(ctx, driveService)
 		if err != nil {
 			return fmt.Errorf("failed to create/find backups folder: %w", err)
@@ -644,7 +644,7 @@ func escapeForQuery(s string) string {
 	return strings.ReplaceAll(s, `'`, `\'`)
 }
 
-// ensureBackupsFolderExists creates the databasus_backups folder if it doesn't exist
+// ensureBackupsFolderExists creates the dbsystemdata_backups folder if it doesn't exist
 func (s *GoogleDriveStorage) ensureBackupsFolderExists(
 	ctx context.Context,
 	driveService *drive.Service,
@@ -656,21 +656,21 @@ func (s *GoogleDriveStorage) ensureBackupsFolderExists(
 
 	// Folder doesn't exist, create it
 	folderMeta := &drive.File{
-		Name:     "databasus_backups",
+		Name:     "dbsystemdata_backups",
 		MimeType: "application/vnd.google-apps.folder",
 	}
 
 	folder, err := driveService.Files.Create(folderMeta).Context(ctx).Do()
 	if err != nil {
-		return "", fmt.Errorf("failed to create databasus_backups folder: %w", err)
+		return "", fmt.Errorf("failed to create dbsystemdata_backups folder: %w", err)
 	}
 
 	return folder.Id, nil
 }
 
-// findBackupsFolder finds the databasus_backups folder ID
+// findBackupsFolder finds the dbsystemdata_backups folder ID
 func (s *GoogleDriveStorage) findBackupsFolder(driveService *drive.Service) (string, error) {
-	query := "name = 'databasus_backups' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+	query := "name = 'dbsystemdata_backups' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
 
 	results, err := driveService.Files.List().
 		Q(query).
@@ -682,7 +682,7 @@ func (s *GoogleDriveStorage) findBackupsFolder(driveService *drive.Service) (str
 	}
 
 	if len(results.Files) == 0 {
-		return "", fmt.Errorf("databasus_backups folder not found")
+		return "", fmt.Errorf("dbsystemdata_backups folder not found")
 	}
 
 	return results.Files[0].Id, nil

@@ -1,11 +1,11 @@
-package users_dto
+﻿package users_dto
 
 import (
 	"time"
 
 	"github.com/google/uuid"
 
-	users_enums "databasus-backend/internal/features/users/enums"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
 )
 
 type SignUpRequestDTO struct {

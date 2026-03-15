@@ -1,4 +1,4 @@
-package cloudflare_turnstile
+﻿package cloudflare_turnstile
 
 import (
 	"context"

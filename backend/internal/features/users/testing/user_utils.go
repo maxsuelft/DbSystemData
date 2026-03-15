@@ -1,4 +1,4 @@
-package users_testing
+﻿package users_testing
 
 import (
 	"fmt"
@@ -7,11 +7,11 @@ import (
 
 	"github.com/google/uuid"
 
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_models "databasus-backend/internal/features/users/models"
-	users_repositories "databasus-backend/internal/features/users/repositories"
-	users_services "databasus-backend/internal/features/users/services"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_repositories "dbsystemdata-backend/internal/features/users/repositories"
+	users_services "dbsystemdata-backend/internal/features/users/services"
 )
 
 func CreateTestUser(role users_enums.UserRole) *users_dto.SignInResponseDTO {

@@ -1,8 +1,8 @@
-package system_healthcheck
+﻿package system_healthcheck
 
 import (
-	"databasus-backend/internal/features/backups/backups/backuping"
-	"databasus-backend/internal/features/disk"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	"dbsystemdata-backend/internal/features/disk"
 )
 
 var healthcheckService = &HealthcheckService{

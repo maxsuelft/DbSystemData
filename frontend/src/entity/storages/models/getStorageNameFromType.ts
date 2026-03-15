@@ -1,4 +1,4 @@
-import { StorageType } from './StorageType';
+﻿import { StorageType } from './StorageType';
 
 export const getStorageNameFromType = (type: StorageType) => {
   switch (type) {
@@ -8,6 +8,8 @@ export const getStorageNameFromType = (type: StorageType) => {
       return 'S3';
     case StorageType.GOOGLE_DRIVE:
       return 'Google Drive';
+    case StorageType.DROPBOX:
+      return 'Dropbox';
     case StorageType.NAS:
       return 'NAS';
     case StorageType.AZURE_BLOB:

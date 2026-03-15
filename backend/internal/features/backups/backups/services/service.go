@@ -1,4 +1,4 @@
-package backups_services
+﻿package backups_services
 
 import (
 	"encoding/base64"
@@ -9,22 +9,22 @@ import (
 
 	"github.com/google/uuid"
 
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/backups/backups/backuping"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_download "databasus-backend/internal/features/backups/backups/download"
-	backups_dto "databasus-backend/internal/features/backups/backups/dto"
-	"databasus-backend/internal/features/backups/backups/encryption"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	encryption_secrets "databasus-backend/internal/features/encryption/secrets"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	task_cancellation "databasus-backend/internal/features/tasks/cancellation"
-	users_models "databasus-backend/internal/features/users/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	util_encryption "databasus-backend/internal/util/encryption"
-	files_utils "databasus-backend/internal/util/files"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_download "dbsystemdata-backend/internal/features/backups/backups/download"
+	backups_dto "dbsystemdata-backend/internal/features/backups/backups/dto"
+	"dbsystemdata-backend/internal/features/backups/backups/encryption"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	encryption_secrets "dbsystemdata-backend/internal/features/encryption/secrets"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	task_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	util_encryption "dbsystemdata-backend/internal/util/encryption"
+	files_utils "dbsystemdata-backend/internal/util/files"
 )
 
 type BackupService struct {

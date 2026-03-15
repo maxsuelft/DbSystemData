@@ -1,4 +1,4 @@
-import type { WebhookHeader } from './WebhookHeader';
+﻿import type { WebhookHeader } from './WebhookHeader';
 import type { WebhookMethod } from './WebhookMethod';
 
 export interface WebhookNotifier {

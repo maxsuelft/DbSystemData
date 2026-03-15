@@ -1,4 +1,4 @@
-package healthcheck_attempt
+﻿package healthcheck_attempt
 
 import (
 	"encoding/json"
@@ -11,12 +11,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/features/databases"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/features/databases"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func createTestRouter() *gin.Engine {

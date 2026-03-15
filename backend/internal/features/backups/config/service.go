@@ -1,17 +1,17 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"errors"
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/intervals"
-	"databasus-backend/internal/features/notifiers"
-	plans "databasus-backend/internal/features/plan"
-	"databasus-backend/internal/features/storages"
-	users_models "databasus-backend/internal/features/users/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/intervals"
+	"dbsystemdata-backend/internal/features/notifiers"
+	plans "dbsystemdata-backend/internal/features/plan"
+	"dbsystemdata-backend/internal/features/storages"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
 )
 
 type BackupConfigService struct {

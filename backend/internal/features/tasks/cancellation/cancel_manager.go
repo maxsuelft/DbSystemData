@@ -1,4 +1,4 @@
-package task_cancellation
+﻿package task_cancellation
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 
-	cache_utils "databasus-backend/internal/util/cache"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
 )
 
 const taskCancelChannel = "task:cancel"

@@ -1,4 +1,4 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"encoding/json"
@@ -12,22 +12,22 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/features/intervals"
-	"databasus-backend/internal/features/notifiers"
-	plans "databasus-backend/internal/features/plan"
-	"databasus-backend/internal/features/storages"
-	local_storage "databasus-backend/internal/features/storages/models/local"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	"databasus-backend/internal/storage"
-	"databasus-backend/internal/util/period"
-	test_utils "databasus-backend/internal/util/testing"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/features/intervals"
+	"dbsystemdata-backend/internal/features/notifiers"
+	plans "dbsystemdata-backend/internal/features/plan"
+	"dbsystemdata-backend/internal/features/storages"
+	local_storage "dbsystemdata-backend/internal/features/storages/models/local"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	"dbsystemdata-backend/internal/storage"
+	"dbsystemdata-backend/internal/util/period"
+	test_utils "dbsystemdata-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 func createTestRouter() *gin.Engine {

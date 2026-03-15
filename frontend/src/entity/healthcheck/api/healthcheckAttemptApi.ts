@@ -1,4 +1,4 @@
-import { getApplicationServer } from '../../../constants';
+﻿import { getApplicationServer } from '../../../constants';
 import { apiHelper } from '../../../shared/api/apiHelper';
 import type { HealthcheckAttempt } from '../model/HealthckeckAttempts';
 

@@ -1,4 +1,4 @@
-package users_controllers
+﻿package users_controllers
 
 import (
 	"encoding/json"
@@ -11,11 +11,11 @@ import (
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/oauth2"
 
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_SignUpUser_WithValidData_UserCreated(t *testing.T) {

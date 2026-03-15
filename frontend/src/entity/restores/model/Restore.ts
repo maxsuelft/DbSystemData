@@ -1,4 +1,4 @@
-import type { PostgresqlDatabase } from '../../databases';
+﻿import type { PostgresqlDatabase } from '../../databases';
 import { RestoreStatus } from './RestoreStatus';
 
 export interface Restore {

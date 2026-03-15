@@ -1,4 +1,4 @@
-package email_notifier
+﻿package email_notifier
 
 import (
 	"errors"

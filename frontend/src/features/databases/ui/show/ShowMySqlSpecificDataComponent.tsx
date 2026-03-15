@@ -1,4 +1,4 @@
-import { type Database, MysqlVersion } from '../../../../entity/databases';
+﻿import { type Database, MysqlVersion } from '../../../../entity/databases';
 
 interface Props {
   database: Database;

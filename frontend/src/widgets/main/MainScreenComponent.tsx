@@ -1,6 +1,7 @@
-import { LoadingOutlined, MenuOutlined } from '@ant-design/icons';
+﻿import { LoadingOutlined, MenuOutlined } from '@ant-design/icons';
 import { App, Button, Spin, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { APP_VERSION, CONTAINER_ARCH } from '../../constants';
 import { type DiskUsage, diskApi } from '../../entity/disk';
@@ -30,13 +31,14 @@ import { SidebarComponent } from './SidebarComponent';
 import { WorkspaceSelectionComponent } from './WorkspaceSelectionComponent';
 
 export const MainScreenComponent = () => {
+  const { t } = useTranslation();
   const { message } = App.useApp();
   const screenHeight = useScreenHeight();
   const isMobile = useIsMobile();
   const contentHeight = screenHeight - (isMobile ? 70 : 95);
 
   const [selectedTab, setSelectedTab] = useState<
-    'notifiers' | 'storages' | 'databases' | 'profile' | 'databasus-settings' | 'users' | 'settings'
+    'notifiers' | 'storages' | 'databases' | 'profile' | 'dbsystemdata-settings' | 'users' | 'settings'
   >('databases');
   const [diskUsage, setDiskUsage] = useState<DiskUsage | undefined>(undefined);
   const [user, setUser] = useState<UserProfile | undefined>(undefined);
@@ -121,7 +123,7 @@ export const MainScreenComponent = () => {
 
   const tabs = [
     {
-      text: 'Databases',
+      text: t('nav.databases'),
       name: 'databases',
       icon: '/icons/menu/database-gray.svg',
       selectedIcon: '/icons/menu/database-white.svg',
@@ -131,7 +133,7 @@ export const MainScreenComponent = () => {
       isVisible: true,
     },
     {
-      text: 'Storages',
+      text: t('nav.storages'),
       name: 'storages',
       icon: '/icons/menu/storage-gray.svg',
       selectedIcon: '/icons/menu/storage-white.svg',
@@ -141,7 +143,7 @@ export const MainScreenComponent = () => {
       isVisible: !!selectedWorkspace,
     },
     {
-      text: 'Notifiers',
+      text: t('nav.notifiers'),
       name: 'notifiers',
       icon: '/icons/menu/notifier-gray.svg',
       selectedIcon: '/icons/menu/notifier-white.svg',
@@ -151,7 +153,7 @@ export const MainScreenComponent = () => {
       isVisible: !!selectedWorkspace,
     },
     {
-      text: 'Settings',
+      text: t('nav.settings'),
       name: 'settings',
       icon: '/icons/menu/workspace-settings-gray.svg',
       selectedIcon: '/icons/menu/workspace-settings-white.svg',
@@ -161,7 +163,7 @@ export const MainScreenComponent = () => {
       isVisible: !!selectedWorkspace,
     },
     {
-      text: 'Profile',
+      text: t('nav.profile'),
       name: 'profile',
       icon: '/icons/menu/profile-gray.svg',
       selectedIcon: '/icons/menu/profile-white.svg',
@@ -171,17 +173,17 @@ export const MainScreenComponent = () => {
       isVisible: true,
     },
     {
-      text: 'Databasus settings',
-      name: 'databasus-settings',
+      text: t('nav.dbsystemdataSettings'),
+      name: 'dbsystemdata-settings',
       icon: '/icons/menu/global-settings-gray.svg',
       selectedIcon: '/icons/menu/global-settings-white.svg',
-      onClick: () => setSelectedTab('databasus-settings'),
+      onClick: () => setSelectedTab('dbsystemdata-settings'),
       isAdminOnly: true,
       marginTop: '0px',
       isVisible: true,
     },
     {
-      text: 'Users',
+      text: t('nav.users'),
       name: 'users',
       icon: '/icons/menu/user-card-gray.svg',
       selectedIcon: '/icons/menu/user-card-white.svg',
@@ -196,8 +198,8 @@ export const MainScreenComponent = () => {
     <div style={{ height: screenHeight }} className="bg-[#f5f5f5] p-2 md:p-3 dark:bg-gray-900">
       <div className="mb-2 flex h-[50px] items-center rounded bg-white px-2 py-2 shadow md:mb-3 md:h-[60px] md:p-3 dark:bg-gray-800">
         <div className="flex items-center gap-2 hover:opacity-80 md:gap-3">
-          <a href="https://databasus.com" target="_blank" rel="noreferrer">
-            <img className="h-[30px] w-[30px] p-1 md:h-[40px] md:w-[40px]" src="/logo.svg" />
+          <a href="https://github.com/dbsystemdata/DbSystemData" target="_blank" rel="noreferrer">
+            <img className="h-[30px] w-[30px] p-1 md:h-[40px] md:w-[40px]" src="/logo.svg" alt="DbSystemData" />
           </a>
         </div>
 
@@ -215,20 +217,11 @@ export const MainScreenComponent = () => {
         <div className="ml-auto hidden items-center gap-5 md:flex">
           <a
             className="!text-black hover:opacity-80 dark:!text-gray-200"
-            href="https://databasus.com/installation"
+            href="https://github.com/dbsystemdata/DbSystemData"
             target="_blank"
             rel="noreferrer"
           >
-            Docs
-          </a>
-
-          <a
-            className="!text-black hover:opacity-80 dark:!text-gray-200"
-            href="https://t.me/databasus_community"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Community
+            Repositório
           </a>
 
           {isUsedMoreThan85Percent && (
@@ -284,7 +277,7 @@ export const MainScreenComponent = () => {
             </div>
           )}
 
-          {selectedTab === 'databasus-settings' && (
+          {selectedTab === 'dbsystemdata-settings' && (
             <div className="flex-1 md:pl-4">
               <SettingsComponent contentHeight={contentHeight} />
             </div>

@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 import (
 	"context"
@@ -11,16 +11,16 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/databases/databases/mariadb"
-	"databasus-backend/internal/features/databases/databases/mongodb"
-	"databasus-backend/internal/features/databases/databases/mysql"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/features/notifiers"
-	users_models "databasus-backend/internal/features/users/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/config"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/databases/databases/mariadb"
+	"dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	"dbsystemdata-backend/internal/features/databases/databases/mysql"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/features/notifiers"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type DatabaseService struct {

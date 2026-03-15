@@ -1,14 +1,14 @@
-package users_controllers
+﻿package users_controllers
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 
-	user_enums "databasus-backend/internal/features/users/enums"
-	user_middleware "databasus-backend/internal/features/users/middleware"
-	user_models "databasus-backend/internal/features/users/models"
-	users_services "databasus-backend/internal/features/users/services"
+	user_enums "dbsystemdata-backend/internal/features/users/enums"
+	user_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	user_models "dbsystemdata-backend/internal/features/users/models"
+	users_services "dbsystemdata-backend/internal/features/users/services"
 )
 
 type SettingsController struct {

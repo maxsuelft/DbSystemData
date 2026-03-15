@@ -1,4 +1,4 @@
-import type { Period } from '../../databases/model/Period';
+﻿import type { Period } from '../../databases/model/Period';
 import type { Interval } from '../../intervals';
 import type { Storage } from '../../storages';
 import { BackupEncryption } from './BackupEncryption';

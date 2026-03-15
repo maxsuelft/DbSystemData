@@ -1,4 +1,4 @@
-package workspaces_controllers
+﻿package workspaces_controllers
 
 import (
 	"errors"
@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_errors "databasus-backend/internal/features/workspaces/errors"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_errors "dbsystemdata-backend/internal/features/workspaces/errors"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
 )
 
 type MembershipController struct {

@@ -1,4 +1,4 @@
-package s3_storage
+﻿package s3_storage
 
 import (
 	"bytes"
@@ -19,7 +19,7 @@ import (
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

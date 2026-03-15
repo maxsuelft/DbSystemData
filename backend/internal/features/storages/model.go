@@ -1,4 +1,4 @@
-package storages
+﻿package storages
 
 import (
 	"context"
@@ -8,15 +8,16 @@ import (
 
 	"github.com/google/uuid"
 
-	azure_blob_storage "databasus-backend/internal/features/storages/models/azure_blob"
-	ftp_storage "databasus-backend/internal/features/storages/models/ftp"
-	google_drive_storage "databasus-backend/internal/features/storages/models/google_drive"
-	local_storage "databasus-backend/internal/features/storages/models/local"
-	nas_storage "databasus-backend/internal/features/storages/models/nas"
-	rclone_storage "databasus-backend/internal/features/storages/models/rclone"
-	s3_storage "databasus-backend/internal/features/storages/models/s3"
-	sftp_storage "databasus-backend/internal/features/storages/models/sftp"
-	"databasus-backend/internal/util/encryption"
+	azure_blob_storage "dbsystemdata-backend/internal/features/storages/models/azure_blob"
+	dropbox_storage "dbsystemdata-backend/internal/features/storages/models/dropbox"
+	ftp_storage "dbsystemdata-backend/internal/features/storages/models/ftp"
+	google_drive_storage "dbsystemdata-backend/internal/features/storages/models/google_drive"
+	local_storage "dbsystemdata-backend/internal/features/storages/models/local"
+	nas_storage "dbsystemdata-backend/internal/features/storages/models/nas"
+	rclone_storage "dbsystemdata-backend/internal/features/storages/models/rclone"
+	s3_storage "dbsystemdata-backend/internal/features/storages/models/s3"
+	sftp_storage "dbsystemdata-backend/internal/features/storages/models/sftp"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type Storage struct {
@@ -31,6 +32,7 @@ type Storage struct {
 	LocalStorage       *local_storage.LocalStorage              `json:"localStorage"       gorm:"foreignKey:StorageID"`
 	S3Storage          *s3_storage.S3Storage                    `json:"s3Storage"          gorm:"foreignKey:StorageID"`
 	GoogleDriveStorage *google_drive_storage.GoogleDriveStorage `json:"googleDriveStorage" gorm:"foreignKey:StorageID"`
+	DropboxStorage     *dropbox_storage.DropboxStorage         `json:"dropboxStorage"     gorm:"foreignKey:StorageID"`
 	NASStorage         *nas_storage.NASStorage                  `json:"nasStorage"         gorm:"foreignKey:StorageID"`
 	AzureBlobStorage   *azure_blob_storage.AzureBlobStorage     `json:"azureBlobStorage"   gorm:"foreignKey:StorageID"`
 	FTPStorage         *ftp_storage.FTPStorage                  `json:"ftpStorage"         gorm:"foreignKey:StorageID"`
@@ -92,6 +94,7 @@ func (s *Storage) HideAllData() {
 	s.LocalStorage = nil
 	s.S3Storage = nil
 	s.GoogleDriveStorage = nil
+	s.DropboxStorage = nil
 	s.NASStorage = nil
 	s.AzureBlobStorage = nil
 	s.FTPStorage = nil
@@ -120,6 +123,10 @@ func (s *Storage) Update(incoming *Storage) {
 	case StorageTypeGoogleDrive:
 		if s.GoogleDriveStorage != nil && incoming.GoogleDriveStorage != nil {
 			s.GoogleDriveStorage.Update(incoming.GoogleDriveStorage)
+		}
+	case StorageTypeDropbox:
+		if s.DropboxStorage != nil && incoming.DropboxStorage != nil {
+			s.DropboxStorage.Update(incoming.DropboxStorage)
 		}
 	case StorageTypeNAS:
 		if s.NASStorage != nil && incoming.NASStorage != nil {
@@ -152,6 +159,8 @@ func (s *Storage) getSpecificStorage() StorageFileSaver {
 		return s.S3Storage
 	case StorageTypeGoogleDrive:
 		return s.GoogleDriveStorage
+	case StorageTypeDropbox:
+		return s.DropboxStorage
 	case StorageTypeNAS:
 		return s.NASStorage
 	case StorageTypeAzureBlob:

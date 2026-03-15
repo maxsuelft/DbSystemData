@@ -1,4 +1,4 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
+﻿import { InfoCircleOutlined } from '@ant-design/icons';
 
 import { type Notifier } from '../../../entity/notifiers';
 import { getNotifierLogoFromType } from '../../../entity/notifiers/models/getNotifierLogoFromType';

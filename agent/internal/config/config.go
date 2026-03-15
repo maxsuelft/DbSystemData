@@ -6,15 +6,15 @@ import (
 	"fmt"
 	"os"
 
-	"databasus-agent/internal/logger"
+	"dbsystemdata-agent/internal/logger"
 )
 
 var log = logger.GetLogger()
 
-const configFileName = "databasus.json"
+const configFileName = "dbsystemdata.json"
 
 type Config struct {
-	DatabasusHost          string `json:"databasusHost"`
+	DbSystemDataHost          string `json:"dbSystemDataHost"`
 	DbID                   string `json:"dbId"`
 	Token                  string `json:"token"`
 	PgHost                 string `json:"pgHost"`
@@ -30,17 +30,17 @@ type Config struct {
 	flags parsedFlags
 }
 
-// LoadFromJSONAndArgs reads databasus.json into the struct
+// LoadFromJSONAndArgs reads dbsystemdata.json into the struct
 // and overrides JSON values with any explicitly provided CLI flags.
 func (c *Config) LoadFromJSONAndArgs(fs *flag.FlagSet, args []string) {
 	c.loadFromJSON()
 	c.applyDefaults()
 	c.initSources()
 
-	c.flags.databasusHost = fs.String(
-		"databasus-host",
+	c.flags.DbSystemDataHost = fs.String(
+		"dbsystemdata-host",
 		"",
-		"Databasus server URL (e.g. http://your-server:4005)",
+		"DbSystemData server URL (e.g. http://your-server:4005)",
 	)
 	c.flags.dbID = fs.String("db-id", "", "Database ID")
 	c.flags.token = fs.String("token", "", "Agent token")
@@ -63,7 +63,7 @@ func (c *Config) LoadFromJSONAndArgs(fs *flag.FlagSet, args []string) {
 	log.Info("========= Config has been loaded ====")
 }
 
-// SaveToJSON writes the current struct to databasus.json.
+// SaveToJSON writes the current struct to dbsystemdata.json.
 func (c *Config) SaveToJSON() error {
 	data, err := json.MarshalIndent(c, "", "  ")
 	if err != nil {
@@ -77,17 +77,17 @@ func (c *Config) loadFromJSON() {
 	data, err := os.ReadFile(configFileName)
 	if err != nil {
 		if os.IsNotExist(err) {
-			log.Info("No databasus.json found, will create on save")
+			log.Info("No dbsystemdata.json found, will create on save")
 			return
 		}
 
-		log.Warn("Failed to read databasus.json", "error", err)
+		log.Warn("Failed to read dbsystemdata.json", "error", err)
 
 		return
 	}
 
 	if err := json.Unmarshal(data, c); err != nil {
-		log.Warn("Failed to parse databasus.json", "error", err)
+		log.Warn("Failed to parse dbsystemdata.json", "error", err)
 
 		return
 	}
@@ -112,7 +112,7 @@ func (c *Config) applyDefaults() {
 
 func (c *Config) initSources() {
 	c.flags.sources = map[string]string{
-		"databasus-host":           "not configured",
+		"dbsystemdata-host":           "not configured",
 		"db-id":                    "not configured",
 		"token":                    "not configured",
 		"pg-host":                  "not configured",
@@ -126,8 +126,8 @@ func (c *Config) initSources() {
 		"delete-wal-after-upload":  "not configured",
 	}
 
-	if c.DatabasusHost != "" {
-		c.flags.sources["databasus-host"] = configFileName
+	if c.DbSystemDataHost != "" {
+		c.flags.sources["dbsystemdata-host"] = configFileName
 	}
 
 	if c.DbID != "" {
@@ -173,9 +173,9 @@ func (c *Config) initSources() {
 }
 
 func (c *Config) applyFlags() {
-	if c.flags.databasusHost != nil && *c.flags.databasusHost != "" {
-		c.DatabasusHost = *c.flags.databasusHost
-		c.flags.sources["databasus-host"] = "command line args"
+	if c.flags.DbSystemDataHost != nil && *c.flags.DbSystemDataHost != "" {
+		c.DbSystemDataHost = *c.flags.DbSystemDataHost
+		c.flags.sources["dbsystemdata-host"] = "command line args"
 	}
 
 	if c.flags.dbID != nil && *c.flags.dbID != "" {
@@ -230,7 +230,7 @@ func (c *Config) applyFlags() {
 }
 
 func (c *Config) logConfigSources() {
-	log.Info("databasus-host", "value", c.DatabasusHost, "source", c.flags.sources["databasus-host"])
+	log.Info("dbsystemdata-host", "value", c.DbSystemDataHost, "source", c.flags.sources["dbsystemdata-host"])
 	log.Info("db-id", "value", c.DbID, "source", c.flags.sources["db-id"])
 	log.Info("token", "value", maskSensitive(c.Token), "source", c.flags.sources["token"])
 	log.Info("pg-host", "value", c.PgHost, "source", c.flags.sources["pg-host"])

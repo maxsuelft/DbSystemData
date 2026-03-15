@@ -1,4 +1,4 @@
-package email_notifier
+﻿package email_notifier
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

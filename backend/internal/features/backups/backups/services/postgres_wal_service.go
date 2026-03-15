@@ -9,18 +9,18 @@ import (
 
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_dto "databasus-backend/internal/features/backups/backups/dto"
-	backup_encryption "databasus-backend/internal/features/backups/backups/encryption"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	encryption_secrets "databasus-backend/internal/features/encryption/secrets"
-	util_encryption "databasus-backend/internal/util/encryption"
-	util_wal "databasus-backend/internal/util/wal"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_dto "dbsystemdata-backend/internal/features/backups/backups/dto"
+	backup_encryption "dbsystemdata-backend/internal/features/backups/backups/encryption"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	encryption_secrets "dbsystemdata-backend/internal/features/encryption/secrets"
+	util_encryption "dbsystemdata-backend/internal/util/encryption"
+	util_wal "dbsystemdata-backend/internal/util/wal"
 )
 
-// PostgreWalBackupService handles WAL segment and basebackup uploads from the databasus-cli agent.
+// PostgreWalBackupService handles WAL segment and basebackup uploads from the dbsystemdata-cli agent.
 type PostgreWalBackupService struct {
 	backupConfigService *backups_config.BackupConfigService
 	backupRepository    *backups_core.BackupRepository

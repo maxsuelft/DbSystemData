@@ -1,4 +1,4 @@
-package storages
+﻿package storages
 
 import (
 	"bytes"
@@ -18,17 +18,17 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"databasus-backend/internal/config"
-	azure_blob_storage "databasus-backend/internal/features/storages/models/azure_blob"
-	ftp_storage "databasus-backend/internal/features/storages/models/ftp"
-	google_drive_storage "databasus-backend/internal/features/storages/models/google_drive"
-	local_storage "databasus-backend/internal/features/storages/models/local"
-	nas_storage "databasus-backend/internal/features/storages/models/nas"
-	rclone_storage "databasus-backend/internal/features/storages/models/rclone"
-	s3_storage "databasus-backend/internal/features/storages/models/s3"
-	sftp_storage "databasus-backend/internal/features/storages/models/sftp"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/config"
+	azure_blob_storage "dbsystemdata-backend/internal/features/storages/models/azure_blob"
+	ftp_storage "dbsystemdata-backend/internal/features/storages/models/ftp"
+	google_drive_storage "dbsystemdata-backend/internal/features/storages/models/google_drive"
+	local_storage "dbsystemdata-backend/internal/features/storages/models/local"
+	nas_storage "dbsystemdata-backend/internal/features/storages/models/nas"
+	rclone_storage "dbsystemdata-backend/internal/features/storages/models/rclone"
+	s3_storage "dbsystemdata-backend/internal/features/storages/models/s3"
+	sftp_storage "dbsystemdata-backend/internal/features/storages/models/sftp"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 type S3Container struct {

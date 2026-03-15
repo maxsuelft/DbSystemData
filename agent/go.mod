@@ -1,4 +1,4 @@
-module databasus-agent
+module dbsystemdata-agent
 
 go 1.26.1
 

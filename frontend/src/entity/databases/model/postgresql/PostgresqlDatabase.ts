@@ -1,4 +1,4 @@
-import type { PostgresqlVersion } from './PostgresqlVersion';
+﻿import type { PostgresqlVersion } from './PostgresqlVersion';
 
 export interface PostgresqlDatabase {
   id: string;

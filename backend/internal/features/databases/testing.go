@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 import (
 	"fmt"
@@ -6,14 +6,14 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/databases/databases/mariadb"
-	"databasus-backend/internal/features/databases/databases/mongodb"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	"databasus-backend/internal/storage"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/databases/databases/mariadb"
+	"dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	"dbsystemdata-backend/internal/storage"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 func GetTestPostgresConfig() *postgresql.PostgresqlDatabase {

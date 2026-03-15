@@ -1,4 +1,5 @@
-import type { AzureBlobStorage } from './AzureBlobStorage';
+﻿import type { AzureBlobStorage } from './AzureBlobStorage';
+import type { DropboxStorage } from './DropboxStorage';
 import type { FTPStorage } from './FTPStorage';
 import type { GoogleDriveStorage } from './GoogleDriveStorage';
 import type { LocalStorage } from './LocalStorage';
@@ -20,6 +21,7 @@ export interface Storage {
   localStorage?: LocalStorage;
   s3Storage?: S3Storage;
   googleDriveStorage?: GoogleDriveStorage;
+  dropboxStorage?: DropboxStorage;
   nasStorage?: NASStorage;
   azureBlobStorage?: AzureBlobStorage;
   ftpStorage?: FTPStorage;

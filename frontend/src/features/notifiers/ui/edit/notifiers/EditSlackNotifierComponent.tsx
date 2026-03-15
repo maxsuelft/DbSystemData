@@ -1,4 +1,4 @@
-import { Input } from 'antd';
+﻿import { Input } from 'antd';
 
 import type { Notifier } from '../../../../../entity/notifiers';
 
@@ -14,7 +14,7 @@ export function EditSlackNotifierComponent({ notifier, setNotifier, setUnsaved }
       <div className="mb-1 max-w-[250px] sm:ml-[150px]" style={{ lineHeight: 1 }}>
         <a
           className="text-xs !text-blue-600"
-          href="https://databasus.com/notifiers/slack"
+          href="https://github.com/dbsystemdata/DbSystemData#readme"
           target="_blank"
           rel="noreferrer"
         >

@@ -1,10 +1,10 @@
-package storages
+﻿package storages
 
 import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	db "databasus-backend/internal/storage"
+	db "dbsystemdata-backend/internal/storage"
 )
 
 type StorageRepository struct{}
@@ -25,6 +25,10 @@ func (r *StorageRepository) Save(storage *Storage) (*Storage, error) {
 		case StorageTypeGoogleDrive:
 			if storage.GoogleDriveStorage != nil {
 				storage.GoogleDriveStorage.StorageID = storage.ID
+			}
+		case StorageTypeDropbox:
+			if storage.DropboxStorage != nil {
+				storage.DropboxStorage.StorageID = storage.ID
 			}
 		case StorageTypeNAS:
 			if storage.NASStorage != nil {
@@ -50,13 +54,13 @@ func (r *StorageRepository) Save(storage *Storage) (*Storage, error) {
 
 		if storage.ID == uuid.Nil {
 			if err := tx.Create(storage).
-				Omit("LocalStorage", "S3Storage", "GoogleDriveStorage", "NASStorage", "AzureBlobStorage", "FTPStorage", "SFTPStorage", "RcloneStorage").
+				Omit("LocalStorage", "S3Storage", "GoogleDriveStorage", "DropboxStorage", "NASStorage", "AzureBlobStorage", "FTPStorage", "SFTPStorage", "RcloneStorage").
 				Error; err != nil {
 				return err
 			}
 		} else {
 			if err := tx.Save(storage).
-				Omit("LocalStorage", "S3Storage", "GoogleDriveStorage", "NASStorage", "AzureBlobStorage", "FTPStorage", "SFTPStorage", "RcloneStorage").
+				Omit("LocalStorage", "S3Storage", "GoogleDriveStorage", "DropboxStorage", "NASStorage", "AzureBlobStorage", "FTPStorage", "SFTPStorage", "RcloneStorage").
 				Error; err != nil {
 				return err
 			}
@@ -81,6 +85,13 @@ func (r *StorageRepository) Save(storage *Storage) (*Storage, error) {
 			if storage.GoogleDriveStorage != nil {
 				storage.GoogleDriveStorage.StorageID = storage.ID // Ensure ID is set
 				if err := tx.Save(storage.GoogleDriveStorage).Error; err != nil {
+					return err
+				}
+			}
+		case StorageTypeDropbox:
+			if storage.DropboxStorage != nil {
+				storage.DropboxStorage.StorageID = storage.ID // Ensure ID is set
+				if err := tx.Save(storage.DropboxStorage).Error; err != nil {
 					return err
 				}
 			}
@@ -138,6 +149,7 @@ func (r *StorageRepository) FindByID(id uuid.UUID) (*Storage, error) {
 		Preload("LocalStorage").
 		Preload("S3Storage").
 		Preload("GoogleDriveStorage").
+		Preload("DropboxStorage").
 		Preload("NASStorage").
 		Preload("AzureBlobStorage").
 		Preload("FTPStorage").
@@ -159,6 +171,7 @@ func (r *StorageRepository) FindByWorkspaceID(workspaceID uuid.UUID) ([]*Storage
 		Preload("LocalStorage").
 		Preload("S3Storage").
 		Preload("GoogleDriveStorage").
+		Preload("DropboxStorage").
 		Preload("NASStorage").
 		Preload("AzureBlobStorage").
 		Preload("FTPStorage").
@@ -192,6 +205,12 @@ func (r *StorageRepository) Delete(s *Storage) error {
 		case StorageTypeGoogleDrive:
 			if s.GoogleDriveStorage != nil {
 				if err := tx.Delete(s.GoogleDriveStorage).Error; err != nil {
+					return err
+				}
+			}
+		case StorageTypeDropbox:
+			if s.DropboxStorage != nil {
+				if err := tx.Delete(s.DropboxStorage).Error; err != nil {
 					return err
 				}
 			}

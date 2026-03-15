@@ -1,4 +1,4 @@
-import { Modal, Spin } from 'antd';
+﻿import { Modal, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
 import { type Storage, StorageType } from '../entity/storages';
@@ -10,6 +10,48 @@ import { EditStorageComponent } from '../features/storages/ui/edit/EditStorageCo
 export function OauthStorageComponent() {
   const [storage, setStorage] = useState<Storage | undefined>();
   const [user, setUser] = useState<UserProfile | undefined>();
+
+  const exchangeDropboxOauthCode = async (oauthDto: StorageOauthDto) => {
+    if (!oauthDto.storage.dropboxStorage) {
+      alert('Configuração do storage Dropbox não encontrada');
+      return;
+    }
+
+    const { appKey, appSecret } = oauthDto.storage.dropboxStorage;
+    const { authCode } = oauthDto;
+
+    const redirectUri = `${window.location.origin}/storages/dropbox-oauth`;
+
+    try {
+      const credentials = btoa(`${appKey}:${appSecret}`);
+      const response = await fetch('https://api.dropboxapi.com/oauth2/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: `Basic ${credentials}`,
+        },
+        body: new URLSearchParams({
+          code: authCode,
+          grant_type: 'authorization_code',
+          redirect_uri: redirectUri,
+        }),
+      });
+
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(errText || `Troca OAuth falhou: ${response.statusText}`);
+      }
+
+      const tokenData = await response.json();
+      oauthDto.storage.dropboxStorage.tokenJson = JSON.stringify(tokenData);
+      setStorage(oauthDto.storage);
+    } catch (error) {
+      alert(`Falha ao trocar código OAuth: ${error}`);
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 3000);
+    }
+  };
 
   const exchangeGoogleOauthCode = async (oauthDto: StorageOauthDto) => {
     if (!oauthDto.storage.googleDriveStorage) {
@@ -69,6 +111,13 @@ export function OauthStorageComponent() {
       }
 
       exchangeGoogleOauthCode(oauthDto);
+    } else if (oauthDto.storage.type === StorageType.DROPBOX) {
+      if (!oauthDto.storage.dropboxStorage) {
+        alert('Configuração do storage Dropbox não encontrada no DTO');
+        return;
+      }
+
+      exchangeDropboxOauthCode(oauthDto);
     } else {
       alert('Unsupported storage type for OAuth');
     }

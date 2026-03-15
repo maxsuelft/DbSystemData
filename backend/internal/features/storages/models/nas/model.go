@@ -1,4 +1,4 @@
-package nas_storage
+﻿package nas_storage
 
 import (
 	"context"
@@ -15,7 +15,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/hirochachacha/go-smb2"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

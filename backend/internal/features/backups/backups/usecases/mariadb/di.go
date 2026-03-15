@@ -1,9 +1,9 @@
-package usecases_mariadb
+﻿package usecases_mariadb
 
 import (
-	"databasus-backend/internal/features/encryption/secrets"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/features/encryption/secrets"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var createMariadbBackupUsecase = &CreateMariadbBackupUsecase{

@@ -1,4 +1,4 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"errors"
@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	users_middleware "databasus-backend/internal/features/users/middleware"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
 )
 
 type BackupConfigController struct {

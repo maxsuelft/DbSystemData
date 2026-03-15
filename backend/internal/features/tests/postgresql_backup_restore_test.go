@@ -1,4 +1,4 @@
-package tests
+﻿package tests
 
 import (
 	"encoding/json"
@@ -16,21 +16,21 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	backups_controllers "databasus-backend/internal/features/backups/backups/controllers"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_dto "databasus-backend/internal/features/backups/backups/dto"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	pgtypes "databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/features/restores"
-	restores_core "databasus-backend/internal/features/restores/core"
-	"databasus-backend/internal/features/storages"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/config"
+	backups_controllers "dbsystemdata-backend/internal/features/backups/backups/controllers"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_dto "dbsystemdata-backend/internal/features/backups/backups/dto"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	pgtypes "dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/features/restores"
+	restores_core "dbsystemdata-backend/internal/features/restores/core"
+	"dbsystemdata-backend/internal/features/storages"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func createAndFillTableQuery(tableName string) string {

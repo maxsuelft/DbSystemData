@@ -1,4 +1,4 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
+﻿import { InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Input, Select, Switch, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
 
@@ -12,6 +12,7 @@ import {
 import { type UserProfile, UserRole } from '../../../../entity/users';
 import { ToastHelper } from '../../../../shared/toast';
 import { EditAzureBlobStorageComponent } from './storages/EditAzureBlobStorageComponent';
+import { EditDropboxStorageComponent } from './storages/EditDropboxStorageComponent';
 import { EditFTPStorageComponent } from './storages/EditFTPStorageComponent';
 import { EditGoogleDriveStorageComponent } from './storages/EditGoogleDriveStorageComponent';
 import { EditNASStorageComponent } from './storages/EditNASStorageComponent';
@@ -94,6 +95,7 @@ export function EditStorageComponent({
     storage.localStorage = undefined;
     storage.s3Storage = undefined;
     storage.googleDriveStorage = undefined;
+    storage.dropboxStorage = undefined;
     storage.azureBlobStorage = undefined;
     storage.ftpStorage = undefined;
     storage.sftpStorage = undefined;
@@ -117,6 +119,13 @@ export function EditStorageComponent({
       storage.googleDriveStorage = {
         clientId: '',
         clientSecret: '',
+      };
+    }
+
+    if (type === StorageType.DROPBOX) {
+      storage.dropboxStorage = {
+        appKey: '',
+        appSecret: '',
       };
     }
 
@@ -246,6 +255,18 @@ export function EditStorageComponent({
       );
     }
 
+    if (storage.type === StorageType.DROPBOX) {
+      if (storage.id) {
+        return storage.dropboxStorage?.appKey;
+      }
+
+      return (
+        storage.dropboxStorage?.appKey &&
+        storage.dropboxStorage?.appSecret &&
+        storage.dropboxStorage?.tokenJson
+      );
+    }
+
     if (storage.type === StorageType.NAS) {
       if (storage.id) {
         return (
@@ -330,6 +351,7 @@ export function EditStorageComponent({
     { label: 'Local storage', value: StorageType.LOCAL },
     { label: 'S3', value: StorageType.S3 },
     { label: 'Google Drive', value: StorageType.GOOGLE_DRIVE },
+    { label: 'Dropbox', value: StorageType.DROPBOX },
     { label: 'NAS', value: StorageType.NAS },
     { label: 'Azure Blob Storage', value: StorageType.AZURE_BLOB },
     { label: 'FTP', value: StorageType.FTP },
@@ -423,6 +445,17 @@ export function EditStorageComponent({
 
         {storage?.type === StorageType.GOOGLE_DRIVE && (
           <EditGoogleDriveStorageComponent
+            storage={storage}
+            setStorage={setStorage}
+            setUnsaved={() => {
+              setIsUnsaved(true);
+              setIsTestConnectionSuccess(false);
+            }}
+          />
+        )}
+
+        {storage?.type === StorageType.DROPBOX && (
+          <EditDropboxStorageComponent
             storage={storage}
             setStorage={setStorage}
             setUnsaved={() => {

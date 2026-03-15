@@ -1,4 +1,4 @@
-import { LoadingOutlined } from '@ant-design/icons';
+﻿import { LoadingOutlined } from '@ant-design/icons';
 import { App, Button, Drawer, Input, Select, Spin, Switch, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
@@ -374,7 +374,7 @@ export function UsersComponent({ contentHeight }: Props) {
           style={{ height: contentHeight }}
         >
           <div className="mb-4 flex items-center justify-between">
-            <h1 className="text-2xl font-bold dark:text-white">Databasus users</h1>
+            <h1 className="text-2xl font-bold dark:text-white">DbSystemData users</h1>
             <div className="text-sm text-gray-500 dark:text-gray-400">
               {isLoading ? 'Loading...' : `${users.length} of ${total} users`}
             </div>

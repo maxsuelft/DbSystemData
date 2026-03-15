@@ -1,15 +1,15 @@
-package restores_core
+﻿package restores_core
 
 import (
 	"time"
 
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	"databasus-backend/internal/features/databases/databases/mariadb"
-	"databasus-backend/internal/features/databases/databases/mongodb"
-	"databasus-backend/internal/features/databases/databases/mysql"
-	"databasus-backend/internal/features/databases/databases/postgresql"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	"dbsystemdata-backend/internal/features/databases/databases/mariadb"
+	"dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	"dbsystemdata-backend/internal/features/databases/databases/mysql"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
 )
 
 type Restore struct {

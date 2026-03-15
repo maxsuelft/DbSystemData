@@ -1,4 +1,4 @@
-package backups_controllers
+﻿package backups_controllers
 
 import (
 	"bytes"
@@ -15,19 +15,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_dto "databasus-backend/internal/features/backups/backups/dto"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/features/intervals"
-	"databasus-backend/internal/features/storages"
-	local_storage "databasus-backend/internal/features/storages/models/local"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_dto "dbsystemdata-backend/internal/features/backups/backups/dto"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/features/intervals"
+	"dbsystemdata-backend/internal/features/storages"
+	local_storage "dbsystemdata-backend/internal/features/storages/models/local"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_WalUpload_InProgressStatusSetBeforeStream(t *testing.T) {

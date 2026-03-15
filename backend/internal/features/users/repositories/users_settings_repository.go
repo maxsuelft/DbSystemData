@@ -1,4 +1,4 @@
-package users_repositories
+﻿package users_repositories
 
 import (
 	"errors"
@@ -6,8 +6,8 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	user_models "databasus-backend/internal/features/users/models"
-	"databasus-backend/internal/storage"
+	user_models "dbsystemdata-backend/internal/features/users/models"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type UsersSettingsRepository struct{}

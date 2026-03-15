@@ -1,4 +1,4 @@
-import { Button, Modal, Spin } from 'antd';
+﻿import { Button, Modal, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
 import { storageApi } from '../../../entity/storages';

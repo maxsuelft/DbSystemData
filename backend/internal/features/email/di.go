@@ -1,8 +1,8 @@
-package email
+﻿package email
 
 import (
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var (

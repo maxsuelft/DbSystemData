@@ -1,4 +1,4 @@
-export interface HealthcheckConfig {
+﻿export interface HealthcheckConfig {
   databaseId: string;
 
   isHealthcheckEnabled: boolean;

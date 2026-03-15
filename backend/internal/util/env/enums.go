@@ -1,4 +1,4 @@
-package env_utils
+﻿package env_utils
 
 type EnvMode string
 

@@ -1,11 +1,11 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/intervals"
-	"databasus-backend/internal/features/storages"
-	"databasus-backend/internal/util/period"
+	"dbsystemdata-backend/internal/features/intervals"
+	"dbsystemdata-backend/internal/features/storages"
+	"dbsystemdata-backend/internal/util/period"
 )
 
 func EnableBackupsForTestDatabase(

@@ -13,6 +13,8 @@ swagger/swagger.json
 swagger/swagger.yaml
 postgresus-backend.exe
 databasus-backend.exe
+DbSystemData-backend.exe
+*.exe
 ui/build/*
 pgdata-for-restore/
 temp/

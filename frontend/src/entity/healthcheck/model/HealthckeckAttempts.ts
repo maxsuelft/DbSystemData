@@ -1,4 +1,4 @@
-import type { HealthStatus } from '../../databases/model/HealthStatus';
+﻿import type { HealthStatus } from '../../databases/model/HealthStatus';
 
 export interface HealthcheckAttempt {
   id: string;

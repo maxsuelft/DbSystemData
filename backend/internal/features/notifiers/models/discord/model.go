@@ -1,4 +1,4 @@
-package discord_notifier
+﻿package discord_notifier
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type DiscordNotifier struct {

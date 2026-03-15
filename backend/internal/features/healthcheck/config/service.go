@@ -1,4 +1,4 @@
-package healthcheck_config
+﻿package healthcheck_config
 
 import (
 	"errors"
@@ -7,10 +7,10 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/databases"
-	users_models "databasus-backend/internal/features/users/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/databases"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
 )
 
 type HealthcheckConfigService struct {

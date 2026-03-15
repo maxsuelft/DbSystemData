@@ -1,4 +1,4 @@
-package healthcheck_attempt
+﻿package healthcheck_attempt
 
 import (
 	"net/http"
@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	users_middleware "databasus-backend/internal/features/users/middleware"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
 )
 
 type HealthcheckAttemptController struct {

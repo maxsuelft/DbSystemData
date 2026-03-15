@@ -1,4 +1,4 @@
-export interface OAuthCallbackResponse {
+﻿export interface OAuthCallbackResponse {
   userId: string;
   email: string;
   token: string;

@@ -1,4 +1,4 @@
-import type { WorkspaceResponse } from './WorkspaceResponse';
+﻿import type { WorkspaceResponse } from './WorkspaceResponse';
 
 export interface ListWorkspacesResponse {
   workspaces: WorkspaceResponse[];

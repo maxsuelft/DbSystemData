@@ -1,4 +1,4 @@
-export interface TransferDatabaseRequest {
+﻿export interface TransferDatabaseRequest {
   targetWorkspaceId: string;
   targetStorageId?: string;
   isTransferWithStorage: boolean;

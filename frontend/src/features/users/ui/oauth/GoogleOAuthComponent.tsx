@@ -1,4 +1,4 @@
-import { GoogleOutlined } from '@ant-design/icons';
+﻿import { GoogleOutlined } from '@ant-design/icons';
 import { Button, message } from 'antd';
 
 import { GOOGLE_CLIENT_ID, getOAuthRedirectUri } from '../../../../constants';

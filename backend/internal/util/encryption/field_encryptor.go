@@ -1,4 +1,4 @@
-package encryption
+﻿package encryption
 
 import "github.com/google/uuid"
 

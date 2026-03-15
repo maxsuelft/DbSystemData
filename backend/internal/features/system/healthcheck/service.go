@@ -1,15 +1,15 @@
-package system_healthcheck
+﻿package system_healthcheck
 
 import (
 	"context"
 	"errors"
 	"time"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/backups/backups/backuping"
-	"databasus-backend/internal/features/disk"
-	"databasus-backend/internal/storage"
-	cache_utils "databasus-backend/internal/util/cache"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	"dbsystemdata-backend/internal/features/disk"
+	"dbsystemdata-backend/internal/storage"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
 )
 
 type HealthcheckService struct {

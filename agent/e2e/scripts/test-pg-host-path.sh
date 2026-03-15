@@ -18,7 +18,7 @@ fi
 echo "Running agent start (pg_basebackup in PATH)..."
 OUTPUT=$("$AGENT" start \
   --skip-update \
-  --databasus-host http://e2e-mock-server:4050 \
+  --dbsystemdata-host http://e2e-mock-server:4050 \
   --db-id test-db-id \
   --token test-token \
   --pg-host e2e-postgres \

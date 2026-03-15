@@ -1,3 +1,3 @@
-export interface IsAdminHasPasswordResponse {
+﻿export interface IsAdminHasPasswordResponse {
   hasPassword: boolean;
 }

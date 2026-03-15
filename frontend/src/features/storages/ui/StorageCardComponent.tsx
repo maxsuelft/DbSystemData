@@ -1,4 +1,4 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
+﻿import { InfoCircleOutlined } from '@ant-design/icons';
 
 import { type Storage } from '../../../entity/storages';
 import { getStorageLogoFromType } from '../../../entity/storages/models/getStorageLogoFromType';

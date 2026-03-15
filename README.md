@@ -1,295 +1,199 @@
 <div align="center">
-  <img src="assets/logo.svg" alt="Databasus Logo" width="250"/>
+  <img src="assets/logo.svg" alt="DbSystemData Logo" width="250"/>
 
-  <h3>Backup tool for PostgreSQL, MySQL and MongoDB</h3>
-  <p>Databasus is a free, open source and self-hosted tool to backup databases (with focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)</p>
-  
+  <h3>Ferramenta de backup para PostgreSQL, MySQL e MongoDB</h3>
+  <p>DbSystemData é um fork focado em backend e frontend. Ferramenta gratuita, open source e self-hosted para backup de bancos de dados (com foco em PostgreSQL). Backups com múltiplos destinos (S3, Google Drive, FTP, etc.) e notificações (Slack, Discord, Telegram, etc.).</p>
+  <p><em>Derivado do projeto <a href="https://github.com/databasus/databasus">Databasus</a>.</em></p>
+
   <!-- Badges -->
-   [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+  [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
   [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
   [![MariaDB](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white)](https://mariadb.org/)
   [![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
   <br />
   [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-  [![Docker Pulls](https://img.shields.io/docker/pulls/databasus/databasus?color=brightgreen)](https://hub.docker.com/r/databasus/databasus)
-  [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey)](https://github.com/databasus/databasus)
-  [![Self Hosted](https://img.shields.io/badge/self--hosted-yes-brightgreen)](https://github.com/databasus/databasus)
-  [![Open Source](https://img.shields.io/badge/open%20source-❤️-red)](https://github.com/databasus/databasus)
+  [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey)](https://github.com/databasus/DbSystemData)
+  [![Self Hosted](https://img.shields.io/badge/self--hosted-yes-brightgreen)](https://github.com/databasus/DbSystemData)
+  [![Open Source](https://img.shields.io/badge/open%20source-❤️-red)](https://github.com/databasus/DbSystemData)
 
   <p>
     <a href="#-features">Features</a> •
-    <a href="#-installation">Installation</a> •
-    <a href="#-usage">Usage</a> •
-    <a href="#-license">License</a> •
-    <a href="#-contributing">Contributing</a>
+    <a href="#-installation">Instalação</a> •
+    <a href="#-usage">Uso</a> •
+    <a href="#-license">Licença</a> •
+    <a href="#-contributing">Contribuindo</a>
   </p>
 
-  <p style="margin-top: 20px; margin-bottom: 20px; font-size: 1.2em;">
-    <a href="https://databasus.com" target="_blank"><strong>🌐 Databasus website</strong></a>
-  </p>
-  
-  <img src="assets/dashboard-dark.svg" alt="Databasus Dark Dashboard" width="800" style="margin-bottom: 10px;"/>
+  <img src="assets/dashboard-dark.svg" alt="DbSystemData Dark Dashboard" width="800" style="margin-bottom: 10px;"/>
 
-  <img src="assets/dashboard.svg" alt="Databasus Dashboard" width="800"/>
+  <img src="assets/dashboard.svg" alt="DbSystemData Dashboard" width="800"/>
 </div>
 
 ---
 
 ## ✨ Features
 
-### 💾 **Supported databases**
+### 💾 **Bancos suportados**
 
-- **PostgreSQL**: 12, 13, 14, 15, 16, 17 and 18
-- **MySQL**: 5.7, 8 and 9
-- **MariaDB**: 10, 11 and 12
-- **MongoDB**: 4, 5, 6, 7 and 8
+- **PostgreSQL**: 12, 13, 14, 15, 16, 17 e 18
+- **MySQL**: 5.7, 8 e 9
+- **MariaDB**: 10, 11 e 12
+- **MongoDB**: 4, 5, 6, 7 e 8
 
-### 🔄 **Scheduled backups**
+### 🔄 **Backups agendados**
 
-- **Flexible scheduling**: hourly, daily, weekly, monthly or cron
-- **Precise timing**: run backups at specific times (e.g., 4 AM during low traffic)
-- **Smart compression**: 4-8x space savings with balanced compression (~20% overhead)
+- **Agendamento flexível**: horário, diário, semanal, mensal ou cron
+- **Horários precisos**: execute em horários específicos (ex.: 4h da manhã)
+- **Compressão**: economia de espaço com compressão balanceada (~20% de overhead)
 
-### 🗑️ **Retention policies**
+### 🗑️ **Políticas de retenção**
 
-- **Time period**: Keep backups for a fixed duration (e.g., 7 days, 3 months, 1 year)
-- **Count**: Keep a fixed number of the most recent backups (e.g., last 30)
-- **GFS (Grandfather-Father-Son)**: Layered retention — keep hourly, daily, weekly, monthly and yearly backups independently for fine-grained long-term history (enterprises requirement)
-- **Size limits**: Set per-backup and total storage size caps to control storage usage
+- **Período**: Manter backups por duração fixa (ex.: 7 dias, 3 meses, 1 ano)
+- **Quantidade**: Manter um número fixo dos backups mais recentes (ex.: últimos 30)
+- **GFS (Grandfather-Father-Son)**: Retenção em camadas — horário, diário, semanal, mensal e anual
+- **Limites de tamanho**: Limites por backup e total de armazenamento
 
-### 🗄️ **Multiple storage destinations** <a href="https://databasus.com/storages">(view supported)</a>
+### 🗄️ **Múltiplos destinos de armazenamento**
 
-- **Local storage**: Keep backups on your VPS/server
-- **Cloud storage**: S3, Cloudflare R2, Google Drive, NAS, Dropbox, SFTP, Rclone and more
-- **Secure**: All data stays under your control
+- **Armazenamento local**: Manter backups no seu VPS/servidor
+- **Nuvem**: S3, Cloudflare R2, Google Drive, NAS, Dropbox, SFTP, Rclone e outros
+- **Seguro**: Seus dados permanecem sob seu controle
 
-### 📱 **Smart notifications** <a href="https://databasus.com/notifiers">(view supported)</a>
+### 📱 **Notificações**
 
-- **Multiple channels**: Email, Telegram, Slack, Discord, webhooks
-- **Real-time updates**: Success and failure notifications
-- **Team integration**: Perfect for DevOps workflows
+- **Múltiplos canais**: Email, Telegram, Slack, Discord, webhooks
+- **Atualizações em tempo real**: Sucesso e falha
+- **Integração**: Ideal para fluxos DevOps
 
-### 🔒 **Enterprise-grade security** <a href="https://databasus.com/security">(docs)</a>
+### 🔒 **Segurança**
 
-- **AES-256-GCM encryption**: Enterprise-grade protection for backup files
-- **Zero-trust storage**: Backups are encrypted and remain useless to attackers, so you can safely store them in shared storage like S3, Azure Blob Storage, etc.
-- **Encryption for secrets**: Any sensitive data is encrypted and never exposed, even in logs or error messages
-- **Read-only user**: Databasus uses a read-only user by default for backups and never stores anything that can modify your data
+- **Criptografia AES-256-GCM**: Proteção para arquivos de backup
+- **Armazenamento zero-trust**: Backups criptografados
+- **Criptografia de segredos**: Dados sensíveis nunca expostos em logs
+- **Usuário read-only**: Usa usuário somente leitura por padrão para backups
 
-It is also important for Databasus that you are able to decrypt and restore backups from storages (local, S3, etc.) without Databasus itself. To do so, read our guide on [how to recover directly from storage](https://databasus.com/how-to-recover-without-databasus). We avoid "vendor lock-in" even to open source tool!
+É importante que você consiga descriptografar e restaurar backups a partir dos storages (local, S3, etc.) sem o DbSystemData. Evitamos vendor lock-in.
 
-### 👥 **Suitable for teams** <a href="https://databasus.com/access-management">(docs)</a>
+### 👥 **Para times**
 
-- **Workspaces**: Group databases, notifiers and storages for different projects or teams
-- **Access management**: Control who can view or manage specific databases with role-based permissions
-- **Audit logs**: Track all system activities and changes made by users
-- **User roles**: Assign viewer, member, admin or owner roles within workspaces
+- **Workspaces**: Agrupe bancos, notifiers e storages por projeto ou time
+- **Controle de acesso**: Permissões por função
+- **Audit logs**: Rastreie atividades e alterações
+- **Roles**: Viewer, member, admin ou owner
 
-### 🎨 **UX-Friendly**
+### 🎨 **Interface**
 
-- **Designer-polished UI**: Clean, intuitive interface crafted with attention to detail
-- **Dark & light themes**: Choose the look that suits your workflow
-- **Mobile adaptive**: Check your backups from anywhere on any device
+- **UI limpa**: Interface intuitiva
+- **Temas claro e escuro**
+- **Adaptável a mobile**
 
-### ☁️ **Works with self-hosted & cloud databases**
+### ☁️ **Self-hosted e nuvem**
 
-Databasus works seamlessly with both self-hosted PostgreSQL and cloud-managed databases:
+- **Nuvem**: AWS RDS, Google Cloud SQL, Azure Database for PostgreSQL
+- **Self-hosted**: Qualquer instância PostgreSQL que você gerencie
+- **Granularidade**: Backups horários e diários cobrem a maioria dos casos
 
-- **Cloud support**: AWS RDS, Google Cloud SQL, Azure Database for PostgreSQL
-- **Self-hosted**: Any PostgreSQL instance you manage yourself
-- **Why no PITR support?**: Cloud providers already offer native PITR, and external PITR backups cannot be restored to managed cloud databases — making them impractical for cloud-hosted PostgreSQL
-- **Practical granularity**: Hourly and daily backups are sufficient for 99% of projects without the operational complexity of WAL archiving
+### 🐳 **Self-hosted e seguro**
 
-### 🐳 **Self-hosted & secure**
+- **Docker**: Deploy e gerenciamento simples
+- **Privacidade**: Dados na sua infraestrutura
+- **Open source**: Licença Apache 2.0
 
-- **Docker-based**: Easy deployment and management
-- **Privacy-first**: All your data stays on your infrastructure
-- **Open source**: Apache 2.0 licensed, inspect every line of code
+### 📦 Instalação
 
-### 📦 Installation <a href="https://databasus.com/installation">(docs)</a>
+Quatro formas de instalar: script automatizado (recomendado), Docker run, Docker Compose ou Kubernetes com Helm.
 
-You have four ways to install Databasus:
-
-- Automated script (recommended)
-- Simple Docker run
-- Docker Compose setup
-- Kubernetes with Helm
-
-<img src="assets/healthchecks.svg" alt="Databasus Dashboard" width="800"/>
+<img src="assets/healthchecks.svg" alt="Dashboard" width="800"/>
 
 ---
 
-## 📦 Installation
+## 📦 Instalação
 
-You have four ways to install Databasus: automated script (recommended), simple Docker run, or Docker Compose setup.
+### Opção 1: Script de instalação (recomendado, Linux)
 
-### Option 1: Automated installation script (recommended, Linux only)
-
-The installation script will:
-
-- ✅ Install Docker with Docker Compose (if not already installed)
-- ✅ Set up Databasus
-- ✅ Configure automatic startup on system reboot
+O script irá instalar Docker/Docker Compose (se necessário), configurar o DbSystemData e inicialização no boot.
 
 ```bash
 sudo apt-get install -y curl && \
-sudo curl -sSL https://raw.githubusercontent.com/databasus/databasus/refs/heads/main/install-databasus.sh \
+sudo curl -sSL https://raw.githubusercontent.com/databasus/DbSystemData/refs/heads/main/install-databasus.sh \
 | sudo bash
 ```
 
-### Option 2: Simple Docker run
+*(Substitua a URL pelo repositório do seu fork se necessário.)*
 
-The easiest way to run Databasus:
+### Opção 2: Docker run
+
+Use a imagem publicada no GitHub Container Registry (após o workflow de build no seu repositório):
 
 ```bash
 docker run -d \
-  --name databasus \
+  --name dbsystemdata \
   -p 4005:4005 \
-  -v ./databasus-data:/databasus-data \
+  -v ./dbsystemdata-data:/dbsystemdata-data \
   --restart unless-stopped \
-  databasus/databasus:latest
+  ghcr.io/SEU_USUARIO/dbsystemdata:latest
 ```
 
-This single command will:
+- Substitua `SEU_USUARIO` pelo seu usuário do GitHub.
+- Acesse em `http://localhost:4005`
+- Dados em `./dbsystemdata-data`
+- Reinício automático habilitado
 
-- ✅ Start Databasus
-- ✅ Store all data in `./databasus-data` directory
-- ✅ Automatically restart on system reboot
+### Opção 3: Docker Compose
 
-### Option 3: Docker Compose setup
+1. Copie os arquivos de exemplo e defina seu usuário GitHub:
 
-Create a `docker-compose.yml` file with the following configuration:
-
-```yaml
-services:
-  databasus:
-    container_name: databasus
-    image: databasus/databasus:latest
-    ports:
-      - "4005:4005"
-    volumes:
-      - ./databasus-data:/databasus-data
-    restart: unless-stopped
+```bash
+cp docker-compose.yml.example docker-compose.yml
+cp .env.example .env
+# Edite .env e defina: GITHUB_USER=seu_usuario_github
 ```
 
-Then run:
+2. Suba o serviço:
 
 ```bash
 docker compose up -d
 ```
 
-### Option 4: Kubernetes with Helm
+A imagem usada será `ghcr.io/SEU_USUARIO/dbsystemdata:latest` (gerada pelo workflow em `.github/workflows/docker-build-push.yml` ao dar push em `main`/`master`).
 
-For Kubernetes deployments, install directly from the OCI registry.
+**Build da imagem no GitHub:** o workflow `.github/workflows/docker-build-push.yml` faz build e push da imagem no push para `main` ou `master`. Para o build concluir, o repositório precisa ter os binários em `assets/tools/x64` e `assets/tools/arm` (PostgreSQL, MySQL, MariaDB); veja `assets/tools/README.md`. Se esses diretórios não existirem, o build falhará até você adicioná-los.
 
-**With ClusterIP + port-forward (development/testing):**
+### Opção 4: Kubernetes com Helm
 
-```bash
-helm install databasus oci://ghcr.io/databasus/charts/databasus \
-  -n databasus --create-namespace
-```
-
-```bash
-kubectl port-forward svc/databasus-service 4005:4005 -n databasus
-# Access at http://localhost:4005
-```
-
-**With LoadBalancer (cloud environments):**
-
-```bash
-helm install databasus oci://ghcr.io/databasus/charts/databasus \
-  -n databasus --create-namespace \
-  --set service.type=LoadBalancer
-```
-
-```bash
-kubectl get svc databasus-service -n databasus
-# Access at http://<EXTERNAL-IP>:4005
-```
-
-**With Ingress (domain-based access):**
-
-```bash
-helm install databasus oci://ghcr.io/databasus/charts/databasus \
-  -n databasus --create-namespace \
-  --set ingress.enabled=true \
-  --set ingress.hosts[0].host=backup.example.com
-```
-
-For more options (NodePort, TLS, HTTPRoute for Gateway API), see the [Helm chart README](deploy/helm/README.md).
+Consulte o [README do chart Helm](deploy/helm/README.md) para instalação via OCI registry e opções (ClusterIP, LoadBalancer, Ingress).
 
 ---
 
-## 🚀 Usage
+## 🚀 Uso
 
-1. **Access the dashboard**: Navigate to `http://localhost:4005`
-2. **Add your first database for backup**: Click "New Database" and follow the setup wizard
-3. **Configure schedule**: Choose from hourly, daily, weekly, monthly or cron intervals
-4. **Set database connection**: Enter your database credentials and connection details
-5. **Choose storage**: Select where to store your backups (local, S3, Google Drive, etc.)
-6. **Configure retention policy**: Choose time period, count or GFS to control how long backups are kept
-7. **Add notifications** (optional): Configure email, Telegram, Slack, or webhook notifications
-8. **Save and start**: Databasus will validate settings and begin the backup schedule
+1. **Acesse o dashboard**: `http://localhost:4005`
+2. **Adicione seu primeiro banco**: Clique em "New Database" e siga o assistente
+3. **Configure o agendamento**: Horário, diário, semanal, mensal ou cron
+4. **Conexão**: Informe credenciais e detalhes do banco
+5. **Escolha o storage**: Local, S3, Google Drive, etc.
+6. **Política de retenção**: Período, quantidade ou GFS
+7. **Notificações** (opcional): Email, Telegram, Slack, webhook
+8. **Salve e inicie**: O DbSystemData validará e iniciará o agendamento
 
-### 🔑 Resetting password <a href="https://databasus.com/password">(docs)</a>
-
-If you need to reset the password, you can use the built-in password reset command:
+### 🔑 Redefinir senha
 
 ```bash
-docker exec -it databasus ./main --new-password="YourNewSecurePassword123" --email="admin"
+docker exec -it dbsystemdata ./main --new-password="SuaNovaSenhaSegura123" --email="admin"
 ```
 
-Replace `admin` with the actual email address of the user whose password you want to reset.
+Substitua `admin` pelo email do usuário.
 
-### 💾 Backuping Databasus itself
+### 💾 Backup do próprio DbSystemData
 
-After installation, it is also recommended to <a href="https://databasus.com/faq/#backup-databasus">backup your Databasus itself</a> or, at least, to copy secret key used for encryption (30 seconds is needed). So you are able to restore from your encrypted backups if you lose access to the server with Databasus or it is corrupted.
+Após a instalação, recomenda-se fazer backup do próprio DbSystemData ou copiar a chave secreta de criptografia. Consulte a documentação no repositório.
 
 ---
 
-## 📝 License
+## 📝 Licença
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+Este projeto está sob a licença Apache 2.0 — veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-## 🤝 Contributing
+## 🤝 Contribuindo
 
-Contributions are welcome! Read the <a href="https://databasus.com/contribute">contributing guide</a> for more details, priorities and rules. If you want to contribute but don't know where to start, message me on Telegram [@rostislav_dugin](https://t.me/rostislav_dugin)
-
-Also you can join our large community of developers, DBAs and DevOps engineers on Telegram [@databasus_community](https://t.me/databasus_community).
-
-## AI disclaimer
-
-There have been questions about AI usage in project development in issues and discussions. As the project focuses on security, reliability and production usage, it's important to explain how AI is used in the development process.
-
-First of all, we are proud to say that Databasus has been accepted into both [Claude for Open Source](https://claude.com/contact-sales/claude-for-oss) by Anthropic and [Codex for Open Source](https://developers.openai.com/codex/community/codex-for-oss/) by OpenAI in March 2026. For us it is one more signal that the project was recognized as important open-source software and was as critical infrastructure worth supporting independently by two of the world's leading AI companies. Read more at [databasus.com/faq](https://databasus.com/faq#oss-programs).
-
-Despite of this, we have the following rules how AI is used in the development process:
-
-AI is used as a helper for:
-
-- verification of code quality and searching for vulnerabilities
-- cleaning up and improving documentation, comments and code
-- assistance during development
-- double-checking PRs and commits after human review
-- additional security analysis of PRs via Codex Security
-
-AI is not used for:
-
-- writing entire code
-- "vibe code" approach
-- code without line-by-line verification by a human
-- code without tests
-
-The project has:
-
-- solid test coverage (both unit and integration tests)
-- CI/CD pipeline automation with tests and linting to ensure code quality
-- verification by experienced developers with experience in large and secure projects
-
-So AI is just an assistant and a tool for developers to increase productivity and ensure code quality. The work is done by developers.
-
-Moreover, it's important to note that we do not differentiate between bad human code and AI vibe code. There are strict requirements for any code to be merged to keep the codebase maintainable.
-
-Even if code is written manually by a human, it's not guaranteed to be merged. Vibe code is not allowed at all and all such PRs are rejected by default (see [contributing guide](https://databasus.com/contribute)).
-
-We also draw attention to fast issue resolution and security [vulnerability reporting](https://github.com/databasus/databasus?tab=security-ov-file#readme).
+Contribuições são bem-vindas. Abra issues e pull requests neste repositório.

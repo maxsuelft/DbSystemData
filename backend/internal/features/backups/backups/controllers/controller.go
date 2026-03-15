@@ -1,4 +1,4 @@
-package backups_controllers
+﻿package backups_controllers
 
 import (
 	"context"
@@ -11,13 +11,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_download "databasus-backend/internal/features/backups/backups/download"
-	backups_dto "databasus-backend/internal/features/backups/backups/dto"
-	backups_services "databasus-backend/internal/features/backups/backups/services"
-	"databasus-backend/internal/features/databases"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	files_utils "databasus-backend/internal/util/files"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_download "dbsystemdata-backend/internal/features/backups/backups/download"
+	backups_dto "dbsystemdata-backend/internal/features/backups/backups/dto"
+	backups_services "dbsystemdata-backend/internal/features/backups/backups/services"
+	"dbsystemdata-backend/internal/features/databases"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	files_utils "dbsystemdata-backend/internal/util/files"
 )
 
 type BackupController struct {

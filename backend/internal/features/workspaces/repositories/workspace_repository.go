@@ -1,12 +1,12 @@
-package workspaces_repositories
+﻿package workspaces_repositories
 
 import (
 	"time"
 
 	"github.com/google/uuid"
 
-	workspaces_models "databasus-backend/internal/features/workspaces/models"
-	"databasus-backend/internal/storage"
+	workspaces_models "dbsystemdata-backend/internal/features/workspaces/models"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type WorkspaceRepository struct{}

@@ -1,4 +1,4 @@
-package audit_logs
+﻿package audit_logs
 
 import (
 	"testing"
@@ -7,8 +7,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	user_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
+	user_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
 )
 
 func Test_AuditLogs_WorkspaceSpecificLogs(t *testing.T) {

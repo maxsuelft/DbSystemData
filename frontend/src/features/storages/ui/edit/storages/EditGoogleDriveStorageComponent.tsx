@@ -1,4 +1,4 @@
-import { Button, Input } from 'antd';
+﻿import { Button, Input } from 'antd';
 
 import type { Storage } from '../../../../../entity/storages';
 import type { StorageOauthDto } from '../../../../../entity/storages/models/StorageOauthDto';
@@ -37,7 +37,7 @@ export function EditGoogleDriveStorageComponent({ storage, setStorage, setUnsave
         <div className="hidden min-w-[110px] sm:block" />
 
         <div className="text-xs text-blue-600">
-          <a href="https://databasus.com/storages/google-drive" target="_blank" rel="noreferrer">
+          <a href="https://github.com/dbsystemdata/DbSystemData#readme" target="_blank" rel="noreferrer">
             How to connect Google Drive?
           </a>
         </div>

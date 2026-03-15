@@ -1,9 +1,9 @@
-package plans
+﻿package plans
 
 import (
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/storage"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type DatabasePlanRepository struct{}

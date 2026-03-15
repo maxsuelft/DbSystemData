@@ -1,4 +1,4 @@
-export enum PostgresqlVersion {
+﻿export enum PostgresqlVersion {
   PostgresqlVersion12 = '12',
   PostgresqlVersion13 = '13',
   PostgresqlVersion14 = '14',

@@ -1,4 +1,4 @@
-package backuping
+﻿package backuping
 
 import (
 	"sync"
@@ -7,17 +7,17 @@ import (
 
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	"databasus-backend/internal/features/backups/backups/usecases"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	tasks_cancellation "databasus-backend/internal/features/tasks/cancellation"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	cache_utils "databasus-backend/internal/util/cache"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/logger"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	"dbsystemdata-backend/internal/features/backups/backups/usecases"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	tasks_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var backupRepository = &backups_core.BackupRepository{}

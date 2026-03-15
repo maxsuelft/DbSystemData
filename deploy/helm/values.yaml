@@ -1,8 +1,8 @@
-# Default values for databasus
+# Default values for dbsystemdata
 
 # Image configuration
 image:
-  repository: databasus/databasus
+  repository: dbsystemdata/dbsystemdata
   tag: null
   pullPolicy: Always
 
@@ -39,7 +39,7 @@ persistence:
   accessMode: ReadWriteOnce
   size: 10Gi
   # Mount path in container
-  mountPath: /databasus-data
+  mountPath: /dbsystemdata-data
 
 # Ingress configuration (disabled by default - using LoadBalancer instead)
 ingress:
@@ -47,7 +47,7 @@ ingress:
   className: nginx
   annotations: {}
   hosts:
-    - host: databasus.example.com
+    - host: dbsystemdata.example.com
       paths:
         - path: /
           pathType: Prefix
@@ -60,7 +60,7 @@ route:
   kind: HTTPRoute
   annotations: {}
   hostnames:
-  - databasus.example.com
+  - dbsystemdata.example.com
   parentRefs: []
   filters: []
   matches: []

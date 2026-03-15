@@ -5,8 +5,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/period"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/period"
 )
 
 type DatabasePlanService struct {
@@ -45,7 +45,7 @@ func (s *DatabasePlanService) createDefaultDatabasePlan(databaseID uuid.UUID) *D
 		s.logger.Info("creating default database plan for cloud", "databaseID", databaseID)
 
 		// for playground we set limited storages enough to test,
-		// but not too expensive to provide it for Databasus
+		// but not too expensive to provide it for DbSystemData
 		plan = DatabasePlan{
 			DatabaseID:            databaseID,
 			MaxBackupSizeMB:       100,  // ~ 1.5GB database

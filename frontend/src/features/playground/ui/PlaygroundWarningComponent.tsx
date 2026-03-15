@@ -1,10 +1,10 @@
-import { Modal } from 'antd';
+﻿import { Modal } from 'antd';
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
 import { IS_CLOUD } from '../../../constants';
 
-const STORAGE_KEY = 'databasus_playground_info_dismissed';
+const STORAGE_KEY = 'DbSystemData_playground_info_dismissed';
 
 const TIMEOUT_SECONDS = 30;
 
@@ -59,7 +59,7 @@ export const PlaygroundWarningComponent = (): JSX.Element => {
 
   return (
     <Modal
-      title="Welcome to Databasus playground"
+      title="Welcome to DbSystemData playground"
       open={isVisible}
       onOk={handleClose}
       okText={
@@ -78,7 +78,7 @@ export const PlaygroundWarningComponent = (): JSX.Element => {
         <div>
           <h3 className="mb-2 text-lg font-semibold">What is Playground?</h3>
           <p className="text-gray-700 dark:text-gray-300">
-            Playground is a dev environment of Databasus development team. It is used by Databasus
+            Playground is a dev environment of DbSystemData development team. It is used by DbSystemData
             dev team to test new features and see issues which hard to detect when using self hosted
             (without logs or reports).{' '}
             <b>Here you can make backups for small and not critical databases for free</b>
@@ -96,15 +96,14 @@ export const PlaygroundWarningComponent = (): JSX.Element => {
         <div>
           <h3 className="mb-2 text-lg font-semibold">Is it secure?</h3>
           <p className="text-gray-700 dark:text-gray-300">
-            Yes, it&apos;s regular Databasus installation, secured and maintained by Databasus team.
-            More about security{' '}
+            Yes, it&apos;s a regular DbSystemData installation. More about security{' '}
             <a
-              href="https://databasus.com/security"
+              href="https://github.com/dbsystemdata/DbSystemData#readme"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
-              you can read here
+              see the repository
             </a>
           </p>
         </div>
@@ -123,24 +122,16 @@ export const PlaygroundWarningComponent = (): JSX.Element => {
         <div>
           <h3 className="mb-2 text-lg font-semibold">What if I see an issue?</h3>
           <p className="text-gray-700 dark:text-gray-300">
-            Create{' '}
+            Create a{' '}
             <a
-              href="https://github.com/databasus/databasus/issues"
+              href="https://github.com/dbsystemdata/DbSystemData/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
               GitHub issue
             </a>{' '}
-            or write{' '}
-            <a
-              href="https://t.me/databasus_community"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline dark:text-blue-400"
-            >
-              to the community
-            </a>
+            in this repository
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-export type ParseResult = {
+﻿export type ParseResult = {
   host: string;
   port: number;
   username: string;

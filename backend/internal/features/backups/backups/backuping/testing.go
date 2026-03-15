@@ -1,4 +1,4 @@
-package backuping
+﻿package backuping
 
 import (
 	"context"
@@ -11,17 +11,17 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	"databasus-backend/internal/features/backups/backups/usecases"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/logger"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	"dbsystemdata-backend/internal/features/backups/backups/usecases"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 func CreateTestRouter() *gin.Engine {

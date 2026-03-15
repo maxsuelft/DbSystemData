@@ -1,4 +1,4 @@
-package telegram_notifier
+﻿package telegram_notifier
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type TelegramNotifier struct {

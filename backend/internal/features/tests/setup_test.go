@@ -1,12 +1,12 @@
-package tests
+﻿package tests
 
 import (
 	"os"
 	"testing"
 
-	"databasus-backend/internal/features/backups/backups/backuping"
-	"databasus-backend/internal/features/restores/restoring"
-	cache_utils "databasus-backend/internal/util/cache"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	"dbsystemdata-backend/internal/features/restores/restoring"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
 )
 
 func TestMain(m *testing.M) {

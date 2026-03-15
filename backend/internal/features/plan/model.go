@@ -1,9 +1,9 @@
-package plans
+﻿package plans
 
 import (
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/period"
+	"dbsystemdata-backend/internal/util/period"
 )
 
 type DatabasePlan struct {

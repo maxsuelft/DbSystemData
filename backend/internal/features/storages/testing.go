@@ -1,9 +1,9 @@
-package storages
+﻿package storages
 
 import (
 	"github.com/google/uuid"
 
-	local_storage "databasus-backend/internal/features/storages/models/local"
+	local_storage "dbsystemdata-backend/internal/features/storages/models/local"
 )
 
 func CreateTestStorage(workspaceID uuid.UUID) *Storage {

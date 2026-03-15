@@ -16,7 +16,7 @@ func (c *AgentController) RegisterRoutes(router *gin.RouterGroup) {
 
 // DownloadAgent
 // @Summary Download agent binary
-// @Description Download the databasus-agent binary for the specified architecture
+// @Description Download the dbsystemdata-agent binary for the specified architecture
 // @Tags system/agent
 // @Produce octet-stream
 // @Param arch query string true "Target architecture" Enums(amd64, arm64)
@@ -31,7 +31,7 @@ func (c *AgentController) DownloadAgent(ctx *gin.Context) {
 		return
 	}
 
-	binaryName := "databasus-agent-linux-" + arch
+	binaryName := "dbsystemdata-agent-linux-" + arch
 	binaryPath := filepath.Join("agent-binaries", binaryName)
 
 	if _, err := os.Stat(binaryPath); os.IsNotExist(err) {
@@ -43,6 +43,6 @@ func (c *AgentController) DownloadAgent(ctx *gin.Context) {
 	}
 
 	ctx.Header("Content-Type", "application/octet-stream")
-	ctx.Header("Content-Disposition", "attachment; filename=databasus-agent")
+	ctx.Header("Content-Disposition", "attachment; filename=dbsystemdata-agent")
 	ctx.File(binaryPath)
 }

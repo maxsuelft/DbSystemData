@@ -1,4 +1,4 @@
-import type { IntervalType } from './IntervalType';
+﻿import type { IntervalType } from './IntervalType';
 
 export interface Interval {
   id: string;

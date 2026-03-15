@@ -8,13 +8,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_dto "databasus-backend/internal/features/backups/backups/dto"
-	backups_services "databasus-backend/internal/features/backups/backups/services"
-	"databasus-backend/internal/features/databases"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_dto "dbsystemdata-backend/internal/features/backups/backups/dto"
+	backups_services "dbsystemdata-backend/internal/features/backups/backups/services"
+	"dbsystemdata-backend/internal/features/databases"
 )
 
-// PostgreWalBackupController handles WAL backup endpoints used by the databasus-cli agent.
+// PostgreWalBackupController handles WAL backup endpoints used by the dbsystemdata-cli agent.
 // Authentication is via a plain agent token in the Authorization header (no Bearer prefix).
 type PostgreWalBackupController struct {
 	databaseService *databases.DatabaseService

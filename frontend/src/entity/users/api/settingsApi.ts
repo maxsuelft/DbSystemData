@@ -1,4 +1,4 @@
-import { getApplicationServer } from '../../../constants';
+﻿import { getApplicationServer } from '../../../constants';
 import RequestOptions from '../../../shared/api/RequestOptions';
 import { apiHelper } from '../../../shared/api/apiHelper';
 import type { UsersSettings } from '../model/UsersSettings';

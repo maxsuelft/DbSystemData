@@ -1,9 +1,9 @@
-package users_services
+﻿package users_services
 
 import (
-	"databasus-backend/internal/features/email"
-	"databasus-backend/internal/features/encryption/secrets"
-	users_repositories "databasus-backend/internal/features/users/repositories"
+	"dbsystemdata-backend/internal/features/email"
+	"dbsystemdata-backend/internal/features/encryption/secrets"
+	users_repositories "dbsystemdata-backend/internal/features/users/repositories"
 )
 
 var userService = &UserService{

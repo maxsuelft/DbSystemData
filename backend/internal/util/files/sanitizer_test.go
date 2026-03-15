@@ -1,4 +1,4 @@
-package files_utils
+﻿package files_utils
 
 import (
 	"testing"

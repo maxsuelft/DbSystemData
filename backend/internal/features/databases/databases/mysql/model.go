@@ -15,8 +15,8 @@ import (
 	"github.com/go-sql-driver/mysql"
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 type MysqlDatabase struct {
@@ -323,7 +323,7 @@ func (m *MysqlDatabase) CreateReadOnlyUser(
 
 	maxRetries := 3
 	for attempt := range maxRetries {
-		newUsername := fmt.Sprintf("databasus-%s", uuid.New().String()[:8])
+		newUsername := fmt.Sprintf("dbsystemdata-%s", uuid.New().String()[:8])
 		newPassword := encryption.GenerateComplexPassword()
 
 		tx, err := db.BeginTx(ctx, nil)

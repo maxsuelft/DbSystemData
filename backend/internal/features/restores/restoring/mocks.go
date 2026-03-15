@@ -1,14 +1,14 @@
-package restoring
+﻿package restoring
 
 import (
 	"context"
 	"errors"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	restores_core "databasus-backend/internal/features/restores/core"
-	"databasus-backend/internal/features/storages"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	restores_core "dbsystemdata-backend/internal/features/restores/core"
+	"dbsystemdata-backend/internal/features/storages"
 )
 
 type MockSuccessRestoreUsecase struct{}

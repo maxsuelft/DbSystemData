@@ -1,10 +1,10 @@
-package notifiers
+﻿package notifiers
 
 import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/storage"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type NotifierRepository struct{}

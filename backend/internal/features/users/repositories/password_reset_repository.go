@@ -1,12 +1,12 @@
-package users_repositories
+﻿package users_repositories
 
 import (
 	"time"
 
 	"github.com/google/uuid"
 
-	users_models "databasus-backend/internal/features/users/models"
-	"databasus-backend/internal/storage"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type PasswordResetRepository struct{}

@@ -1,4 +1,4 @@
-package users_services
+﻿package users_services
 
 import (
 	"errors"
@@ -7,10 +7,10 @@ import (
 
 	"github.com/google/uuid"
 
-	user_enums "databasus-backend/internal/features/users/enums"
-	user_interfaces "databasus-backend/internal/features/users/interfaces"
-	user_models "databasus-backend/internal/features/users/models"
-	user_repositories "databasus-backend/internal/features/users/repositories"
+	user_enums "dbsystemdata-backend/internal/features/users/enums"
+	user_interfaces "dbsystemdata-backend/internal/features/users/interfaces"
+	user_models "dbsystemdata-backend/internal/features/users/models"
+	user_repositories "dbsystemdata-backend/internal/features/users/repositories"
 )
 
 type UserManagementService struct {

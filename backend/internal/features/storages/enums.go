@@ -1,4 +1,4 @@
-package storages
+﻿package storages
 
 type StorageType string
 
@@ -6,6 +6,7 @@ const (
 	StorageTypeLocal       StorageType = "LOCAL"
 	StorageTypeS3          StorageType = "S3"
 	StorageTypeGoogleDrive StorageType = "GOOGLE_DRIVE"
+	StorageTypeDropbox     StorageType = "DROPBOX"
 	StorageTypeNAS         StorageType = "NAS"
 	StorageTypeAzureBlob   StorageType = "AZURE_BLOB"
 	StorageTypeFTP         StorageType = "FTP"

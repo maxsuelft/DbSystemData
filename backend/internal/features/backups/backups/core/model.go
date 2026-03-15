@@ -1,4 +1,4 @@
-package backups_core
+﻿package backups_core
 
 import (
 	"fmt"
@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	backups_config "databasus-backend/internal/features/backups/config"
-	files_utils "databasus-backend/internal/util/files"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	files_utils "dbsystemdata-backend/internal/util/files"
 )
 
 type PgWalBackupType string

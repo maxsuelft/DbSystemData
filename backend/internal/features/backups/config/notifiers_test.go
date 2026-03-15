@@ -1,4 +1,4 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"fmt"
@@ -8,14 +8,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_AttachNotifierFromSameWorkspace_SuccessfullyAttached(t *testing.T) {

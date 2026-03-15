@@ -1,4 +1,4 @@
-package task_cancellation
+﻿package task_cancellation
 
 import (
 	"context"
@@ -7,8 +7,8 @@ import (
 
 	"github.com/google/uuid"
 
-	cache_utils "databasus-backend/internal/util/cache"
-	"databasus-backend/internal/util/logger"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var taskCancelManager = &TaskCancelManager{

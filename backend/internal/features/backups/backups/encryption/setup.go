@@ -1,4 +1,4 @@
-package encryption
+﻿package encryption
 
 import (
 	"encoding/base64"

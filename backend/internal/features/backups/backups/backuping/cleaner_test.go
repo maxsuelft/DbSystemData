@@ -1,4 +1,4 @@
-package backuping
+﻿package backuping
 
 import (
 	"testing"
@@ -7,17 +7,17 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/intervals"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	"databasus-backend/internal/storage"
-	"databasus-backend/internal/util/period"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/intervals"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	"dbsystemdata-backend/internal/storage"
+	"dbsystemdata-backend/internal/util/period"
 )
 
 func Test_CleanOldBackups_DeletesBackupsOlderThanRetentionTimePeriod(t *testing.T) {

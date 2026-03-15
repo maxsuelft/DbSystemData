@@ -1,4 +1,4 @@
-import { type JSX } from 'react';
+﻿import { type JSX } from 'react';
 
 import { CLOUDFLARE_TURNSTILE_SITE_KEY } from '../../constants';
 

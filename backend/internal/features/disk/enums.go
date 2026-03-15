@@ -1,4 +1,4 @@
-package disk
+﻿package disk
 
 type Platform string
 

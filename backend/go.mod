@@ -1,4 +1,4 @@
-module databasus-backend
+module dbsystemdata-backend
 
 go 1.26.1
 
@@ -96,7 +96,7 @@ require (
 	github.com/creasty/defaults v1.8.0 // indirect
 	github.com/cronokirby/saferith v0.33.0 // indirect
 	github.com/diskfs/go-diskfs v1.7.0 // indirect
-	github.com/dropbox/dropbox-sdk-go-unofficial/v6 v6.0.5 // indirect
+	github.com/dropbox/dropbox-sdk-go-unofficial/v6 v6.0.5
 	github.com/emersion/go-message v0.18.2 // indirect
 	github.com/emersion/go-vcard v0.0.0-20241024213814-c9703dde27ff // indirect
 	github.com/flynn/noise v1.1.0 // indirect

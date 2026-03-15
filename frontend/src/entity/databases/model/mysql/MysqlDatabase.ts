@@ -1,4 +1,4 @@
-import type { MysqlVersion } from './MysqlVersion';
+﻿import type { MysqlVersion } from './MysqlVersion';
 
 export interface MysqlDatabase {
   id: string;

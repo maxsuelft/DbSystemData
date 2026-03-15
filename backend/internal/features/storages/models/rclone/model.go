@@ -1,4 +1,4 @@
-package rclone_storage
+﻿package rclone_storage
 
 import (
 	"bufio"
@@ -17,7 +17,7 @@ import (
 	"github.com/rclone/rclone/fs/config"
 	"github.com/rclone/rclone/fs/operations"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

@@ -1,4 +1,4 @@
-package users_controllers
+﻿package users_controllers
 
 import (
 	"net/http"
@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_models "databasus-backend/internal/features/users/models"
-	users_testing "databasus-backend/internal/features/users/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_GetUserSettings_WhenUserIsAdmin_ReturnsSettings(t *testing.T) {

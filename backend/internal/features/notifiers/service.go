@@ -1,4 +1,4 @@
-package notifiers
+﻿package notifiers
 
 import (
 	"fmt"
@@ -6,10 +6,10 @@ import (
 
 	"github.com/google/uuid"
 
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	users_models "databasus-backend/internal/features/users/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/encryption"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type NotifierService struct {

@@ -1,4 +1,4 @@
-package notifiers
+﻿package notifiers
 
 import (
 	"errors"
@@ -6,13 +6,13 @@ import (
 
 	"github.com/google/uuid"
 
-	discord_notifier "databasus-backend/internal/features/notifiers/models/discord"
-	"databasus-backend/internal/features/notifiers/models/email_notifier"
-	slack_notifier "databasus-backend/internal/features/notifiers/models/slack"
-	teams_notifier "databasus-backend/internal/features/notifiers/models/teams"
-	telegram_notifier "databasus-backend/internal/features/notifiers/models/telegram"
-	webhook_notifier "databasus-backend/internal/features/notifiers/models/webhook"
-	"databasus-backend/internal/util/encryption"
+	discord_notifier "dbsystemdata-backend/internal/features/notifiers/models/discord"
+	"dbsystemdata-backend/internal/features/notifiers/models/email_notifier"
+	slack_notifier "dbsystemdata-backend/internal/features/notifiers/models/slack"
+	teams_notifier "dbsystemdata-backend/internal/features/notifiers/models/teams"
+	telegram_notifier "dbsystemdata-backend/internal/features/notifiers/models/telegram"
+	webhook_notifier "dbsystemdata-backend/internal/features/notifiers/models/webhook"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type Notifier struct {

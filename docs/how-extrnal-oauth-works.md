@@ -1,26 +1,27 @@
-Cloud storages usually require OAuth (Google Drive, Dropbox, OneDrive)
+# OAuth para storages em nuvem
 
-OAuth services usually need HTTPS domain for authorization. Self hosted Databasus can be hosted via HTTP or even without static IP so this way does not work. To make OAuth works even on localhost, we proxy requests via databasus.com domain
+Storages em nuvem em geral exigem OAuth (Google Drive, Dropbox, OneDrive).
 
-As permanent URL for authorization we use main Databasus domain. It forward responses to the self hosted domain so it can get access to the cloud
+Serviços OAuth costumam exigir um domínio HTTPS para autorização. Uma instância self-hosted pode estar em HTTP ou sem IP estático, o que impede o fluxo direto. Para que o OAuth funcione mesmo em localhost, é possível usar um proxy em um domínio HTTPS (por exemplo o domínio do projeto original ou um domínio próprio).
 
-This is the sequence of requests (example for Google Drive):
+Como URL permanente de autorização pode ser usado o domínio principal do proxy. Ele encaminha as respostas para a instância self-hosted para que ela obtenha acesso à nuvem.
+
+Exemplo de sequência (Google Drive):
 
 ```mermaid
 sequenceDiagram
-    participant SelfHosted as http://localhost:4005<br/>Self-hosted Databasus
-    participant Proxy as https://databasus.com<br/>Proxy website
+    participant SelfHosted as http://localhost:4005<br/>Instância self-hosted
+    participant Proxy as https://seu-dominio-ou-proxy<br/>Proxy
     participant Google as Google OAuth
 
-    SelfHosted->>Google: Send auth request with DTO
+    SelfHosted->>Google: Envia requisição de auth com DTO
 
-    Google->>Proxy: Redirect with auth code<br/>to databasus.com/oauth
+    Google->>Proxy: Redireciona com auth code<br/>para o proxy/oauth
 
-    Proxy->>SelfHosted: Redirect to self-hosted instance<br/>with DTO + auth code
+    Proxy->>SelfHosted: Redireciona para a instância<br/>com DTO + auth code
 
-    SelfHosted->>Google: Exchange auth code for tokens<br/>POST /oauth2/token
-    Google->>SelfHosted: Return access & refresh tokens
+    SelfHosted->>Google: Troca auth code por tokens<br/>POST /oauth2/token
+    Google->>SelfHosted: Retorna access e refresh tokens
 
-    SelfHosted->>SelfHosted: Store Google Drive config for files exchange
+    SelfHosted->>SelfHosted: Armazena config do Google Drive
 ```
-

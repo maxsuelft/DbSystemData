@@ -1,4 +1,4 @@
-export class ToastHelper {
+﻿export class ToastHelper {
   static showToast({ title, description }: { title: string; description: string }) {
     const rootDiv = document.getElementById('blocks-component-root') || document.body;
 

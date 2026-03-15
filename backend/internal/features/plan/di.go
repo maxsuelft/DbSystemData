@@ -1,7 +1,7 @@
-package plans
+﻿package plans
 
 import (
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var databasePlanRepository = &DatabasePlanRepository{}

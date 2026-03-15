@@ -1,4 +1,4 @@
-import type { AddMemberStatusEnum } from './AddMemberStatus';
+﻿import type { AddMemberStatusEnum } from './AddMemberStatus';
 
 export interface AddMemberResponse {
   status: AddMemberStatusEnum;

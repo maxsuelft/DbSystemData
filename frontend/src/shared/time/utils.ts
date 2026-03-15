@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from 'dayjs';
+﻿import dayjs, { Dayjs } from 'dayjs';
 
 // Detect whether the user's locale prefers 12-hour time
 export const getUserTimeFormat = () => {

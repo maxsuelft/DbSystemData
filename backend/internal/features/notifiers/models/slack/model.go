@@ -1,4 +1,4 @@
-package slack_notifier
+﻿package slack_notifier
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type SlackNotifier struct {

@@ -1,4 +1,4 @@
-import { Dropdown } from 'antd';
+﻿import { Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
 
 import { type ThemeMode, useTheme } from '../theme';

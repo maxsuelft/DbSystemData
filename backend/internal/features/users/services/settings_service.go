@@ -1,11 +1,11 @@
-package users_services
+﻿package users_services
 
 import (
 	"fmt"
 
-	users_interfaces "databasus-backend/internal/features/users/interfaces"
-	users_models "databasus-backend/internal/features/users/models"
-	users_repositories "databasus-backend/internal/features/users/repositories"
+	users_interfaces "dbsystemdata-backend/internal/features/users/interfaces"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_repositories "dbsystemdata-backend/internal/features/users/repositories"
 )
 
 type SettingsService struct {

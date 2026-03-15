@@ -1,4 +1,4 @@
-package ftp_storage
+﻿package ftp_storage
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/jlaffaye/ftp"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

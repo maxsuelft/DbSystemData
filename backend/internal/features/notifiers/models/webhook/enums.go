@@ -1,4 +1,4 @@
-package webhook_notifier
+﻿package webhook_notifier
 
 type WebhookMethod string
 

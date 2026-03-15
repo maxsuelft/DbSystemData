@@ -1,4 +1,4 @@
-package features
+﻿package features
 
 import (
 	"fmt"
@@ -6,17 +6,17 @@ import (
 	"testing"
 	"time"
 
-	"databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/backups/backups/backuping"
-	backups_services "databasus-backend/internal/features/backups/backups/services"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	healthcheck_config "databasus-backend/internal/features/healthcheck/config"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/restores"
-	"databasus-backend/internal/features/restores/restoring"
-	"databasus-backend/internal/features/storages"
-	task_cancellation "databasus-backend/internal/features/tasks/cancellation"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	backups_services "dbsystemdata-backend/internal/features/backups/backups/services"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	healthcheck_config "dbsystemdata-backend/internal/features/healthcheck/config"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/restores"
+	"dbsystemdata-backend/internal/features/restores/restoring"
+	"dbsystemdata-backend/internal/features/storages"
+	task_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
 )
 
 // Test_SetupDependencies_CalledTwice_LogsWarning verifies SetupDependencies is idempotent

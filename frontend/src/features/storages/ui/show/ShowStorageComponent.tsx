@@ -1,8 +1,9 @@
-import { type Storage, StorageType } from '../../../../entity/storages';
+﻿import { type Storage, StorageType } from '../../../../entity/storages';
 import { getStorageLogoFromType } from '../../../../entity/storages/models/getStorageLogoFromType';
 import { getStorageNameFromType } from '../../../../entity/storages/models/getStorageNameFromType';
 import { type UserProfile, UserRole } from '../../../../entity/users';
 import { ShowAzureBlobStorageComponent } from './storages/ShowAzureBlobStorageComponent';
+import { ShowDropboxStorageComponent } from './storages/ShowDropboxStorageComponent';
 import { ShowFTPStorageComponent } from './storages/ShowFTPStorageComponent';
 import { ShowGoogleDriveStorageComponent } from './storages/ShowGoogleDriveStorageComponent';
 import { ShowNASStorageComponent } from './storages/ShowNASStorageComponent';
@@ -46,6 +47,10 @@ export function ShowStorageComponent({ storage, user }: Props) {
 
         {storage?.type === StorageType.GOOGLE_DRIVE && (
           <ShowGoogleDriveStorageComponent storage={storage} />
+        )}
+
+        {storage?.type === StorageType.DROPBOX && (
+          <ShowDropboxStorageComponent storage={storage} />
         )}
 
         {storage?.type === StorageType.NAS && <ShowNASStorageComponent storage={storage} />}

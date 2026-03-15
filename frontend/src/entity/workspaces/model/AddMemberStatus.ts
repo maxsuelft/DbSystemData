@@ -1,4 +1,4 @@
-export enum AddMemberStatusEnum {
+﻿export enum AddMemberStatusEnum {
   INVITED = 'INVITED',
   ADDED = 'ADDED',
 }

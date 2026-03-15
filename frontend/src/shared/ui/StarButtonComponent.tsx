@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 const StarIcon = () => (
   <svg
@@ -22,7 +22,7 @@ export function StarButtonComponent() {
 
   const fetchStarCount = async () => {
     try {
-      const response = await fetch('https://api.github.com/repos/databasus/databasus');
+      const response = await fetch('https://api.github.com/repos/dbsystemdata/DbSystemData');
       if (response.ok) {
         const data = (await response.json()) as { stargazers_count: number };
         setStarCount(data.stargazers_count);
@@ -40,11 +40,11 @@ export function StarButtonComponent() {
 
   return (
     <a
-      href="https://github.com/databasus/databasus"
+      href="https://github.com/dbsystemdata/DbSystemData"
       target="_blank"
       rel="noopener noreferrer"
       className="flex cursor-pointer items-center rounded-md border !border-gray-200 !bg-white text-sm !text-gray-700 transition-colors hover:!bg-gray-50 dark:!border-gray-600 dark:!bg-gray-700 dark:!text-gray-200 dark:hover:!bg-gray-600"
-      aria-label="Star databasus/databasus on GitHub"
+      aria-label="Star DbSystemData on GitHub"
     >
       <div className="flex items-center gap-2 border-r border-gray-200 px-2.5 py-1 !text-black dark:border-gray-600 dark:!text-white">
         <StarIcon />

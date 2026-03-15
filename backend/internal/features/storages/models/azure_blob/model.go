@@ -1,4 +1,4 @@
-package azure_blob_storage
+﻿package azure_blob_storage
 
 import (
 	"bytes"
@@ -19,7 +19,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/storage/azblob/blockblob"
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

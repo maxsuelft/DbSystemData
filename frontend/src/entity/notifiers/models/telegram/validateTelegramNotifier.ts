@@ -1,4 +1,4 @@
-import type { TelegramNotifier } from './TelegramNotifier';
+﻿import type { TelegramNotifier } from './TelegramNotifier';
 
 export const validateTelegramNotifier = (
   isCreate: boolean,

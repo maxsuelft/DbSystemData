@@ -1,4 +1,4 @@
-package notifiers
+﻿package notifiers
 
 import (
 	"fmt"
@@ -9,21 +9,21 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	discord_notifier "databasus-backend/internal/features/notifiers/models/discord"
-	email_notifier "databasus-backend/internal/features/notifiers/models/email_notifier"
-	slack_notifier "databasus-backend/internal/features/notifiers/models/slack"
-	teams_notifier "databasus-backend/internal/features/notifiers/models/teams"
-	telegram_notifier "databasus-backend/internal/features/notifiers/models/telegram"
-	webhook_notifier "databasus-backend/internal/features/notifiers/models/webhook"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/config"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	discord_notifier "dbsystemdata-backend/internal/features/notifiers/models/discord"
+	email_notifier "dbsystemdata-backend/internal/features/notifiers/models/email_notifier"
+	slack_notifier "dbsystemdata-backend/internal/features/notifiers/models/slack"
+	teams_notifier "dbsystemdata-backend/internal/features/notifiers/models/teams"
+	telegram_notifier "dbsystemdata-backend/internal/features/notifiers/models/telegram"
+	webhook_notifier "dbsystemdata-backend/internal/features/notifiers/models/webhook"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_SaveNewNotifier_NotifierReturnedViaGet(t *testing.T) {

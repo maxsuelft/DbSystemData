@@ -1,4 +1,4 @@
-package workspaces_controllers
+﻿package workspaces_controllers
 
 import (
 	"errors"
@@ -7,12 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_errors "databasus-backend/internal/features/workspaces/errors"
-	workspaces_models "databasus-backend/internal/features/workspaces/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_errors "dbsystemdata-backend/internal/features/workspaces/errors"
+	workspaces_models "dbsystemdata-backend/internal/features/workspaces/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
 )
 
 type WorkspaceController struct {

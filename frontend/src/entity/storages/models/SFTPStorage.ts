@@ -1,4 +1,4 @@
-export interface SFTPStorage {
+﻿export interface SFTPStorage {
   host: string;
   port: number;
   username: string;

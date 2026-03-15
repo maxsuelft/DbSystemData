@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 /**
  * This hook detects if the current device is mobile (screen width <= 768px)

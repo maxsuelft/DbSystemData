@@ -15,8 +15,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 func Test_TestConnection_PasswordContainingSpaces_TestedSuccessfully(t *testing.T) {
@@ -365,7 +365,7 @@ func Test_CreateReadOnlyUser_UserCanReadButNotWrite(t *testing.T) {
 			assert.NoError(t, err)
 			assert.NotEmpty(t, username)
 			assert.NotEmpty(t, password)
-			assert.True(t, strings.HasPrefix(username, "databasus-"))
+			assert.True(t, strings.HasPrefix(username, "dbsystemdata-"))
 
 			readOnlyModel := &PostgresqlDatabase{
 				Version:  pgModel.Version,
@@ -572,7 +572,7 @@ func Test_CreateReadOnlyUser_DatabaseNameWithDash_Success(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, username)
 	assert.NotEmpty(t, password)
-	assert.True(t, strings.HasPrefix(username, "databasus-"))
+	assert.True(t, strings.HasPrefix(username, "dbsystemdata-"))
 
 	readOnlyDSN := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		container.Host, container.Port, username, password, dashDbName)
@@ -659,7 +659,7 @@ func Test_CreateReadOnlyUser_Supabase_UserCanReadButNotWrite(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, connectionUsername)
 	assert.NotEmpty(t, newPassword)
-	assert.True(t, strings.HasPrefix(connectionUsername, "databasus-"))
+	assert.True(t, strings.HasPrefix(connectionUsername, "dbsystemdata-"))
 
 	baseUsername := connectionUsername
 	if idx := strings.Index(connectionUsername, "."); idx != -1 {
@@ -749,7 +749,7 @@ func Test_CreateReadOnlyUser_WithPublicSchema_Success(t *testing.T) {
 			assert.NoError(t, err)
 			assert.NotEmpty(t, username)
 			assert.NotEmpty(t, password)
-			assert.True(t, strings.HasPrefix(username, "databasus-"))
+			assert.True(t, strings.HasPrefix(username, "dbsystemdata-"))
 
 			readOnlyModel := &PostgresqlDatabase{
 				Version:  pgModel.Version,
@@ -857,7 +857,7 @@ func Test_CreateReadOnlyUser_WithoutPublicSchema_Success(t *testing.T) {
 			assert.NoError(t, err, "CreateReadOnlyUser should succeed without public schema")
 			assert.NotEmpty(t, username)
 			assert.NotEmpty(t, password)
-			assert.True(t, strings.HasPrefix(username, "databasus-"))
+			assert.True(t, strings.HasPrefix(username, "dbsystemdata-"))
 
 			readOnlyModel := &PostgresqlDatabase{
 				Version:  pgModel.Version,
@@ -1047,7 +1047,7 @@ func Test_CreateReadOnlyUser_PublicSchemaExistsButNoPermissions_ReturnsError(t *
 	}
 }
 
-func Test_Validate_WhenLocalhostAndDatabasus_ReturnsError(t *testing.T) {
+func Test_Validate_WhenLocalhostAndDbSystemData_ReturnsError(t *testing.T) {
 	testCases := []struct {
 		name     string
 		host     string
@@ -1055,34 +1055,34 @@ func Test_Validate_WhenLocalhostAndDatabasus_ReturnsError(t *testing.T) {
 		database string
 	}{
 		{
-			name:     "localhost with databasus db",
+			name:     "localhost with dbsystemdata db",
 			host:     "localhost",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "127.0.0.1 with databasus db",
+			name:     "127.0.0.1 with dbsystemdata db",
 			host:     "127.0.0.1",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "172.17.0.1 with databasus db",
+			name:     "172.17.0.1 with dbsystemdata db",
 			host:     "172.17.0.1",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "host.docker.internal with databasus db",
+			name:     "host.docker.internal with dbsystemdata db",
 			host:     "host.docker.internal",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "LOCALHOST (uppercase) with DATABASUS db",
+			name:     "LOCALHOST (uppercase) with DBSYSTEMDATA db",
 			host:     "LOCALHOST",
 			username: "POSTGRES",
-			database: "DATABASUS",
+			database: "DBSYSTEMDATA",
 		},
 		{
 			name:     "LocalHost (mixed case) with DataBasus db",
@@ -1091,46 +1091,46 @@ func Test_Validate_WhenLocalhostAndDatabasus_ReturnsError(t *testing.T) {
 			database: "DataBasus",
 		},
 		{
-			name:     "localhost with databasus and any username",
+			name:     "localhost with dbsystemdata and any username",
 			host:     "localhost",
 			username: "myuser",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "::1 (IPv6 loopback) with databasus db",
+			name:     "::1 (IPv6 loopback) with dbsystemdata db",
 			host:     "::1",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     ":: (IPv6 all interfaces) with databasus db",
+			name:     ":: (IPv6 all interfaces) with dbsystemdata db",
 			host:     "::",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "::1 (uppercase) with DATABASUS db",
+			name:     "::1 (uppercase) with DBSYSTEMDATA db",
 			host:     "::1",
 			username: "POSTGRES",
-			database: "DATABASUS",
+			database: "DBSYSTEMDATA",
 		},
 		{
-			name:     "0.0.0.0 (all IPv4 interfaces) with databasus db",
+			name:     "0.0.0.0 (all IPv4 interfaces) with dbsystemdata db",
 			host:     "0.0.0.0",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "127.0.0.2 (loopback range) with databasus db",
+			name:     "127.0.0.2 (loopback range) with dbsystemdata db",
 			host:     "127.0.0.2",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
-			name:     "127.255.255.255 (end of loopback range) with databasus db",
+			name:     "127.255.255.255 (end of loopback range) with dbsystemdata db",
 			host:     "127.255.255.255",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 	}
 
@@ -1147,13 +1147,12 @@ func Test_Validate_WhenLocalhostAndDatabasus_ReturnsError(t *testing.T) {
 
 			err := pgModel.Validate()
 			assert.Error(t, err)
-			assert.Contains(t, err.Error(), "backing up Databasus internal database is not allowed")
-			assert.Contains(t, err.Error(), "https://databasus.com/faq#backup-databasus")
+			assert.Contains(t, err.Error(), "backing up the application internal database is not allowed")
 		})
 	}
 }
 
-func Test_Validate_WhenNotLocalhostOrNotDatabasus_ValidatesSuccessfully(t *testing.T) {
+func Test_Validate_WhenNotLocalhostOrNotDbSystemData_ValidatesSuccessfully(t *testing.T) {
 	testCases := []struct {
 		name     string
 		host     string
@@ -1161,10 +1160,10 @@ func Test_Validate_WhenNotLocalhostOrNotDatabasus_ValidatesSuccessfully(t *testi
 		database string
 	}{
 		{
-			name:     "different host (remote server) with databasus db",
+			name:     "different host (remote server) with dbsystemdata db",
 			host:     "192.168.1.100",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 		{
 			name:     "different database name on localhost",
@@ -1185,10 +1184,10 @@ func Test_Validate_WhenNotLocalhostOrNotDatabasus_ValidatesSuccessfully(t *testi
 			database: "postgres",
 		},
 		{
-			name:     "remote host with databasus db name (allowed)",
+			name:     "remote host with dbsystemdata db name (allowed)",
 			host:     "db.example.com",
 			username: "postgres",
-			database: "databasus",
+			database: "dbsystemdata",
 		},
 	}
 
@@ -1391,7 +1390,7 @@ func Test_CreateReadOnlyUser_TablesCreatedByDifferentUser_ReadOnlyUserCanRead(t 
 		_, _ = container.DB.Exec(fmt.Sprintf(`DROP TABLE IF EXISTS %s CASCADE`, initialTableName))
 	}()
 
-	// Step 3: NOW create read-only user via Databasus (as admin)
+	// Step 3: NOW create read-only user via DbSystemData (as admin)
 	// At this point, user_creator already owns objects, so ALTER DEFAULT PRIVILEGES FOR ROLE should apply
 	pgModel := createPostgresModel(container)
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))

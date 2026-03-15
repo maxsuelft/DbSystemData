@@ -1,4 +1,4 @@
-package config
+﻿package config
 
 import (
 	"encoding/json"
@@ -13,7 +13,7 @@ import (
 func Test_LoadFromJSONAndArgs_ValuesLoadedFromJSON(t *testing.T) {
 	dir := setupTempDir(t)
 	writeConfigJSON(t, dir, Config{
-		DatabasusHost: "http://json-host:4005",
+		DbSystemDataHost: "http://json-host:4005",
 		DbID:          "json-db-id",
 		Token:         "json-token",
 	})
@@ -22,7 +22,7 @@ func Test_LoadFromJSONAndArgs_ValuesLoadedFromJSON(t *testing.T) {
 	fs := flag.NewFlagSet("test", flag.ContinueOnError)
 	cfg.LoadFromJSONAndArgs(fs, []string{})
 
-	assert.Equal(t, "http://json-host:4005", cfg.DatabasusHost)
+	assert.Equal(t, "http://json-host:4005", cfg.DbSystemDataHost)
 	assert.Equal(t, "json-db-id", cfg.DbID)
 	assert.Equal(t, "json-token", cfg.Token)
 }
@@ -33,12 +33,12 @@ func Test_LoadFromJSONAndArgs_ValuesLoadedFromArgs_WhenNoJSON(t *testing.T) {
 	cfg := &Config{}
 	fs := flag.NewFlagSet("test", flag.ContinueOnError)
 	cfg.LoadFromJSONAndArgs(fs, []string{
-		"--databasus-host", "http://arg-host:4005",
+		"--dbsystemdata-host", "http://arg-host:4005",
 		"--db-id", "arg-db-id",
 		"--token", "arg-token",
 	})
 
-	assert.Equal(t, "http://arg-host:4005", cfg.DatabasusHost)
+	assert.Equal(t, "http://arg-host:4005", cfg.DbSystemDataHost)
 	assert.Equal(t, "arg-db-id", cfg.DbID)
 	assert.Equal(t, "arg-token", cfg.Token)
 }
@@ -46,7 +46,7 @@ func Test_LoadFromJSONAndArgs_ValuesLoadedFromArgs_WhenNoJSON(t *testing.T) {
 func Test_LoadFromJSONAndArgs_ArgsOverrideJSON(t *testing.T) {
 	dir := setupTempDir(t)
 	writeConfigJSON(t, dir, Config{
-		DatabasusHost: "http://json-host:4005",
+		DbSystemDataHost: "http://json-host:4005",
 		DbID:          "json-db-id",
 		Token:         "json-token",
 	})
@@ -54,12 +54,12 @@ func Test_LoadFromJSONAndArgs_ArgsOverrideJSON(t *testing.T) {
 	cfg := &Config{}
 	fs := flag.NewFlagSet("test", flag.ContinueOnError)
 	cfg.LoadFromJSONAndArgs(fs, []string{
-		"--databasus-host", "http://arg-host:9999",
+		"--dbsystemdata-host", "http://arg-host:9999",
 		"--db-id", "arg-db-id-override",
 		"--token", "arg-token-override",
 	})
 
-	assert.Equal(t, "http://arg-host:9999", cfg.DatabasusHost)
+	assert.Equal(t, "http://arg-host:9999", cfg.DbSystemDataHost)
 	assert.Equal(t, "arg-db-id-override", cfg.DbID)
 	assert.Equal(t, "arg-token-override", cfg.Token)
 }
@@ -67,7 +67,7 @@ func Test_LoadFromJSONAndArgs_ArgsOverrideJSON(t *testing.T) {
 func Test_LoadFromJSONAndArgs_PartialArgsOverrideJSON(t *testing.T) {
 	dir := setupTempDir(t)
 	writeConfigJSON(t, dir, Config{
-		DatabasusHost: "http://json-host:4005",
+		DbSystemDataHost: "http://json-host:4005",
 		DbID:          "json-db-id",
 		Token:         "json-token",
 	})
@@ -75,10 +75,10 @@ func Test_LoadFromJSONAndArgs_PartialArgsOverrideJSON(t *testing.T) {
 	cfg := &Config{}
 	fs := flag.NewFlagSet("test", flag.ContinueOnError)
 	cfg.LoadFromJSONAndArgs(fs, []string{
-		"--databasus-host", "http://arg-host-only:4005",
+		"--dbsystemdata-host", "http://arg-host-only:4005",
 	})
 
-	assert.Equal(t, "http://arg-host-only:4005", cfg.DatabasusHost)
+	assert.Equal(t, "http://arg-host-only:4005", cfg.DbSystemDataHost)
 	assert.Equal(t, "json-db-id", cfg.DbID)
 	assert.Equal(t, "json-token", cfg.Token)
 }
@@ -88,7 +88,7 @@ func Test_SaveToJSON_ConfigSavedCorrectly(t *testing.T) {
 
 	deleteWal := true
 	cfg := &Config{
-		DatabasusHost:          "http://save-host:4005",
+		DbSystemDataHost:          "http://save-host:4005",
 		DbID:                   "save-db-id",
 		Token:                  "save-token",
 		IsDeleteWalAfterUpload: &deleteWal,
@@ -99,7 +99,7 @@ func Test_SaveToJSON_ConfigSavedCorrectly(t *testing.T) {
 
 	saved := readConfigJSON(t)
 
-	assert.Equal(t, "http://save-host:4005", saved.DatabasusHost)
+	assert.Equal(t, "http://save-host:4005", saved.DbSystemDataHost)
 	assert.Equal(t, "save-db-id", saved.DbID)
 	assert.Equal(t, "save-token", saved.Token)
 }
@@ -107,7 +107,7 @@ func Test_SaveToJSON_ConfigSavedCorrectly(t *testing.T) {
 func Test_SaveToJSON_AfterArgsOverrideJSON_SavedFileContainsMergedValues(t *testing.T) {
 	dir := setupTempDir(t)
 	writeConfigJSON(t, dir, Config{
-		DatabasusHost: "http://json-host:4005",
+		DbSystemDataHost: "http://json-host:4005",
 		DbID:          "json-db-id",
 		Token:         "json-token",
 	})
@@ -115,7 +115,7 @@ func Test_SaveToJSON_AfterArgsOverrideJSON_SavedFileContainsMergedValues(t *test
 	cfg := &Config{}
 	fs := flag.NewFlagSet("test", flag.ContinueOnError)
 	cfg.LoadFromJSONAndArgs(fs, []string{
-		"--databasus-host", "http://override-host:9999",
+		"--dbsystemdata-host", "http://override-host:9999",
 	})
 
 	err := cfg.SaveToJSON()
@@ -123,7 +123,7 @@ func Test_SaveToJSON_AfterArgsOverrideJSON_SavedFileContainsMergedValues(t *test
 
 	saved := readConfigJSON(t)
 
-	assert.Equal(t, "http://override-host:9999", saved.DatabasusHost)
+	assert.Equal(t, "http://override-host:9999", saved.DbSystemDataHost)
 	assert.Equal(t, "json-db-id", saved.DbID)
 	assert.Equal(t, "json-token", saved.Token)
 }
@@ -132,7 +132,7 @@ func Test_LoadFromJSONAndArgs_PgFieldsLoadedFromJSON(t *testing.T) {
 	dir := setupTempDir(t)
 	deleteWal := false
 	writeConfigJSON(t, dir, Config{
-		DatabasusHost:          "http://json-host:4005",
+		DbSystemDataHost:          "http://json-host:4005",
 		DbID:                   "json-db-id",
 		Token:                  "json-token",
 		PgHost:                 "pg-json-host",
@@ -234,7 +234,7 @@ func Test_SaveToJSON_PgFieldsSavedCorrectly(t *testing.T) {
 
 	deleteWal := false
 	cfg := &Config{
-		DatabasusHost:          "http://host:4005",
+		DbSystemDataHost:          "http://host:4005",
 		DbID:                   "db-id",
 		Token:                  "token",
 		PgHost:                 "pg-host",

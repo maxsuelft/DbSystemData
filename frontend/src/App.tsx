@@ -1,4 +1,4 @@
-import { App as AntdApp, ConfigProvider, theme } from 'antd';
+﻿import { App as AntdApp, ConfigProvider, theme } from 'antd';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router';
 import { Routes } from 'react-router';
@@ -41,6 +41,7 @@ function AppContent() {
           <Routes>
             <Route path="/auth/callback" element={<OAuthCallbackPage />} />
             <Route path="/storages/google-oauth" element={<OauthStorageComponent />} />
+            <Route path="/storages/dropbox-oauth" element={<OauthStorageComponent />} />
             <Route
               path="/"
               element={!isAuthorized ? <AuthPageComponent /> : <MainScreenComponent />}

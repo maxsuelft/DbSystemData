@@ -1,4 +1,4 @@
-package audit_logs
+﻿package audit_logs
 
 import (
 	"errors"
@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	user_models "databasus-backend/internal/features/users/models"
+	user_models "dbsystemdata-backend/internal/features/users/models"
 )
 
 type AuditLogController struct {

@@ -1,4 +1,4 @@
-package backups_config
+﻿package backups_config
 
 type BackupNotificationType string
 

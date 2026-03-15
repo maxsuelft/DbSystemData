@@ -1,7 +1,7 @@
-package cloudflare_turnstile
+﻿package cloudflare_turnstile
 
 import (
-	"databasus-backend/internal/config"
+	"dbsystemdata-backend/internal/config"
 )
 
 var cloudflareTurnstileService = &CloudflareTurnstileService{

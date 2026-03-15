@@ -1,4 +1,4 @@
-package restoring
+﻿package restoring
 
 import (
 	"context"
@@ -12,8 +12,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	cache_utils "databasus-backend/internal/util/cache"
-	"databasus-backend/internal/util/logger"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 func Test_HearthbeatNodeInRegistry_RegistersNodeWithTTL(t *testing.T) {

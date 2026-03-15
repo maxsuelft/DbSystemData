@@ -1,4 +1,4 @@
-import type { Period } from '../../databases/model/Period';
+﻿import type { Period } from '../../databases/model/Period';
 
 export interface DatabasePlan {
   databaseId: string;

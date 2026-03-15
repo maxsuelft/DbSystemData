@@ -1,4 +1,4 @@
-package storages
+﻿package storages
 
 import (
 	"fmt"
@@ -10,25 +10,25 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	azure_blob_storage "databasus-backend/internal/features/storages/models/azure_blob"
-	ftp_storage "databasus-backend/internal/features/storages/models/ftp"
-	google_drive_storage "databasus-backend/internal/features/storages/models/google_drive"
-	local_storage "databasus-backend/internal/features/storages/models/local"
-	nas_storage "databasus-backend/internal/features/storages/models/nas"
-	rclone_storage "databasus-backend/internal/features/storages/models/rclone"
-	s3_storage "databasus-backend/internal/features/storages/models/s3"
-	sftp_storage "databasus-backend/internal/features/storages/models/sftp"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_repositories "databasus-backend/internal/features/workspaces/repositories"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	"databasus-backend/internal/util/encryption"
-	test_utils "databasus-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/config"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	azure_blob_storage "dbsystemdata-backend/internal/features/storages/models/azure_blob"
+	ftp_storage "dbsystemdata-backend/internal/features/storages/models/ftp"
+	google_drive_storage "dbsystemdata-backend/internal/features/storages/models/google_drive"
+	local_storage "dbsystemdata-backend/internal/features/storages/models/local"
+	nas_storage "dbsystemdata-backend/internal/features/storages/models/nas"
+	rclone_storage "dbsystemdata-backend/internal/features/storages/models/rclone"
+	s3_storage "dbsystemdata-backend/internal/features/storages/models/s3"
+	sftp_storage "dbsystemdata-backend/internal/features/storages/models/sftp"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_repositories "dbsystemdata-backend/internal/features/workspaces/repositories"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	"dbsystemdata-backend/internal/util/encryption"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 type mockStorageDatabaseCounter struct{}

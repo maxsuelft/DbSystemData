@@ -1,4 +1,4 @@
-package workspaces_testing
+﻿package workspaces_testing
 
 import (
 	"bytes"
@@ -11,15 +11,15 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/audit_logs"
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_models "databasus-backend/internal/features/workspaces/models"
-	workspaces_repositories "databasus-backend/internal/features/workspaces/repositories"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_models "dbsystemdata-backend/internal/features/workspaces/models"
+	workspaces_repositories "dbsystemdata-backend/internal/features/workspaces/repositories"
 )
 
 func CreateTestRouter(controllers ...ControllerInterface) *gin.Engine {

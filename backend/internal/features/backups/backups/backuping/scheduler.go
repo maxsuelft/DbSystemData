@@ -1,4 +1,4 @@
-package backuping
+﻿package backuping
 
 import (
 	"context"
@@ -10,11 +10,11 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	task_cancellation "databasus-backend/internal/features/tasks/cancellation"
+	"dbsystemdata-backend/internal/config"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	task_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
 )
 
 const (

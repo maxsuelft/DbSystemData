@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 import (
 	"context"
@@ -8,12 +8,12 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/databases/databases/mariadb"
-	"databasus-backend/internal/features/databases/databases/mongodb"
-	"databasus-backend/internal/features/databases/databases/mysql"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/features/databases/databases/mariadb"
+	"dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	"dbsystemdata-backend/internal/features/databases/databases/mysql"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type Database struct {

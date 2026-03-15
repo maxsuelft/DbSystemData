@@ -1,4 +1,4 @@
-import type { SlackNotifier } from './SlackNotifier';
+﻿import type { SlackNotifier } from './SlackNotifier';
 
 export const validateSlackNotifier = (isCreate: boolean, notifier: SlackNotifier): boolean => {
   if (isCreate && !notifier.botToken) {

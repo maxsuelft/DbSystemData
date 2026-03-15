@@ -1,4 +1,4 @@
-export interface OAuthCallbackRequest {
+﻿export interface OAuthCallbackRequest {
   code: string;
   redirectUri: string;
 }

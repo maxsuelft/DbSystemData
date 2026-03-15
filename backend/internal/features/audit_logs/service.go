@@ -1,4 +1,4 @@
-package audit_logs
+﻿package audit_logs
 
 import (
 	"log/slog"
@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	user_enums "databasus-backend/internal/features/users/enums"
-	user_models "databasus-backend/internal/features/users/models"
+	user_enums "dbsystemdata-backend/internal/features/users/enums"
+	user_models "dbsystemdata-backend/internal/features/users/models"
 )
 
 type AuditLogService struct {

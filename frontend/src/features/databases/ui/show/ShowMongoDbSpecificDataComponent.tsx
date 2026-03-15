@@ -1,4 +1,4 @@
-import { type Database } from '../../../../entity/databases';
+﻿import { type Database } from '../../../../entity/databases';
 
 interface Props {
   database: Database;

@@ -1,4 +1,4 @@
-export class RateLimiter {
+﻿export class RateLimiter {
   private tokens: number;
   private readonly queue: Array<() => void>;
 

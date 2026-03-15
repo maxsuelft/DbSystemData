@@ -1,4 +1,4 @@
-package usecases_mongodb
+﻿package usecases_mongodb
 
 import (
 	"context"
@@ -13,17 +13,17 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	common "databasus-backend/internal/features/backups/backups/common"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backup_encryption "databasus-backend/internal/features/backups/backups/encryption"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	mongodbtypes "databasus-backend/internal/features/databases/databases/mongodb"
-	encryption_secrets "databasus-backend/internal/features/encryption/secrets"
-	"databasus-backend/internal/features/storages"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	common "dbsystemdata-backend/internal/features/backups/backups/common"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backup_encryption "dbsystemdata-backend/internal/features/backups/backups/encryption"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	mongodbtypes "dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	encryption_secrets "dbsystemdata-backend/internal/features/encryption/secrets"
+	"dbsystemdata-backend/internal/features/storages"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 const (

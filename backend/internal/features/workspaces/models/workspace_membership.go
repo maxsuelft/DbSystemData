@@ -1,11 +1,11 @@
-package workspaces_models
+﻿package workspaces_models
 
 import (
 	"time"
 
 	"github.com/google/uuid"
 
-	users_enums "databasus-backend/internal/features/users/enums"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
 )
 
 type WorkspaceMembership struct {

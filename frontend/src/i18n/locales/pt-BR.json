@@ -1,0 +1,87 @@
+{
+  "auth": {
+    "signIn": "Entrar",
+    "signUp": "Cadastrar",
+    "email": "E-mail",
+    "password": "Senha",
+    "forgotPassword": "Esqueci a senha",
+    "resetPassword": "Redefinir senha",
+    "confirmPassword": "Confirmar senha",
+    "dontHaveAccount": "Não tem uma conta?",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "orContinue": "ou continuar",
+    "yourEmail": "Seu e-mail",
+    "emailPlaceholder": "seu@email.com"
+  },
+  "nav": {
+    "databases": "Bancos de dados",
+    "storages": "Armazenamentos",
+    "notifiers": "Notificadores",
+    "settings": "Configurações",
+    "profile": "Perfil",
+    "users": "Usuários",
+    "dbsystemdataSettings": "Configurações do sistema",
+    "repository": "Repositório",
+    "starOnGitHub": "Star no GitHub"
+  },
+  "common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "new": "Novo",
+    "name": "Nome",
+    "description": "Descrição",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "back": "Voltar",
+    "close": "Fechar",
+    "search": "Buscar",
+    "actions": "Ações",
+    "status": "Status",
+    "type": "Tipo",
+    "date": "Data",
+    "time": "Hora"
+  },
+  "databases": {
+    "title": "Bancos de dados",
+    "newDatabase": "Novo banco de dados",
+    "noDatabases": "Nenhum banco de dados"
+  },
+  "storages": {
+    "title": "Armazenamentos",
+    "newStorage": "Novo armazenamento",
+    "local": "Armazenamento local",
+    "s3": "S3",
+    "googleDrive": "Google Drive",
+    "nas": "NAS",
+    "azureBlob": "Azure Blob Storage",
+    "ftp": "FTP",
+    "sftp": "SFTP",
+    "rclone": "Rclone"
+  },
+  "notifiers": {
+    "title": "Notificadores",
+    "newNotifier": "Novo notificador"
+  },
+  "backups": {
+    "title": "Backups",
+    "newBackup": "Novo backup",
+    "lastBackup": "Último backup",
+    "schedule": "Agendamento"
+  },
+  "workspace": {
+    "workspaces": "Workspaces",
+    "createWorkspace": "Criar workspace",
+    "settings": "Configurações do workspace"
+  },
+  "users": {
+    "title": "Usuários",
+    "role": "Função",
+    "admin": "Administrador",
+    "member": "Membro",
+    "viewer": "Visualizador"
+  }
+}

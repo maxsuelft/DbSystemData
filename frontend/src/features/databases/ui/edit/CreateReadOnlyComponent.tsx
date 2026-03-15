@@ -1,4 +1,4 @@
-import { Button, Modal, Spin } from 'antd';
+﻿import { Button, Modal, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
 import { IS_CLOUD } from '../../../../constants';
@@ -132,7 +132,7 @@ export const CreateReadOnlyComponent = ({
   return (
     <div>
       <div className="mb-5">
-        <p className="mb-3 text-lg font-bold">Create a read-only user for Databasus?</p>
+        <p className="mb-3 text-lg font-bold">Create a read-only user for DbSystemData?</p>
 
         <p className="mb-2">
           A read-only user is a {databaseTypeName} user with limited permissions that can only read
@@ -146,9 +146,9 @@ export const CreateReadOnlyComponent = ({
         </ul>
 
         <p className="mb-2">
-          Databasus enforce enterprise-grade security (
+          DbSystemData enforce enterprise-grade security (
           <a
-            href="https://databasus.com/security"
+            href="https://github.com/dbsystemdata/DbSystemData#readme"
             target="_blank"
             rel="noreferrer"
             className="!text-blue-600 dark:!text-blue-400"
@@ -222,7 +222,7 @@ export const CreateReadOnlyComponent = ({
 
           <p className="mb-2">
             Using a user with full permissions for backups is not recommended and may pose security
-            risks. Databasus is highly recommending you to not skip this step.
+            risks. DbSystemData is highly recommending you to not skip this step.
           </p>
 
           <p>

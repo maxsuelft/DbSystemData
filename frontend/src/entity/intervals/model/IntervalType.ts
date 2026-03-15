@@ -1,4 +1,4 @@
-export enum IntervalType {
+﻿export enum IntervalType {
   HOURLY = 'HOURLY',
   DAILY = 'DAILY',
   WEEKLY = 'WEEKLY',

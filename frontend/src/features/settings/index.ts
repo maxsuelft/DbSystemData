@@ -1,1 +1,1 @@
-export { SettingsComponent } from './ui/SettingsComponent';
+﻿export { SettingsComponent } from './ui/SettingsComponent';

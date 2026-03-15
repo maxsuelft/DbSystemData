@@ -1,4 +1,4 @@
-import { WorkspaceRole } from '../../users/model/WorkspaceRole';
+﻿import { WorkspaceRole } from '../../users/model/WorkspaceRole';
 
 export interface WorkspaceMemberResponse {
   id: string;

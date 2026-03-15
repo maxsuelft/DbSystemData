@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 type CreateReadOnlyUserResponse struct {
 	Username string `json:"username"`

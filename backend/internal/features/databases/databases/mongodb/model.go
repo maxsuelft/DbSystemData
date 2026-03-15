@@ -15,8 +15,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 type MongodbDatabase struct {
@@ -416,7 +416,7 @@ func (m *MongodbDatabase) CreateReadOnlyUser(
 
 	maxRetries := 3
 	for attempt := range maxRetries {
-		newUsername := fmt.Sprintf("databasus-%s", uuid.New().String()[:8])
+		newUsername := fmt.Sprintf("dbsystemdata-%s", uuid.New().String()[:8])
 		newPassword := encryption.GenerateComplexPassword()
 
 		adminDB := client.Database(authDB)

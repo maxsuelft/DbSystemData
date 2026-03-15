@@ -1,7 +1,7 @@
-package workspaces_controllers
+﻿package workspaces_controllers
 
 import (
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
 )
 
 var workspaceController = &WorkspaceController{

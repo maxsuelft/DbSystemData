@@ -1,4 +1,4 @@
-export interface AuditLog {
+﻿export interface AuditLog {
   id: string;
   userId?: string;
   workspaceId?: string;

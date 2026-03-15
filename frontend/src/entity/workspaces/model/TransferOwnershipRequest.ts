@@ -1,3 +1,3 @@
-export interface TransferOwnershipRequest {
+﻿export interface TransferOwnershipRequest {
   newOwnerEmail: string;
 }

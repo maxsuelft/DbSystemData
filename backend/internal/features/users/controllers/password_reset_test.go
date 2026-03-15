@@ -1,4 +1,4 @@
-package users_controllers
+﻿package users_controllers
 
 import (
 	"net/http"
@@ -9,13 +9,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/crypto/bcrypt"
 
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_models "databasus-backend/internal/features/users/models"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	"databasus-backend/internal/storage"
-	test_utils "databasus-backend/internal/util/testing"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	"dbsystemdata-backend/internal/storage"
+	test_utils "dbsystemdata-backend/internal/util/testing"
 )
 
 func Test_SendResetPasswordCode_WithValidEmail_CodeSent(t *testing.T) {

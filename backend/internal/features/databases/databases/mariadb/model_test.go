@@ -1,4 +1,4 @@
-package mariadb
+﻿package mariadb
 
 import (
 	"context"
@@ -14,8 +14,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 func Test_TestConnection_InsufficientPermissions_ReturnsError(t *testing.T) {

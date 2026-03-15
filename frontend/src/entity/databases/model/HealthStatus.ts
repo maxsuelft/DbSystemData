@@ -1,4 +1,4 @@
-export enum HealthStatus {
+﻿export enum HealthStatus {
   AVAILABLE = 'AVAILABLE',
   UNAVAILABLE = 'UNAVAILABLE',
 }

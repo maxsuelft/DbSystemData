@@ -1,4 +1,4 @@
-import { NotifierType } from './NotifierType';
+﻿import { NotifierType } from './NotifierType';
 
 export const getNotifierLogoFromType = (type: NotifierType) => {
   switch (type) {

@@ -1,4 +1,4 @@
-export interface AzureBlobStorage {
+﻿export interface AzureBlobStorage {
   authMethod: 'CONNECTION_STRING' | 'ACCOUNT_KEY';
   connectionString: string;
   accountName: string;

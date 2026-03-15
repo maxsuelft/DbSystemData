@@ -67,9 +67,9 @@ RUN CGO_ENABLED=0 \
 
 
 # ========= BUILD AGENT =========
-# Builds the databasus-agent CLI binary for BOTH x86_64 and ARM64.
+# Builds the dbsystemdata-agent CLI binary for BOTH x86_64 and ARM64.
 # Both architectures are always built because:
-# - Databasus server runs on one arch (e.g. amd64)
+# - DbSystemData server runs on one arch (e.g. amd64)
 # - The agent runs on remote PostgreSQL servers that may be on a
 #   different arch (e.g. arm64)
 # - The backend serves the correct binary based on the agent's
@@ -95,12 +95,12 @@ COPY agent/ ./
 # Build for x86_64 (amd64) — static binary, no glibc dependency
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
     go build -ldflags "-X main.Version=${APP_VERSION}" \
-    -o /agent-binaries/databasus-agent-linux-amd64 ./cmd/main.go
+    -o /agent-binaries/dbsystemdata-agent-linux-amd64 ./cmd/main.go
 
 # Build for ARM64 (arm64) — static binary, no glibc dependency
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 \
     go build -ldflags "-X main.Version=${APP_VERSION}" \
-    -o /agent-binaries/databasus-agent-linux-arm64 ./cmd/main.go
+    -o /agent-binaries/dbsystemdata-agent-linux-arm64 ./cmd/main.go
 
 
 # ========= RUNTIME =========
@@ -240,8 +240,8 @@ RUN apt-get update && \
 
 # Create postgres user and set up directories
 RUN useradd -m -s /bin/bash postgres || true && \
-  mkdir -p /databasus-data/pgdata && \
-  chown -R postgres:postgres /databasus-data/pgdata
+  mkdir -p /dbsystemdata-data/pgdata && \
+  chown -R postgres:postgres /dbsystemdata-data/pgdata
 
 WORKDIR /app
 
@@ -281,11 +281,11 @@ if [ -d "/postgresus-data" ] && [ "\$(ls -A /postgresus-data 2>/dev/null)" ]; th
     echo "ERROR: Legacy volume detected!"
     echo "=========================================="
     echo ""
-    echo "You are using the \`postgresus-data\` folder. It seems you changed the image name from Postgresus to Databasus without changing the volume."
+    echo "You are using the \`postgresus-data\` folder. It seems you changed the image name from Postgresus to DbSystemData without changing the volume."
     echo ""
     echo "Please either:"
     echo "  1. Switch back to image rostislavdugin/postgresus:latest (supported until ~Dec 2026)"
-    echo "  2. Read the migration guide: https://databasus.com/installation/#postgresus-migration"
+    echo "  2. Read the migration guide in the repository docs"
     echo ""
     echo "=========================================="
     exit 1
@@ -297,8 +297,8 @@ PG_BIN="/usr/lib/postgresql/17/bin"
 # Generate runtime configuration for frontend
 echo "Generating runtime configuration..."
 
-# Detect if email is configured (both SMTP_HOST and DATABASUS_URL must be set)
-if [ -n "\${SMTP_HOST:-}" ] && [ -n "\${DATABASUS_URL:-}" ]; then
+# Detect if email is configured (both SMTP_HOST and DBSYSTEMDATA_URL must be set)
+if [ -n "\${SMTP_HOST:-}" ] && [ -n "\${DBSYSTEMDATA_URL:-}" ]; then
   IS_EMAIL_CONFIGURED="true"
 else
   IS_EMAIL_CONFIGURED="false"
@@ -319,7 +319,7 @@ JSEOF
 
 # Inject analytics script if provided (only if not already injected)
 if [ -n "\${ANALYTICS_SCRIPT:-}" ]; then
-  if ! grep -q "rybbit.databasus.com" /app/ui/build/index.html 2>/dev/null; then
+  if ! grep -q "analytics" /app/ui/build/index.html 2>/dev/null; then
     echo "Injecting analytics script..."
     sed -i "s#</head>#  \${ANALYTICS_SCRIPT}\\
   </head>#" /app/ui/build/index.html
@@ -328,11 +328,11 @@ fi
 
 # Ensure proper ownership of data directory
 echo "Setting up data directory permissions..."
-mkdir -p /databasus-data/pgdata
-mkdir -p /databasus-data/temp
-mkdir -p /databasus-data/backups
-chown -R postgres:postgres /databasus-data
-chmod 700 /databasus-data/temp
+mkdir -p /dbsystemdata-data/pgdata
+mkdir -p /dbsystemdata-data/temp
+mkdir -p /dbsystemdata-data/backups
+chown -R postgres:postgres /dbsystemdata-data
+chmod 700 /dbsystemdata-data/temp
 
 # ========= Start Valkey (internal cache) =========
 echo "Configuring Valkey cache..."
@@ -359,23 +359,23 @@ for i in {1..30}; do
 done
 
 # Initialize PostgreSQL if not already initialized
-if [ ! -s "/databasus-data/pgdata/PG_VERSION" ]; then
+if [ ! -s "/dbsystemdata-data/pgdata/PG_VERSION" ]; then
     echo "Initializing PostgreSQL database..."
-    gosu postgres \$PG_BIN/initdb -D /databasus-data/pgdata --encoding=UTF8 --locale=C.UTF-8
+    gosu postgres \$PG_BIN/initdb -D /dbsystemdata-data/pgdata --encoding=UTF8 --locale=C.UTF-8
     
     # Configure PostgreSQL
-    echo "host all all 127.0.0.1/32 md5" >> /databasus-data/pgdata/pg_hba.conf
-    echo "local all all trust" >> /databasus-data/pgdata/pg_hba.conf
-    echo "port = 5437" >> /databasus-data/pgdata/postgresql.conf
-    echo "listen_addresses = 'localhost'" >> /databasus-data/pgdata/postgresql.conf
-    echo "shared_buffers = 256MB" >> /databasus-data/pgdata/postgresql.conf
-    echo "max_connections = 100" >> /databasus-data/pgdata/postgresql.conf
+    echo "host all all 127.0.0.1/32 md5" >> /dbsystemdata-data/pgdata/pg_hba.conf
+    echo "local all all trust" >> /dbsystemdata-data/pgdata/pg_hba.conf
+    echo "port = 5437" >> /dbsystemdata-data/pgdata/postgresql.conf
+    echo "listen_addresses = 'localhost'" >> /dbsystemdata-data/pgdata/postgresql.conf
+    echo "shared_buffers = 256MB" >> /dbsystemdata-data/pgdata/postgresql.conf
+    echo "max_connections = 100" >> /dbsystemdata-data/pgdata/postgresql.conf
 fi
 
 # Function to start PostgreSQL and wait for it to be ready
 start_postgres() {
     echo "Starting PostgreSQL..."
-    gosu postgres \$PG_BIN/postgres -D /databasus-data/pgdata -p 5437 &
+    gosu postgres \$PG_BIN/postgres -D /dbsystemdata-data/pgdata -p 5437 &
     POSTGRES_PID=\$!
     
     echo "Waiting for PostgreSQL to be ready..."
@@ -403,7 +403,7 @@ if ! start_postgres; then
     
     # Attempt pg_resetwal to recover from WAL corruption
     echo "Running pg_resetwal to reset WAL..."
-    if gosu postgres \$PG_BIN/pg_resetwal -f /databasus-data/pgdata; then
+    if gosu postgres \$PG_BIN/pg_resetwal -f /dbsystemdata-data/pgdata; then
         echo "WAL reset successful. Restarting PostgreSQL..."
         
         # Try starting PostgreSQL again after WAL reset
@@ -417,7 +417,7 @@ if ! start_postgres; then
             echo ""
             echo "Options:"
             echo "  1. Delete the volume and start fresh (data loss)"
-            echo "  2. Manually inspect /databasus-data/pgdata for issues"
+            echo "  2. Manually inspect /dbsystemdata-data/pgdata for issues"
             echo "=========================================="
             exit 1
         fi
@@ -429,7 +429,7 @@ if ! start_postgres; then
         echo ""
         echo "Options:"
         echo "  1. Delete the volume and start fresh (data loss)"
-        echo "  2. Manually inspect /databasus-data/pgdata for issues"
+        echo "  2. Manually inspect /dbsystemdata-data/pgdata for issues"
         echo "=========================================="
         exit 1
     fi
@@ -441,14 +441,14 @@ gosu postgres \$PG_BIN/psql -p 5437 -h localhost -d postgres << 'SQL'
 
 # We use stub password, because internal DB is not exposed outside container
 ALTER USER postgres WITH PASSWORD 'Q1234567';
-SELECT 'CREATE DATABASE databasus OWNER postgres'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'databasus')
+SELECT 'CREATE DATABASE dbsystemdata OWNER postgres'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'dbsystemdata')
 \\gexec
 \\q
 SQL
 
 # Start the main application
-echo "Starting Databasus application..."
+echo "Starting DbSystemData application..."
 
 # Check and warn about external database/Valkey usage
 if [ -n "\${DANGEROUS_EXTERNAL_DATABASE_DSN:-}" ]; then
@@ -478,14 +478,14 @@ fi
 exec ./main
 EOF
 
-LABEL org.opencontainers.image.source="https://github.com/databasus/databasus"
+LABEL org.opencontainers.image.source="https://github.com/dbsystemdata/DbSystemData"
 
 RUN chmod +x /app/start.sh
 
 EXPOSE 4005
 
 # Volume for PostgreSQL data
-VOLUME ["/databasus-data"]
+VOLUME ["/dbsystemdata-data"]
 
 ENTRYPOINT ["/app/start.sh"]
 CMD []

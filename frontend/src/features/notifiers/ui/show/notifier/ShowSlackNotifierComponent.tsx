@@ -1,4 +1,4 @@
-import type { Notifier } from '../../../../../entity/notifiers';
+﻿import type { Notifier } from '../../../../../entity/notifiers';
 
 interface Props {
   notifier: Notifier;

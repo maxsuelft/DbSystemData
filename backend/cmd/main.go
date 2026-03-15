@@ -18,40 +18,40 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/backups/backups/backuping"
-	backups_controllers "databasus-backend/internal/features/backups/backups/controllers"
-	backups_download "databasus-backend/internal/features/backups/backups/download"
-	backups_services "databasus-backend/internal/features/backups/backups/services"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/disk"
-	"databasus-backend/internal/features/encryption/secrets"
-	healthcheck_attempt "databasus-backend/internal/features/healthcheck/attempt"
-	healthcheck_config "databasus-backend/internal/features/healthcheck/config"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/restores"
-	"databasus-backend/internal/features/restores/restoring"
-	"databasus-backend/internal/features/storages"
-	system_agent "databasus-backend/internal/features/system/agent"
-	system_healthcheck "databasus-backend/internal/features/system/healthcheck"
-	system_version "databasus-backend/internal/features/system/version"
-	task_cancellation "databasus-backend/internal/features/tasks/cancellation"
-	users_controllers "databasus-backend/internal/features/users/controllers"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	cache_utils "databasus-backend/internal/util/cache"
-	env_utils "databasus-backend/internal/util/env"
-	files_utils "databasus-backend/internal/util/files"
-	"databasus-backend/internal/util/logger"
-	_ "databasus-backend/swagger" // swagger docs
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	backups_controllers "dbsystemdata-backend/internal/features/backups/backups/controllers"
+	backups_download "dbsystemdata-backend/internal/features/backups/backups/download"
+	backups_services "dbsystemdata-backend/internal/features/backups/backups/services"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/disk"
+	"dbsystemdata-backend/internal/features/encryption/secrets"
+	healthcheck_attempt "dbsystemdata-backend/internal/features/healthcheck/attempt"
+	healthcheck_config "dbsystemdata-backend/internal/features/healthcheck/config"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/restores"
+	"dbsystemdata-backend/internal/features/restores/restoring"
+	"dbsystemdata-backend/internal/features/storages"
+	system_agent "dbsystemdata-backend/internal/features/system/agent"
+	system_healthcheck "dbsystemdata-backend/internal/features/system/healthcheck"
+	system_version "dbsystemdata-backend/internal/features/system/version"
+	task_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
+	users_controllers "dbsystemdata-backend/internal/features/users/controllers"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
+	env_utils "dbsystemdata-backend/internal/util/env"
+	files_utils "dbsystemdata-backend/internal/util/files"
+	"dbsystemdata-backend/internal/util/logger"
+	_ "dbsystemdata-backend/swagger" // swagger docs
 )
 
-// @title Databasus Backend API
+// @title DbSystemData Backend API
 // @version 1.0
-// @description API for Databasus
+// @description API for DbSystemData
 // @termsOfService http://swagger.io/terms/
 
 // @host localhost:4005

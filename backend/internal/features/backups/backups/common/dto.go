@@ -1,11 +1,11 @@
-package common
+﻿package common
 
 import (
 	"errors"
 
 	"github.com/google/uuid"
 
-	backups_config "databasus-backend/internal/features/backups/config"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
 )
 
 type BackupMetadata struct {

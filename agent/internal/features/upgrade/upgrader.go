@@ -1,4 +1,4 @@
-package upgrade
+﻿package upgrade
 
 import (
 	"context"
@@ -15,17 +15,17 @@ import (
 	"time"
 )
 
-func CheckAndUpdate(databasusHost, currentVersion string, isDev bool, log *slog.Logger) error {
+func CheckAndUpdate(DbSystemDataHost, currentVersion string, isDev bool, log *slog.Logger) error {
 	if isDev {
 		log.Info("Skipping update check (development mode)")
 		return nil
 	}
 
-	serverVersion, err := fetchServerVersion(databasusHost, log)
+	serverVersion, err := fetchServerVersion(DbSystemDataHost, log)
 	if err != nil {
 		return fmt.Errorf(
-			"unable to check version, please verify Databasus server is available at %s: %w",
-			databasusHost,
+			"unable to check version, please verify DbSystemData server is available at %s: %w",
+			DbSystemDataHost,
 			err,
 		)
 	}
@@ -48,7 +48,7 @@ func CheckAndUpdate(databasusHost, currentVersion string, isDev bool, log *slog.
 		_ = os.Remove(tempPath)
 	}()
 
-	if err := downloadBinary(databasusHost, tempPath); err != nil {
+	if err := downloadBinary(DbSystemDataHost, tempPath); err != nil {
 		return fmt.Errorf("failed to download update: %w", err)
 	}
 

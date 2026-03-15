@@ -1,4 +1,4 @@
-// Detect date order (MDY, DMY, YMD) and separator from user's locale
+﻿// Detect date order (MDY, DMY, YMD) and separator from user's locale
 const getLocaleDateFormat = () => {
   const locale = navigator.language || 'en-US';
 

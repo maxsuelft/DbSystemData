@@ -1,4 +1,4 @@
-import { CopyOutlined, DownOutlined, InfoCircleOutlined, UpOutlined } from '@ant-design/icons';
+﻿import { CopyOutlined, DownOutlined, InfoCircleOutlined, UpOutlined } from '@ant-design/icons';
 import { App, Button, Input, InputNumber, Switch, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
 
@@ -226,7 +226,7 @@ export const EditMongoDbSpecificDataComponent = ({
           <div className="max-w-[200px] text-xs text-gray-500 dark:text-gray-400">
             Please{' '}
             <a
-              href="https://databasus.com/faq/localhost"
+              href="https://github.com/dbsystemdata/DbSystemData#readme"
               target="_blank"
               rel="noreferrer"
               className="!text-blue-600 dark:!text-blue-400"
@@ -497,7 +497,7 @@ export const EditMongoDbSpecificDataComponent = ({
 
       {isConnectionFailed && !IS_CLOUD && (
         <div className="mt-3 text-sm text-gray-500 dark:text-gray-400">
-          If your database uses IP whitelist, make sure Databasus server IP is added to the allowed
+          If your database uses IP whitelist, make sure DbSystemData server IP is added to the allowed
           list.
         </div>
       )}

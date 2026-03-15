@@ -1,4 +1,4 @@
-package users_models
+﻿package users_models
 
 import "github.com/google/uuid"
 

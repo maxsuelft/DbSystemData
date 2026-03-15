@@ -1,4 +1,4 @@
-package backups_dto
+﻿package backups_dto
 
 import (
 	"io"
@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	"databasus-backend/internal/features/backups/backups/encryption"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	"dbsystemdata-backend/internal/features/backups/backups/encryption"
 )
 
 type GetBackupsRequest struct {

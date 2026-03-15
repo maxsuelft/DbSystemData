@@ -1,4 +1,4 @@
-package workspaces_errors
+﻿package workspaces_errors
 
 import "errors"
 

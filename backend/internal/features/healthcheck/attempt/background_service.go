@@ -1,4 +1,4 @@
-package healthcheck_attempt
+﻿package healthcheck_attempt
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	healthcheck_config "databasus-backend/internal/features/healthcheck/config"
+	healthcheck_config "dbsystemdata-backend/internal/features/healthcheck/config"
 )
 
 type HealthcheckAttemptBackgroundService struct {

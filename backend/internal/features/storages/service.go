@@ -1,16 +1,16 @@
-package storages
+﻿package storages
 
 import (
 	"fmt"
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_models "databasus-backend/internal/features/users/models"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/config"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type StorageService struct {

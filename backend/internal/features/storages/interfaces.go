@@ -1,4 +1,4 @@
-package storages
+﻿package storages
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type StorageFileSaver interface {

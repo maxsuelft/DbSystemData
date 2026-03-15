@@ -1,4 +1,4 @@
-package restores
+﻿package restores
 
 import (
 	"context"
@@ -8,12 +8,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	backups_controllers "databasus-backend/internal/features/backups/backups/controllers"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/restores/restoring"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
+	backups_controllers "dbsystemdata-backend/internal/features/backups/backups/controllers"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/restores/restoring"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
 )
 
 func CreateTestRouter() *gin.Engine {

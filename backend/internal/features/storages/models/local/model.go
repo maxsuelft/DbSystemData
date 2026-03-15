@@ -12,9 +12,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/encryption"
-	files_utils "databasus-backend/internal/util/files"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/encryption"
+	files_utils "dbsystemdata-backend/internal/util/files"
 )
 
 const (
@@ -24,8 +24,8 @@ const (
 	localChunkSize = 8 * 1024 * 1024
 )
 
-// LocalStorage uses ./databasus_local_backups folder as a
-// directory for backups and ./databasus_local_temp folder as a
+// LocalStorage uses ./dbsystemdata_local_backups folder as a
+// directory for backups and ./dbsystemdata_local_temp folder as a
 // directory for temp files
 type LocalStorage struct {
 	StorageID uuid.UUID `json:"storageId" gorm:"primaryKey;type:uuid;column:storage_id"`

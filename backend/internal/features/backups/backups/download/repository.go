@@ -1,4 +1,4 @@
-package backups_download
+﻿package backups_download
 
 import (
 	"crypto/rand"
@@ -9,7 +9,7 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/storage"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type DownloadTokenRepository struct{}

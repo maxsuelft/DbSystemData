@@ -1,4 +1,4 @@
-export { AdminPasswordComponent } from './ui/AdminPasswordComponent';
+﻿export { AdminPasswordComponent } from './ui/AdminPasswordComponent';
 export { AuthNavbarComponent } from './ui/AuthNavbarComponent';
 export { ProfileComponent } from './ui/ProfileComponent';
 export { RequestResetPasswordComponent } from './ui/RequestResetPasswordComponent';

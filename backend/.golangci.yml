@@ -32,7 +32,7 @@ formatters:
     golines:
       max-len: 120
     gofumpt:
-      module-path: databasus-backend
+      module-path: dbsystemdata-backend
       extra-rules: true
     gci:
       sections:

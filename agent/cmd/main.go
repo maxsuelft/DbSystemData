@@ -1,4 +1,4 @@
-package main
+﻿package main
 
 import (
 	"flag"
@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"databasus-agent/internal/config"
-	"databasus-agent/internal/features/start"
-	"databasus-agent/internal/features/upgrade"
-	"databasus-agent/internal/logger"
+	"dbsystemdata-agent/internal/config"
+	"dbsystemdata-agent/internal/features/start"
+	"dbsystemdata-agent/internal/features/upgrade"
+	"dbsystemdata-agent/internal/logger"
 )
 
 var Version = "dev"
@@ -57,7 +57,7 @@ func runStart(args []string) {
 	log := logger.GetLogger()
 
 	isDev := checkIsDevelopment()
-	runUpdateCheck(cfg.DatabasusHost, *isSkipUpdate, isDev, log)
+	runUpdateCheck(cfg.DbSystemDataHost, *isSkipUpdate, isDev, log)
 
 	if err := start.Run(cfg, log); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
@@ -96,7 +96,7 @@ func runRestore(args []string) {
 	log := logger.GetLogger()
 
 	isDev := checkIsDevelopment()
-	runUpdateCheck(cfg.DatabasusHost, *isSkipUpdate, isDev, log)
+	runUpdateCheck(cfg.DbSystemDataHost, *isSkipUpdate, isDev, log)
 
 	log.Info("restore: stub — not yet implemented",
 		"targetDir", *targetDir,
@@ -107,7 +107,7 @@ func runRestore(args []string) {
 }
 
 func printUsage() {
-	fmt.Fprintln(os.Stderr, "Usage: databasus-agent <command> [flags]")
+	fmt.Fprintln(os.Stderr, "Usage: dbsystemdata-agent <command> [flags]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "Commands:")
 	fmt.Fprintln(os.Stderr, "  start    Start the agent (WAL archiving + basebackups)")

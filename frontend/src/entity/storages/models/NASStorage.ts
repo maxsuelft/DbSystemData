@@ -1,4 +1,4 @@
-export interface NASStorage {
+﻿export interface NASStorage {
   host: string;
   port: number;
   share: string;

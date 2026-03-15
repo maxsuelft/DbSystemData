@@ -1,4 +1,4 @@
-package healthcheck_attempt
+﻿package healthcheck_attempt
 
 import (
 	"errors"
@@ -9,13 +9,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 
-	"databasus-backend/internal/features/databases"
-	healthcheck_config "databasus-backend/internal/features/healthcheck/config"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
+	"dbsystemdata-backend/internal/features/databases"
+	healthcheck_config "dbsystemdata-backend/internal/features/healthcheck/config"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
 )
 
 func Test_CheckDatabaseHealthUseCase(t *testing.T) {

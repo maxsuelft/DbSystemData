@@ -1,15 +1,15 @@
-package databases
+﻿package databases
 
 import (
 	"sync"
 	"sync/atomic"
 
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/notifiers"
-	users_services "databasus-backend/internal/features/users/services"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/logger"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/notifiers"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var databaseRepository = &DatabaseRepository{}

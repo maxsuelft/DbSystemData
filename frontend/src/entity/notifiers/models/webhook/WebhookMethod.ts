@@ -1,4 +1,4 @@
-export enum WebhookMethod {
+﻿export enum WebhookMethod {
   POST = 'POST',
   GET = 'GET',
 }

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "databasus.fullname" . }}
-  namespace: {{ include "databasus.namespace" . }}
+  name: {{ include "dbsystemdata.fullname" . }}
+  namespace: {{ include "dbsystemdata.namespace" . }}
   labels:
-    {{- include "databasus.labels" . | nindent 4 }}
+    {{- include "dbsystemdata.labels" . | nindent 4 }}
 spec:
-  serviceName: {{ include "databasus.fullname" . }}-headless
+  serviceName: {{ include "dbsystemdata.fullname" . }}-headless
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "databasus.selectorLabels" . | nindent 6 }}
+      {{- include "dbsystemdata.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       labels:
-        {{- include "databasus.selectorLabels" . | nindent 8 }}
+        {{- include "dbsystemdata.selectorLabels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -49,7 +49,7 @@ spec:
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
           volumeMounts:
-            - name: databasus-storage
+            - name: dbsystemdata-storage
               mountPath: {{ .Values.persistence.mountPath }}
             {{- if .Values.customRootCA }}
             - name: custom-root-ca
@@ -86,7 +86,7 @@ spec:
   {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
     - metadata:
-        name: databasus-storage
+        name: dbsystemdata-storage
       spec:
         accessModes:
           - {{ .Values.persistence.accessMode }}

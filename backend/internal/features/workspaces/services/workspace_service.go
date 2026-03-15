@@ -1,4 +1,4 @@
-package workspaces_services
+﻿package workspaces_services
 
 import (
 	"fmt"
@@ -6,15 +6,15 @@ import (
 
 	"github.com/google/uuid"
 
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_models "databasus-backend/internal/features/users/models"
-	users_services "databasus-backend/internal/features/users/services"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_errors "databasus-backend/internal/features/workspaces/errors"
-	workspaces_interfaces "databasus-backend/internal/features/workspaces/interfaces"
-	workspaces_models "databasus-backend/internal/features/workspaces/models"
-	workspaces_repositories "databasus-backend/internal/features/workspaces/repositories"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_errors "dbsystemdata-backend/internal/features/workspaces/errors"
+	workspaces_interfaces "dbsystemdata-backend/internal/features/workspaces/interfaces"
+	workspaces_models "dbsystemdata-backend/internal/features/workspaces/models"
+	workspaces_repositories "dbsystemdata-backend/internal/features/workspaces/repositories"
 )
 
 type WorkspaceService struct {

@@ -1,4 +1,4 @@
-package users_controllers
+﻿package users_controllers
 
 import (
 	"errors"
@@ -7,13 +7,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"databasus-backend/internal/config"
-	user_dto "databasus-backend/internal/features/users/dto"
-	users_errors "databasus-backend/internal/features/users/errors"
-	user_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	cache_utils "databasus-backend/internal/util/cache"
-	cloudflare_turnstile "databasus-backend/internal/util/cloudflare_turnstile"
+	"dbsystemdata-backend/internal/config"
+	user_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_errors "dbsystemdata-backend/internal/features/users/errors"
+	user_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
+	cloudflare_turnstile "dbsystemdata-backend/internal/util/cloudflare_turnstile"
 )
 
 type UserController struct {

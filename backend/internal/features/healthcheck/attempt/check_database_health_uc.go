@@ -1,4 +1,4 @@
-package healthcheck_attempt
+﻿package healthcheck_attempt
 
 import (
 	"errors"
@@ -9,9 +9,9 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/features/databases"
-	healthcheck_config "databasus-backend/internal/features/healthcheck/config"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/features/databases"
+	healthcheck_config "dbsystemdata-backend/internal/features/healthcheck/config"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 type CheckDatabaseHealthUseCase struct {

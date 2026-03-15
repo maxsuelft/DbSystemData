@@ -1,11 +1,11 @@
-package databases
+﻿package databases
 
 import (
 	"log/slog"
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type DatabaseValidator interface {

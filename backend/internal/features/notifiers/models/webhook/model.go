@@ -1,4 +1,4 @@
-package webhook_notifier
+﻿package webhook_notifier
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 type WebhookHeader struct {

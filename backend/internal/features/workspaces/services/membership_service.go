@@ -6,17 +6,17 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_models "databasus-backend/internal/features/users/models"
-	users_services "databasus-backend/internal/features/users/services"
-	workspaces_dto "databasus-backend/internal/features/workspaces/dto"
-	workspaces_errors "databasus-backend/internal/features/workspaces/errors"
-	workspaces_interfaces "databasus-backend/internal/features/workspaces/interfaces"
-	workspaces_models "databasus-backend/internal/features/workspaces/models"
-	workspaces_repositories "databasus-backend/internal/features/workspaces/repositories"
+	"dbsystemdata-backend/internal/config"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	workspaces_dto "dbsystemdata-backend/internal/features/workspaces/dto"
+	workspaces_errors "dbsystemdata-backend/internal/features/workspaces/errors"
+	workspaces_interfaces "dbsystemdata-backend/internal/features/workspaces/interfaces"
+	workspaces_models "dbsystemdata-backend/internal/features/workspaces/models"
+	workspaces_repositories "dbsystemdata-backend/internal/features/workspaces/repositories"
 )
 
 type MembershipService struct {
@@ -364,15 +364,15 @@ func (s *MembershipService) buildInvitationEmailHTML(
 ) string {
 	env := config.GetEnv()
 	signUpLink := ""
-	if env.DatabasusURL != "" {
+	if env.DbSystemDataURL != "" {
 		signUpLink = fmt.Sprintf(`<p style="margin: 20px 0;">
 			<a href="%s/sign-up" style="display: inline-block; padding: 12px 24px; background-color: #0d6efd; color: white; text-decoration: none; border-radius: 4px;">
 				Sign up
 			</a>
-		</p>`, env.DatabasusURL)
+		</p>`, env.DbSystemDataURL)
 	} else {
 		signUpLink = `<p style="margin: 20px 0; color: #666;">
-			Please visit your Databasus instance to sign up and access the workspace.
+			Please visit your DbSystemData instance to sign up and access the workspace.
 		</p>`
 	}
 
@@ -396,7 +396,7 @@ func (s *MembershipService) buildInvitationEmailHTML(
 		<hr style="border: none; border-top: 1px solid #dee2e6; margin: 30px 0;">
 		
 		<p style="font-size: 14px; color: #6c757d; margin: 0;">
-			This is an automated message from Databasus. If you didn't expect this invitation, you can safely ignore this email.
+			This is an automated message from DbSystemData. If you didn't expect this invitation, you can safely ignore this email.
 		</p>
 	</div>
 </body>

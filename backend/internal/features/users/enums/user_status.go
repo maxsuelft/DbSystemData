@@ -1,4 +1,4 @@
-package users_enums
+﻿package users_enums
 
 type UserStatus string
 

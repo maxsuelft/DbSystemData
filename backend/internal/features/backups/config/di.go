@@ -1,15 +1,15 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"sync"
 	"sync/atomic"
 
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/notifiers"
-	plans "databasus-backend/internal/features/plan"
-	"databasus-backend/internal/features/storages"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/notifiers"
+	plans "dbsystemdata-backend/internal/features/plan"
+	"dbsystemdata-backend/internal/features/storages"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var (

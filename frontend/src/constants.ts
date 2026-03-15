@@ -1,4 +1,4 @@
-interface RuntimeConfig {
+﻿interface RuntimeConfig {
   IS_CLOUD?: string;
   GITHUB_CLIENT_ID?: string;
   GOOGLE_CLIENT_ID?: string;

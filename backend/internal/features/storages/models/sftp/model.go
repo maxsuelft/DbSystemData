@@ -1,4 +1,4 @@
-package sftp_storage
+﻿package sftp_storage
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 	"github.com/pkg/sftp"
 	"golang.org/x/crypto/ssh"
 
-	"databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

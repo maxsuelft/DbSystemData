@@ -1,4 +1,4 @@
-package backuping
+﻿package backuping
 
 import (
 	"context"
@@ -9,12 +9,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/mock"
 
-	common "databasus-backend/internal/features/backups/backups/common"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/notifiers"
-	"databasus-backend/internal/features/storages"
+	common "dbsystemdata-backend/internal/features/backups/backups/common"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/notifiers"
+	"dbsystemdata-backend/internal/features/storages"
 )
 
 type MockNotificationSender struct {

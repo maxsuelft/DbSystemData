@@ -14,9 +14,9 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 type PostgresBackupType string
@@ -107,10 +107,10 @@ func (p *PostgresqlDatabase) Validate() error {
 		return errors.New("cpu count must be greater than 0")
 	}
 
-	// Prevent Databasus from backing up itself
-	// Databasus runs an internal PostgreSQL instance that should not be backed up through the UI
+	// Prevent DbSystemData from backing up itself
+	// DbSystemData runs an internal PostgreSQL instance that should not be backed up through the UI
 	// because it would expose internal metadata to non-system administrators.
-	// To properly backup Databasus, see: https://databasus.com/faq#backup-databasus
+	// To properly backup the application itself, see the repository documentation.
 	if p.BackupType == PostgresBackupTypePgDump && p.Database != nil && *p.Database != "" {
 		localhostHosts := []string{
 			"localhost",
@@ -136,9 +136,9 @@ func (p *PostgresqlDatabase) Validate() error {
 			isLocalhost = true
 		}
 
-		if isLocalhost && strings.EqualFold(*p.Database, "databasus") {
+		if isLocalhost && strings.EqualFold(*p.Database, "dbsystemdata") {
 			return errors.New(
-				"backing up Databasus internal database is not allowed. To backup Databasus itself, see https://databasus.com/faq#backup-databasus",
+				"backing up the application internal database is not allowed. See the repository documentation for how to backup the application itself",
 			)
 		}
 	}
@@ -451,7 +451,7 @@ func (p *PostgresqlDatabase) IsUserReadOnly(
 // 8. Verifies user creation before committing
 //
 // Security features:
-// - Username format: "databasus-{8-char-uuid}" for uniqueness
+// - Username format: "dbsystemdata-{8-char-uuid}" for uniqueness
 // - Password: Full UUID (36 characters) for strong entropy
 // - Transaction safety: All operations rollback on any failure
 // - Retry logic: Up to 3 attempts if username collision occurs
@@ -501,7 +501,7 @@ func (p *PostgresqlDatabase) CreateReadOnlyUser(
 	maxRetries := 3
 	for attempt := range maxRetries {
 		// Generate base username for PostgreSQL user creation
-		baseUsername := fmt.Sprintf("databasus-%s", uuid.New().String()[:8])
+		baseUsername := fmt.Sprintf("dbsystemdata-%s", uuid.New().String()[:8])
 
 		// For Supabase session pooler, the username format for connection is "username.projectid"
 		// but the actual PostgreSQL user must be created with just the base name.

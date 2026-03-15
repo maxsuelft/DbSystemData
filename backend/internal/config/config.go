@@ -9,9 +9,9 @@ import (
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/joho/godotenv"
 
-	env_utils "databasus-backend/internal/util/env"
-	"databasus-backend/internal/util/logger"
-	"databasus-backend/internal/util/tools"
+	env_utils "dbsystemdata-backend/internal/util/env"
+	"dbsystemdata-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 var log = logger.GetLogger()
@@ -43,6 +43,8 @@ type EnvVariables struct {
 
 	ShowDbInstallationVerificationLogs bool `env:"SHOW_DB_INSTALLATION_VERIFICATION_LOGS"`
 	IsSkipExternalResourcesTests       bool `env:"IS_SKIP_EXTERNAL_RESOURCES_TESTS"`
+	// IsSkipToolsVerification: se true, não verifica pg_dump/mysqldump/mongodump etc. em startup (útil para dev sem instalar todas as ferramentas)
+	IsSkipToolsVerification bool `env:"IS_SKIP_TOOLS_VERIFICATION"`
 
 	IsManyNodesMode          bool `env:"IS_MANY_NODES_MODE"`
 	IsPrimaryNode            bool `env:"IS_PRIMARY_NODE"`
@@ -128,7 +130,7 @@ type EnvVariables struct {
 	SMTPFrom     string `env:"SMTP_FROM"`
 
 	// Application URL (optional) - used for email links
-	DatabasusURL string `env:"DATABASUS_URL"`
+	DbSystemDataURL string `env:"DBSYSTEMDATA_URL"`
 }
 
 var (
@@ -235,36 +237,38 @@ func loadEnvVariables() {
 	log.Info("ENV_MODE loaded", "mode", env.EnvMode)
 
 	env.PostgresesInstallDir = filepath.Join(backendRoot, "tools", "postgresql")
-	tools.VerifyPostgresesInstallation(
-		log,
-		env.EnvMode,
-		env.PostgresesInstallDir,
-		env.ShowDbInstallationVerificationLogs,
-	)
-
 	env.MysqlInstallDir = filepath.Join(backendRoot, "tools", "mysql")
-	tools.VerifyMysqlInstallation(
-		log,
-		env.EnvMode,
-		env.MysqlInstallDir,
-		env.ShowDbInstallationVerificationLogs,
-	)
-
 	env.MariadbInstallDir = filepath.Join(backendRoot, "tools", "mariadb")
-	tools.VerifyMariadbInstallation(
-		log,
-		env.EnvMode,
-		env.MariadbInstallDir,
-		env.ShowDbInstallationVerificationLogs,
-	)
-
 	env.MongodbInstallDir = filepath.Join(backendRoot, "tools", "mongodb")
-	tools.VerifyMongodbInstallation(
-		log,
-		env.EnvMode,
-		env.MongodbInstallDir,
-		env.ShowDbInstallationVerificationLogs,
-	)
+
+	if !env.IsSkipToolsVerification {
+		tools.VerifyPostgresesInstallation(
+			log,
+			env.EnvMode,
+			env.PostgresesInstallDir,
+			env.ShowDbInstallationVerificationLogs,
+		)
+		tools.VerifyMysqlInstallation(
+			log,
+			env.EnvMode,
+			env.MysqlInstallDir,
+			env.ShowDbInstallationVerificationLogs,
+		)
+		tools.VerifyMariadbInstallation(
+			log,
+			env.EnvMode,
+			env.MariadbInstallDir,
+			env.ShowDbInstallationVerificationLogs,
+		)
+		tools.VerifyMongodbInstallation(
+			log,
+			env.EnvMode,
+			env.MongodbInstallDir,
+			env.ShowDbInstallationVerificationLogs,
+		)
+	} else {
+		log.Info("Skipping DB client tools verification (IS_SKIP_TOOLS_VERIFICATION=true). Backup/restore may fail if tools are missing.")
+	}
 
 	if env.NodeNetworkThroughputMBs == 0 {
 		env.NodeNetworkThroughputMBs = 125 // 1 Gbit/s
@@ -311,10 +315,10 @@ func loadEnvVariables() {
 	}
 
 	// Store the data and temp folders one level below the root
-	// (projectRoot/databasus-data -> /databasus-data)
-	env.DataFolder = filepath.Join(filepath.Dir(backendRoot), "databasus-data", "backups")
-	env.TempFolder = filepath.Join(filepath.Dir(backendRoot), "databasus-data", "temp")
-	env.SecretKeyPath = filepath.Join(filepath.Dir(backendRoot), "databasus-data", "secret.key")
+	// (projectRoot/dbsystemdata-data -> /dbsystemdata-data)
+	env.DataFolder = filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data", "backups")
+	env.TempFolder = filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data", "temp")
+	env.SecretKeyPath = filepath.Join(filepath.Dir(backendRoot), "dbsystemdata-data", "secret.key")
 
 	if env.IsTesting {
 		if env.TestPostgres12Port == "" {

@@ -1,4 +1,4 @@
-export interface SendResetPasswordCodeRequest {
+﻿export interface SendResetPasswordCodeRequest {
   email: string;
   cloudflareTurnstileToken?: string;
 }

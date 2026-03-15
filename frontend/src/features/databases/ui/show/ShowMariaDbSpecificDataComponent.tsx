@@ -1,4 +1,4 @@
-import { type Database, MariadbVersion } from '../../../../entity/databases';
+﻿import { type Database, MariadbVersion } from '../../../../entity/databases';
 
 interface Props {
   database: Database;

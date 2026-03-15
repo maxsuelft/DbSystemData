@@ -1,12 +1,12 @@
-package backups_download
+﻿package backups_download
 
 import (
 	"sync"
 	"sync/atomic"
 
-	"databasus-backend/internal/config"
-	cache_utils "databasus-backend/internal/util/cache"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/config"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var downloadTokenRepository = &DownloadTokenRepository{}

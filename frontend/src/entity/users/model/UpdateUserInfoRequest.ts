@@ -1,4 +1,4 @@
-export interface UpdateUserInfoRequest {
+﻿export interface UpdateUserInfoRequest {
   name?: string;
   email?: string;
 }

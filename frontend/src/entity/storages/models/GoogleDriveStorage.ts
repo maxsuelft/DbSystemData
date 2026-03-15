@@ -1,4 +1,4 @@
-export interface GoogleDriveStorage {
+﻿export interface GoogleDriveStorage {
   clientId: string;
   clientSecret: string;
   tokenJson?: string;

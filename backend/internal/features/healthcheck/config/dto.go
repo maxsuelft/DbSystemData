@@ -1,4 +1,4 @@
-package healthcheck_config
+﻿package healthcheck_config
 
 import (
 	"github.com/google/uuid"

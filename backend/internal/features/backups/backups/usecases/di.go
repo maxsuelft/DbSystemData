@@ -1,10 +1,10 @@
-package usecases
+﻿package usecases
 
 import (
-	usecases_mariadb "databasus-backend/internal/features/backups/backups/usecases/mariadb"
-	usecases_mongodb "databasus-backend/internal/features/backups/backups/usecases/mongodb"
-	usecases_mysql "databasus-backend/internal/features/backups/backups/usecases/mysql"
-	usecases_postgresql "databasus-backend/internal/features/backups/backups/usecases/postgresql"
+	usecases_mariadb "dbsystemdata-backend/internal/features/backups/backups/usecases/mariadb"
+	usecases_mongodb "dbsystemdata-backend/internal/features/backups/backups/usecases/mongodb"
+	usecases_mysql "dbsystemdata-backend/internal/features/backups/backups/usecases/mysql"
+	usecases_postgresql "dbsystemdata-backend/internal/features/backups/backups/usecases/postgresql"
 )
 
 var createBackupUsecase = &CreateBackupUsecase{

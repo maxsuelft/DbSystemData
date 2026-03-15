@@ -1,4 +1,4 @@
-export interface FTPStorage {
+﻿export interface FTPStorage {
   host: string;
   port: number;
   username: string;

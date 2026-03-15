@@ -1,4 +1,4 @@
-package intervals
+﻿package intervals
 
 import (
 	"errors"

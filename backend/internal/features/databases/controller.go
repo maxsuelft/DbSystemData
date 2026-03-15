@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 import (
 	"net/http"
@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
 )
 
 type DatabaseController struct {

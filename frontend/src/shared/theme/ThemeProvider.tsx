@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 
 import { ThemeContext } from './themeContext';
 import type { ResolvedTheme, ThemeMode } from './themeContext';
 
-const THEME_STORAGE_KEY = 'databasus-theme';
+const THEME_STORAGE_KEY = 'dbsystemdata-theme';
 
 function getSystemTheme(): ResolvedTheme {
   if (typeof window !== 'undefined' && window.matchMedia) {

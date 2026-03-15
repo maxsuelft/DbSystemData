@@ -1,4 +1,4 @@
-import type { Database } from '../../databases/model/Database';
+﻿import type { Database } from '../../databases/model/Database';
 import type { Storage } from '../../storages';
 import { BackupEncryption } from './BackupEncryption';
 import { BackupStatus } from './BackupStatus';

@@ -1,4 +1,4 @@
-export default class RequestOptions {
+﻿export default class RequestOptions {
   private headers: [string, string][];
   private method: string | undefined;
   private credentials: 'include' | undefined;

@@ -1,4 +1,4 @@
-package users_services
+﻿package users_services
 
 import (
 	"context"
@@ -17,14 +17,14 @@ import (
 	"golang.org/x/oauth2/github"
 	"golang.org/x/oauth2/google"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/encryption/secrets"
-	users_dto "databasus-backend/internal/features/users/dto"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_errors "databasus-backend/internal/features/users/errors"
-	users_interfaces "databasus-backend/internal/features/users/interfaces"
-	users_models "databasus-backend/internal/features/users/models"
-	users_repositories "databasus-backend/internal/features/users/repositories"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/encryption/secrets"
+	users_dto "dbsystemdata-backend/internal/features/users/dto"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_errors "dbsystemdata-backend/internal/features/users/errors"
+	users_interfaces "dbsystemdata-backend/internal/features/users/interfaces"
+	users_models "dbsystemdata-backend/internal/features/users/models"
+	users_repositories "dbsystemdata-backend/internal/features/users/repositories"
 )
 
 type UserService struct {

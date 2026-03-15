@@ -1,4 +1,4 @@
-package intervals
+﻿package intervals
 
 type IntervalType string
 

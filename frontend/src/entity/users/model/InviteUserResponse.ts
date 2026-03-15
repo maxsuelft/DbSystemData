@@ -1,4 +1,4 @@
-import type { WorkspaceRole } from './WorkspaceRole';
+﻿import type { WorkspaceRole } from './WorkspaceRole';
 
 export interface InviteUserResponse {
   id: string;

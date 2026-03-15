@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "databasus.fullname" . }}-service
-  namespace: {{ include "databasus.namespace" . }}
+  name: {{ include "dbsystemdata.fullname" . }}-service
+  namespace: {{ include "dbsystemdata.namespace" . }}
   labels:
-    {{- include "databasus.labels" . | nindent 4 }}
+    {{- include "dbsystemdata.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,16 +13,16 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "databasus.selectorLabels" . | nindent 4 }}
+    {{- include "dbsystemdata.selectorLabels" . | nindent 4 }}
 ---
 {{- if .Values.service.headless.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "databasus.fullname" . }}-headless
-  namespace: {{ include "databasus.namespace" . }}
+  name: {{ include "dbsystemdata.fullname" . }}-headless
+  namespace: {{ include "dbsystemdata.namespace" . }}
   labels:
-    {{- include "databasus.labels" . | nindent 4 }}
+    {{- include "dbsystemdata.labels" . | nindent 4 }}
 spec:
   type: ClusterIP
   clusterIP: None
@@ -32,5 +32,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "databasus.selectorLabels" . | nindent 4 }}
+    {{- include "dbsystemdata.selectorLabels" . | nindent 4 }}
 {{- end }}

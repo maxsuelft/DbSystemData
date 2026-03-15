@@ -1,4 +1,4 @@
-package tools
+﻿package tools
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"runtime"
 
-	env_utils "databasus-backend/internal/util/env"
+	env_utils "dbsystemdata-backend/internal/util/env"
 )
 
 type MongodbVersion string

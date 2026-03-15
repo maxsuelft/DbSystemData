@@ -1,4 +1,4 @@
-import type { EmailNotifier } from './EmailNotifier';
+﻿import type { EmailNotifier } from './EmailNotifier';
 
 export const validateEmailNotifier = (notifier: EmailNotifier): boolean => {
   if (!notifier.targetEmail) {

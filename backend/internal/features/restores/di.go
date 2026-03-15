@@ -1,22 +1,22 @@
-package restores
+﻿package restores
 
 import (
 	"sync"
 	"sync/atomic"
 
-	audit_logs "databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/backups/backups/backuping"
-	backups_services "databasus-backend/internal/features/backups/backups/services"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/disk"
-	restores_core "databasus-backend/internal/features/restores/core"
-	"databasus-backend/internal/features/restores/usecases"
-	"databasus-backend/internal/features/storages"
-	tasks_cancellation "databasus-backend/internal/features/tasks/cancellation"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/logger"
+	audit_logs "dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/backups/backups/backuping"
+	backups_services "dbsystemdata-backend/internal/features/backups/backups/services"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/disk"
+	restores_core "dbsystemdata-backend/internal/features/restores/core"
+	"dbsystemdata-backend/internal/features/restores/usecases"
+	"dbsystemdata-backend/internal/features/storages"
+	tasks_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var (

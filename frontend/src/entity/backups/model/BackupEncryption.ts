@@ -1,4 +1,4 @@
-export enum BackupEncryption {
+﻿export enum BackupEncryption {
   NONE = 'NONE',
   ENCRYPTED = 'ENCRYPTED',
 }

@@ -1,4 +1,4 @@
-import { Spin } from 'antd';
+﻿import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
 import { healthcheckConfigApi } from '../../../entity/healthcheck';

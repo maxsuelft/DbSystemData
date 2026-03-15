@@ -1,4 +1,4 @@
-package files_utils
+﻿package files_utils
 
 // SanitizeFilename replaces characters that are invalid or problematic in filenames
 // across different operating systems (Windows, Linux, macOS) and storage systems

@@ -1,4 +1,4 @@
-import type { Notifier, WebhookHeader } from '../../../../../entity/notifiers';
+﻿import type { Notifier, WebhookHeader } from '../../../../../entity/notifiers';
 import { WebhookMethod } from '../../../../../entity/notifiers';
 
 interface Props {

@@ -1,7 +1,7 @@
-package config
+﻿package config
 
 type parsedFlags struct {
-	databasusHost         *string
+	DbSystemDataHost         *string
 	dbID                  *string
 	token                 *string
 	pgHost                *string

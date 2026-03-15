@@ -1,4 +1,4 @@
-package encryption
+﻿package encryption
 
 import (
 	"crypto/aes"
@@ -12,7 +12,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/encryption/secrets"
+	"dbsystemdata-backend/internal/features/encryption/secrets"
 )
 
 const encryptedPrefix = "enc:"

@@ -1,4 +1,4 @@
-import type { NotifierType } from './NotifierType';
+﻿import type { NotifierType } from './NotifierType';
 import type { DiscordNotifier } from './discord/DiscordNotifier';
 import type { EmailNotifier } from './email/EmailNotifier';
 import type { SlackNotifier } from './slack/SlackNotifier';

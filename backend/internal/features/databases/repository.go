@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 import (
 	"errors"
@@ -6,11 +6,11 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/features/databases/databases/mariadb"
-	"databasus-backend/internal/features/databases/databases/mongodb"
-	"databasus-backend/internal/features/databases/databases/mysql"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	"databasus-backend/internal/storage"
+	"dbsystemdata-backend/internal/features/databases/databases/mariadb"
+	"dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	"dbsystemdata-backend/internal/features/databases/databases/mysql"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type DatabaseRepository struct{}

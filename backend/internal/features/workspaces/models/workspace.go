@@ -1,4 +1,4 @@
-package workspaces_models
+﻿package workspaces_models
 
 import (
 	"time"

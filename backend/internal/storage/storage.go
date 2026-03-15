@@ -1,4 +1,4 @@
-package storage
+﻿package storage
 
 import (
 	"os"
@@ -8,8 +8,8 @@ import (
 	"gorm.io/gorm"
 	gormLogger "gorm.io/gorm/logger"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var log = logger.GetLogger()

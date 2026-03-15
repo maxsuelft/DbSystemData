@@ -1,8 +1,8 @@
-package users_controllers
+﻿package users_controllers
 
 import (
-	users_services "databasus-backend/internal/features/users/services"
-	cache_utils "databasus-backend/internal/util/cache"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	cache_utils "dbsystemdata-backend/internal/util/cache"
 )
 
 var userController = &UserController{

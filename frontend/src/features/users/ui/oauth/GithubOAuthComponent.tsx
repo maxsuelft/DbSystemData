@@ -1,4 +1,4 @@
-import { GithubOutlined } from '@ant-design/icons';
+﻿import { GithubOutlined } from '@ant-design/icons';
 import { Button, message } from 'antd';
 
 import { GITHUB_CLIENT_ID, getOAuthRedirectUri } from '../../../../constants';

@@ -1,14 +1,14 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "databasus.name" -}}
+{{- define "dbsystemdata.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Create a default fully qualified app name.
 */}}
-{{- define "databasus.fullname" -}}
+{{- define "dbsystemdata.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -24,16 +24,16 @@ Create a default fully qualified app name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "databasus.chart" -}}
+{{- define "dbsystemdata.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "databasus.labels" -}}
-helm.sh/chart: {{ include "databasus.chart" . }}
-{{ include "databasus.selectorLabels" . }}
+{{- define "dbsystemdata.labels" -}}
+helm.sh/chart: {{ include "dbsystemdata.chart" . }}
+{{ include "dbsystemdata.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -43,18 +43,18 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "databasus.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "databasus.name" . }}
+{{- define "dbsystemdata.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "dbsystemdata.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-app: databasus
+app: dbsystemdata
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "databasus.serviceAccountName" -}}
+{{- define "dbsystemdata.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "databasus.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "dbsystemdata.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
@@ -63,6 +63,6 @@ Create the name of the service account to use
 {{/*
 Namespace - uses the release namespace from helm install -n <namespace>
 */}}
-{{- define "databasus.namespace" -}}
+{{- define "dbsystemdata.namespace" -}}
 {{- .Release.Namespace }}
 {{- end }}

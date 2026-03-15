@@ -1,4 +1,4 @@
-export interface TelegramNotifier {
+﻿export interface TelegramNotifier {
   botToken: string;
   targetChatId: string;
   threadId?: number;

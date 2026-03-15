@@ -1,6 +1,6 @@
-package encryption
+﻿package encryption
 
-import "databasus-backend/internal/features/encryption/secrets"
+import "dbsystemdata-backend/internal/features/encryption/secrets"
 
 var fieldEncryptor = &SecretKeyFieldEncryptor{
 	secrets.GetSecretKeyService(),

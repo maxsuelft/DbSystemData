@@ -1,4 +1,4 @@
-import { StorageType } from './StorageType';
+﻿import { StorageType } from './StorageType';
 
 export const getStorageLogoFromType = (type: StorageType) => {
   switch (type) {
@@ -8,6 +8,8 @@ export const getStorageLogoFromType = (type: StorageType) => {
       return '/icons/storages/s3.svg';
     case StorageType.GOOGLE_DRIVE:
       return '/icons/storages/google-drive.svg';
+    case StorageType.DROPBOX:
+      return '/icons/storages/dropbox.svg';
     case StorageType.NAS:
       return '/icons/storages/nas.svg';
     case StorageType.AZURE_BLOB:

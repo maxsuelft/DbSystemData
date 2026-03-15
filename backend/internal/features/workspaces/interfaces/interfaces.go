@@ -1,4 +1,4 @@
-package workspaces_interfaces
+﻿package workspaces_interfaces
 
 import "github.com/google/uuid"
 

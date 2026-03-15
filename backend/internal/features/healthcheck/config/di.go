@@ -1,13 +1,13 @@
-package healthcheck_config
+﻿package healthcheck_config
 
 import (
 	"sync"
 	"sync/atomic"
 
-	"databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/databases"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/databases"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var (

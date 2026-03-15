@@ -1,18 +1,18 @@
-package usecases
+﻿package usecases
 
 import (
 	"context"
 	"errors"
 
-	common "databasus-backend/internal/features/backups/backups/common"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	usecases_mariadb "databasus-backend/internal/features/backups/backups/usecases/mariadb"
-	usecases_mongodb "databasus-backend/internal/features/backups/backups/usecases/mongodb"
-	usecases_mysql "databasus-backend/internal/features/backups/backups/usecases/mysql"
-	usecases_postgresql "databasus-backend/internal/features/backups/backups/usecases/postgresql"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/storages"
+	common "dbsystemdata-backend/internal/features/backups/backups/common"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	usecases_mariadb "dbsystemdata-backend/internal/features/backups/backups/usecases/mariadb"
+	usecases_mongodb "dbsystemdata-backend/internal/features/backups/backups/usecases/mongodb"
+	usecases_mysql "dbsystemdata-backend/internal/features/backups/backups/usecases/mysql"
+	usecases_postgresql "dbsystemdata-backend/internal/features/backups/backups/usecases/postgresql"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/storages"
 )
 
 type CreateBackupUsecase struct {

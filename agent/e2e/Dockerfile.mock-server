@@ -1,4 +1,4 @@
-# Mock databasus API server for version checks and binary downloads. Just
+# Mock DbSystemData API server for version checks and binary downloads. Just
 # serves static responses and files from the `artifacts` directory.
 FROM golang:1.26.1-alpine AS build
 WORKDIR /app

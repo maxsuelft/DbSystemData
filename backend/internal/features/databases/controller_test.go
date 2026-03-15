@@ -1,4 +1,4 @@
-package databases
+﻿package databases
 
 import (
 	"encoding/json"
@@ -12,20 +12,20 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/databases/databases/mariadb"
-	"databasus-backend/internal/features/databases/databases/mongodb"
-	"databasus-backend/internal/features/databases/databases/postgresql"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_middleware "databasus-backend/internal/features/users/middleware"
-	users_services "databasus-backend/internal/features/users/services"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_controllers "databasus-backend/internal/features/workspaces/controllers"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	"databasus-backend/internal/util/encryption"
-	test_utils "databasus-backend/internal/util/testing"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/databases/databases/mariadb"
+	"dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	"dbsystemdata-backend/internal/features/databases/databases/postgresql"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_middleware "dbsystemdata-backend/internal/features/users/middleware"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_controllers "dbsystemdata-backend/internal/features/workspaces/controllers"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	"dbsystemdata-backend/internal/util/encryption"
+	test_utils "dbsystemdata-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 func Test_CreateDatabase_PermissionsEnforced(t *testing.T) {

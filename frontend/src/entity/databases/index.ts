@@ -1,4 +1,4 @@
-export { databaseApi } from './api/databaseApi';
+﻿export { databaseApi } from './api/databaseApi';
 export { type Database } from './model/Database';
 export { DatabaseType } from './model/DatabaseType';
 export { getDatabaseLogoFromType } from './model/getDatabaseLogoFromType';

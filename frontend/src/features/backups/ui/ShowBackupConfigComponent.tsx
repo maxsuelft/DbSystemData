@@ -1,4 +1,4 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
+﻿import { InfoCircleOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 import { CronExpressionParser } from 'cron-parser';
 import dayjs from 'dayjs';
@@ -256,7 +256,7 @@ export const ShowBackupConfigComponent = ({ database }: Props) => {
 
               <Tooltip
                 className="cursor-pointer"
-                title="If backup is encrypted, backup files in your storage (S3, local, etc.) cannot be used directly. You can restore backups through Databasus or download them unencrypted via the 'Download' button."
+                title="If backup is encrypted, backup files in your storage (S3, local, etc.) cannot be used directly. You can restore backups through DbSystemData or download them unencrypted via the 'Download' button."
               >
                 <InfoCircleOutlined className="ml-2" style={{ color: 'gray' }} />
               </Tooltip>

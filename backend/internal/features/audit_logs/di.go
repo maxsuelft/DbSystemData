@@ -1,11 +1,11 @@
-package audit_logs
+﻿package audit_logs
 
 import (
 	"sync"
 	"sync/atomic"
 
-	users_services "databasus-backend/internal/features/users/services"
-	"databasus-backend/internal/util/logger"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var (

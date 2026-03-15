@@ -14,8 +14,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/stretchr/testify/assert"
 
-	"databasus-backend/internal/config"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 func Test_TestConnection_InsufficientPermissions_ReturnsError(t *testing.T) {
@@ -332,7 +332,7 @@ func Test_CreateReadOnlyUser_UserCanReadButNotWrite(t *testing.T) {
 			assert.NoError(t, err)
 			assert.NotEmpty(t, username)
 			assert.NotEmpty(t, password)
-			assert.True(t, strings.HasPrefix(username, "databasus-"))
+			assert.True(t, strings.HasPrefix(username, "dbsystemdata-"))
 
 			readOnlyModel := &MysqlDatabase{
 				Version:  mysqlModel.Version,
@@ -483,7 +483,7 @@ func Test_CreateReadOnlyUser_DatabaseNameWithDash_Success(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, username)
 	assert.NotEmpty(t, password)
-	assert.True(t, strings.HasPrefix(username, "databasus-"))
+	assert.True(t, strings.HasPrefix(username, "dbsystemdata-"))
 
 	readOnlyDSN := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true",
 		username, password, container.Host, container.Port, dashDbName)

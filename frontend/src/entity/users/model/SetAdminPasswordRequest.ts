@@ -1,3 +1,3 @@
-export interface SetAdminPasswordRequest {
+﻿export interface SetAdminPasswordRequest {
   password: string;
 }

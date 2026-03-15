@@ -1,4 +1,4 @@
-package backuping
+﻿package backuping
 
 import (
 	"bytes"
@@ -15,14 +15,14 @@ import (
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/config"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	"databasus-backend/internal/features/storages"
-	tasks_cancellation "databasus-backend/internal/features/tasks/cancellation"
-	workspaces_services "databasus-backend/internal/features/workspaces/services"
-	util_encryption "databasus-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/config"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/storages"
+	tasks_cancellation "dbsystemdata-backend/internal/features/tasks/cancellation"
+	workspaces_services "dbsystemdata-backend/internal/features/workspaces/services"
+	util_encryption "dbsystemdata-backend/internal/util/encryption"
 )
 
 const (

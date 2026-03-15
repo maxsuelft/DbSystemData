@@ -1,4 +1,4 @@
-import type { AuditLog } from './AuditLog';
+﻿import type { AuditLog } from './AuditLog';
 
 export interface GetAuditLogsResponse {
   auditLogs: AuditLog[];

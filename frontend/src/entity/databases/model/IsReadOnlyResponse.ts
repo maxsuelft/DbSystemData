@@ -1,4 +1,4 @@
-export interface IsReadOnlyResponse {
+﻿export interface IsReadOnlyResponse {
   isReadOnly: boolean;
   privileges: string[];
 }

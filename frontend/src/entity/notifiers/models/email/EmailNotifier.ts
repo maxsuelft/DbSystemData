@@ -1,4 +1,4 @@
-export interface EmailNotifier {
+﻿export interface EmailNotifier {
   targetEmail: string;
   smtpHost: string;
   smtpPort: number;

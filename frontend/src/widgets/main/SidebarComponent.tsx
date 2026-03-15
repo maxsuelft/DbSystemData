@@ -1,4 +1,4 @@
-import { CloseOutlined } from '@ant-design/icons';
+﻿import { CloseOutlined } from '@ant-design/icons';
 import { Drawer, Tooltip } from 'antd';
 import { useEffect } from 'react';
 
@@ -187,20 +187,11 @@ export const SidebarComponent = ({
           <div className="space-y-2">
             <a
               className="block rounded text-sm font-medium !text-gray-700 hover:bg-gray-100 hover:!text-blue-600 dark:!text-gray-300 dark:hover:bg-gray-700"
-              href="https://databasus.com/installation"
+              href="https://github.com/dbsystemdata/DbSystemData"
               target="_blank"
               rel="noreferrer"
             >
-              Documentation
-            </a>
-
-            <a
-              className="block rounded text-sm font-medium !text-gray-700 hover:bg-gray-100 hover:!text-blue-600 dark:!text-gray-300 dark:hover:bg-gray-700"
-              href="https://t.me/databasus_community"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Community
+              Repositório
             </a>
 
             <div className="flex pt-2">

@@ -4,13 +4,13 @@ set -e  # Exit on any error
 
 # Check if script is run as root
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Error: This script must be run as root (sudo ./install-databasus.sh)" >&2
+    echo "Error: This script must be run as root (sudo ./install-dbsystemdata.sh)" >&2
     exit 1
 fi
 
 # Set up logging
-LOG_FILE="/var/log/databasus-install.log"
-INSTALL_DIR="/opt/databasus"
+LOG_FILE="/var/log/dbsystemdata-install.log"
+INSTALL_DIR="/opt/dbsystemdata"
 
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
@@ -18,7 +18,7 @@ log() {
 
 # Create log file if doesn't exist
 touch "$LOG_FILE"
-log "Starting Databasus installation..."
+log "Starting DbSystemData installation..."
 
 # Create installation directory
 log "Creating installation directory..."
@@ -112,29 +112,29 @@ fi
 log "Writing docker-compose.yml to $INSTALL_DIR"
 cat > "$INSTALL_DIR/docker-compose.yml" << 'EOF'
 services:
-  databasus:
-    container_name: databasus
-    image: databasus/databasus:latest
+  dbsystemdata:
+    container_name: dbsystemdata
+    image: dbsystemdata/dbsystemdata:latest
     ports:
       - "4005:4005"
     volumes:
-      - ./databasus-data:/databasus-data
+      - ./dbsystemdata-data:/dbsystemdata-data
     restart: unless-stopped
 EOF
 log "docker-compose.yml created successfully"
 
-# Start Databasus
-log "Starting Databasus..."
+# Start DbSystemData
+log "Starting DbSystemData..."
 cd "$INSTALL_DIR"
 if docker compose up -d; then
-    log "Databasus started successfully"
+    log "DbSystemData started successfully"
 else
-    log "ERROR: Failed to start Databasus!"
+    log "ERROR: Failed to start DbSystemData!"
     exit 1
 fi
 
-log "Databasus installation completed successfully!"
+log "DbSystemData installation completed successfully!"
 log "-------------------------------------------"
 log "To launch:"
 log "> cd $INSTALL_DIR && docker compose up -d"
-log "Access Databasus at: http://localhost:4005"
+log "Access DbSystemData at: http://localhost:4005"

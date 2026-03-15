@@ -1,4 +1,4 @@
-import type { Notifier } from '../../notifiers';
+﻿import type { Notifier } from '../../notifiers';
 import type { DatabaseType } from './DatabaseType';
 import type { HealthStatus } from './HealthStatus';
 import type { MariadbDatabase } from './mariadb/MariadbDatabase';

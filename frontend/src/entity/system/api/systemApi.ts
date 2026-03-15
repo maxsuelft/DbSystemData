@@ -1,4 +1,4 @@
-import { getApplicationServer } from '../../../constants';
+﻿import { getApplicationServer } from '../../../constants';
 import type { VersionResponse } from '../model/VersionResponse';
 
 export const systemApi = {

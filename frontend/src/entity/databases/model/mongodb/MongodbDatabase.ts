@@ -1,4 +1,4 @@
-import type { MongodbVersion } from './MongodbVersion';
+﻿import type { MongodbVersion } from './MongodbVersion';
 
 export interface MongodbDatabase {
   id: string;

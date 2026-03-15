@@ -1,4 +1,4 @@
-import type { Platform } from './Platform';
+﻿import type { Platform } from './Platform';
 
 export type DiskUsage = {
   platform: Platform;

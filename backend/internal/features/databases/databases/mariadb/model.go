@@ -1,4 +1,4 @@
-package mariadb
+﻿package mariadb
 
 import (
 	"context"
@@ -15,8 +15,8 @@ import (
 	"github.com/go-sql-driver/mysql"
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/util/encryption"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/util/encryption"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 type MariadbDatabase struct {

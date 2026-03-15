@@ -1,12 +1,12 @@
-package workspaces_services
+﻿package workspaces_services
 
 import (
-	"databasus-backend/internal/features/audit_logs"
-	"databasus-backend/internal/features/email"
-	users_services "databasus-backend/internal/features/users/services"
-	workspaces_interfaces "databasus-backend/internal/features/workspaces/interfaces"
-	workspaces_repositories "databasus-backend/internal/features/workspaces/repositories"
-	"databasus-backend/internal/util/logger"
+	"dbsystemdata-backend/internal/features/audit_logs"
+	"dbsystemdata-backend/internal/features/email"
+	users_services "dbsystemdata-backend/internal/features/users/services"
+	workspaces_interfaces "dbsystemdata-backend/internal/features/workspaces/interfaces"
+	workspaces_repositories "dbsystemdata-backend/internal/features/workspaces/repositories"
+	"dbsystemdata-backend/internal/util/logger"
 )
 
 var (

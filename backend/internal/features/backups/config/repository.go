@@ -1,4 +1,4 @@
-package backups_config
+﻿package backups_config
 
 import (
 	"errors"
@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"databasus-backend/internal/storage"
+	"dbsystemdata-backend/internal/storage"
 )
 
 type BackupConfigRepository struct{}

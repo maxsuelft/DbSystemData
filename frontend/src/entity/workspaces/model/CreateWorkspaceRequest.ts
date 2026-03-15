@@ -1,3 +1,3 @@
-export interface CreateWorkspaceRequest {
+﻿export interface CreateWorkspaceRequest {
   name: string;
 }

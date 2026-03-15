@@ -1,4 +1,4 @@
-package users_interfaces
+﻿package users_interfaces
 
 import (
 	"github.com/google/uuid"

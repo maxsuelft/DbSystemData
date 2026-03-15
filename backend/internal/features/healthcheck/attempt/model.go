@@ -1,11 +1,11 @@
-package healthcheck_attempt
+﻿package healthcheck_attempt
 
 import (
 	"time"
 
 	"github.com/google/uuid"
 
-	"databasus-backend/internal/features/databases"
+	"dbsystemdata-backend/internal/features/databases"
 )
 
 type HealthcheckAttempt struct {

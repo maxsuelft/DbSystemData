@@ -1,4 +1,4 @@
-package tests
+﻿package tests
 
 import (
 	"context"
@@ -18,18 +18,18 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"databasus-backend/internal/config"
-	backups_core "databasus-backend/internal/features/backups/backups/core"
-	backups_config "databasus-backend/internal/features/backups/config"
-	"databasus-backend/internal/features/databases"
-	mongodbtypes "databasus-backend/internal/features/databases/databases/mongodb"
-	restores_core "databasus-backend/internal/features/restores/core"
-	"databasus-backend/internal/features/storages"
-	users_enums "databasus-backend/internal/features/users/enums"
-	users_testing "databasus-backend/internal/features/users/testing"
-	workspaces_testing "databasus-backend/internal/features/workspaces/testing"
-	test_utils "databasus-backend/internal/util/testing"
-	"databasus-backend/internal/util/tools"
+	"dbsystemdata-backend/internal/config"
+	backups_core "dbsystemdata-backend/internal/features/backups/backups/core"
+	backups_config "dbsystemdata-backend/internal/features/backups/config"
+	"dbsystemdata-backend/internal/features/databases"
+	mongodbtypes "dbsystemdata-backend/internal/features/databases/databases/mongodb"
+	restores_core "dbsystemdata-backend/internal/features/restores/core"
+	"dbsystemdata-backend/internal/features/storages"
+	users_enums "dbsystemdata-backend/internal/features/users/enums"
+	users_testing "dbsystemdata-backend/internal/features/users/testing"
+	workspaces_testing "dbsystemdata-backend/internal/features/workspaces/testing"
+	test_utils "dbsystemdata-backend/internal/util/testing"
+	"dbsystemdata-backend/internal/util/tools"
 )
 
 type MongodbContainer struct {

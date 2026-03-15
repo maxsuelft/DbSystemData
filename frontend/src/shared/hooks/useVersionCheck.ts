@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 
 import { APP_VERSION } from '../../constants';
 import { systemApi } from '../../entity/system';

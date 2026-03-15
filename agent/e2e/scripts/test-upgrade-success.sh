@@ -30,7 +30,7 @@ echo "Initial version: $VERSION"
 # 6. Proceeds to start → verifies pg_basebackup + DB → exits 0 (stub)
 echo "Running agent start (expecting upgrade v1 -> v2)..."
 OUTPUT=$("$AGENT" start \
-  --databasus-host http://e2e-mock-server:4050 \
+  --dbsystemdata-host http://e2e-mock-server:4050 \
   --db-id test-db-id \
   --token test-token \
   --pg-host e2e-postgres \

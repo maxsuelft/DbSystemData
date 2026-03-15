@@ -1,6 +1,6 @@
 apiVersion: v2
-name: databasus
-description: A Helm chart for Databasus - databases backup and management system
+name: dbsystemdata
+description: A Helm chart for DbSystemData - database backup and management system (fork of Databasus)
 type: application
 version: 0.0.0
 appVersion: "latest"
@@ -9,14 +9,12 @@ keywords:
   - backup
   - database
   - restore
-home: https://github.com/databasus/databasus
+home: https://github.com/dbsystemdata/DbSystemData
 
 sources:
-  - https://github.com/databasus/databasus
-  - https://github.com/databasus/databasus/tree/main/deploy/helm
+  - https://github.com/dbsystemdata/DbSystemData
+  - https://github.com/dbsystemdata/DbSystemData/tree/main/deploy/helm
 
-maintainers:
-  - name: Rostislav Dugin
-    url: https://github.com/RostislavDugin
+maintainers: []
 
-icon: https://raw.githubusercontent.com/databasus/databasus/main/frontend/public/logo.svg
+icon: https://raw.githubusercontent.com/dbsystemdata/DbSystemData/main/frontend/public/logo.svg
