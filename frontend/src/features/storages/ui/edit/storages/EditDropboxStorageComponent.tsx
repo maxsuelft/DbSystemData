@@ -1,4 +1,5 @@
-﻿import { Button, Input } from 'antd';
+import { Button, Input } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import type { Storage } from '../../../../../entity/storages';
 import type { StorageOauthDto } from '../../../../../entity/storages/models/StorageOauthDto';
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export function EditDropboxStorageComponent({ storage, setStorage, setUnsaved }: Props) {
+  const { t } = useTranslation();
+
   const goToAuthUrl = () => {
     if (!storage?.dropboxStorage?.appKey || !storage?.dropboxStorage?.appSecret) {
       return;
@@ -34,14 +37,18 @@ export function EditDropboxStorageComponent({ storage, setStorage, setUnsaved }:
         <div className="hidden min-w-[110px] sm:block" />
 
         <div className="text-xs text-blue-600">
-          <a href="https://github.com/dbsystemdata/DbSystemData#readme" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/dbsystemdata/DbSystemData#readme"
+            target="_blank"
+            rel="noreferrer"
+          >
             Como conectar o Dropbox?
           </a>
         </div>
       </div>
 
       <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
-        <div className="mb-1 min-w-[110px] sm:mb-0">App Key</div>
+        <div className="mb-1 min-w-[110px] sm:mb-0">{t('storages.appKey')}</div>
         <Input
           value={storage?.dropboxStorage?.appKey || ''}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +71,7 @@ export function EditDropboxStorageComponent({ storage, setStorage, setUnsaved }:
       </div>
 
       <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
-        <div className="mb-1 min-w-[110px] sm:mb-0">App Secret</div>
+        <div className="mb-1 min-w-[110px] sm:mb-0">{t('storages.appSecret')}</div>
         <Input
           value={storage?.dropboxStorage?.appSecret || ''}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,13 +95,8 @@ export function EditDropboxStorageComponent({ storage, setStorage, setUnsaved }:
 
       {storage?.dropboxStorage?.tokenJson && (
         <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
-          <div className="mb-1 min-w-[110px] sm:mb-0">Token</div>
-          <Input
-            value="••••••••"
-            disabled
-            size="small"
-            className="w-full max-w-[250px]"
-          />
+          <div className="mb-1 min-w-[110px] sm:mb-0">{t('storages.token')}</div>
+          <Input value="••••••••" disabled size="small" className="w-full max-w-[250px]" />
         </div>
       )}
 
@@ -104,7 +106,7 @@ export function EditDropboxStorageComponent({ storage, setStorage, setUnsaved }:
           disabled={!storage?.dropboxStorage?.appKey || !storage?.dropboxStorage?.appSecret}
           onClick={goToAuthUrl}
         >
-          Autorizar
+          {t('storages.authorize')}
         </Button>
       )}
     </>

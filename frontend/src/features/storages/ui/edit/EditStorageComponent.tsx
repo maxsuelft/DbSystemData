@@ -1,6 +1,7 @@
-﻿import { InfoCircleOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Input, Select, Switch, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { IS_CLOUD } from '../../../../constants';
 import {
@@ -43,6 +44,7 @@ export function EditStorageComponent({
   onChanged,
   user,
 }: Props) {
+  const { t } = useTranslation();
   const [storage, setStorage] = useState<Storage | undefined>();
   const [isUnsaved, setIsUnsaved] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -77,8 +79,8 @@ export function EditStorageComponent({
       await storageApi.testStorageConnectionDirect(storage);
       setIsTestConnectionSuccess(true);
       ToastHelper.showToast({
-        title: 'Connection test successful!',
-        description: 'Storage connection tested successfully',
+        title: t('storages.connectionTestSuccessTitle'),
+        description: t('storages.connectionTestSuccessDesc'),
       });
     } catch (e) {
       const errorMessage = (e as Error).message;
@@ -348,15 +350,15 @@ export function EditStorageComponent({
   if (!storage) return <div />;
 
   const storageTypeOptions = [
-    { label: 'Local storage', value: StorageType.LOCAL },
-    { label: 'S3', value: StorageType.S3 },
-    { label: 'Google Drive', value: StorageType.GOOGLE_DRIVE },
-    { label: 'Dropbox', value: StorageType.DROPBOX },
-    { label: 'NAS', value: StorageType.NAS },
-    { label: 'Azure Blob Storage', value: StorageType.AZURE_BLOB },
-    { label: 'FTP', value: StorageType.FTP },
-    { label: 'SFTP', value: StorageType.SFTP },
-    { label: 'Rclone', value: StorageType.RCLONE },
+    { label: t('storages.local'), value: StorageType.LOCAL },
+    { label: t('storages.s3'), value: StorageType.S3 },
+    { label: t('storages.googleDrive'), value: StorageType.GOOGLE_DRIVE },
+    { label: t('storages.dropbox'), value: StorageType.DROPBOX },
+    { label: t('storages.nas'), value: StorageType.NAS },
+    { label: t('storages.azureBlob'), value: StorageType.AZURE_BLOB },
+    { label: t('storages.ftp'), value: StorageType.FTP },
+    { label: t('storages.sftp'), value: StorageType.SFTP },
+    { label: t('storages.rclone'), value: StorageType.RCLONE },
   ].filter((option) => {
     if (IS_CLOUD && option.value === StorageType.LOCAL && user.role !== UserRole.ADMIN) {
       return false;
@@ -368,7 +370,7 @@ export function EditStorageComponent({
     <div>
       {isShowName && (
         <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
-          <div className="mb-1 min-w-[110px] sm:mb-0">Name</div>
+          <div className="mb-1 min-w-[110px] sm:mb-0">{t('common.name')}</div>
 
           <Input
             value={storage?.name || ''}
@@ -378,13 +380,13 @@ export function EditStorageComponent({
             }}
             size="small"
             className="w-full max-w-[250px]"
-            placeholder="My Storage"
+            placeholder={t('storages.newStorage')}
           />
         </div>
       )}
 
       <div className="mb-1 flex w-full flex-col items-start sm:flex-row sm:items-center">
-        <div className="mb-1 min-w-[110px] sm:mb-0">Type</div>
+          <div className="mb-1 min-w-[110px] sm:mb-0">{t('common.type')}</div>
 
         <div className="flex items-center">
           <Select
@@ -530,7 +532,7 @@ export function EditStorageComponent({
             type="primary"
             onClick={testConnection}
           >
-            Test connection
+            {t('common.testConnection')}
           </Button>
         ) : (
           <div />
@@ -544,7 +546,7 @@ export function EditStorageComponent({
             type="primary"
             onClick={save}
           >
-            Save
+            {t('common.save')}
           </Button>
         ) : (
           <div />
@@ -559,7 +561,7 @@ export function EditStorageComponent({
             ghost
             onClick={onClose}
           >
-            Cancel
+            {t('common.cancel')}
           </Button>
         ) : (
           <div />

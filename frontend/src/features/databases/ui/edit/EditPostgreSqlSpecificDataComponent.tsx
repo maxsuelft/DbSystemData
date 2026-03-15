@@ -516,8 +516,8 @@ export const EditPostgreSqlSpecificDataComponent = ({
 
       {isConnectionFailed && !IS_CLOUD && (
         <div className="mt-3 text-sm text-gray-500 dark:text-gray-400">
-          If your database uses IP whitelist, make sure DbSystemData server IP is added to the allowed
-          list.
+          If your database uses IP whitelist, make sure DbSystemData server IP is added to the
+          allowed list.
         </div>
       )}
     </div>

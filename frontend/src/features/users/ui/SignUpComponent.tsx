@@ -1,6 +1,7 @@
-﻿import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { App, Button, Input } from 'antd';
 import { type JSX, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useCloudflareTurnstile } from '../../../shared/hooks/useCloudflareTurnstile';
 
@@ -17,6 +18,7 @@ interface SignUpComponentProps {
 }
 
 export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX.Element {
+  const { t } = useTranslation();
   const { message } = App.useApp();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -39,7 +41,7 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
   const validateFieldsForSignUp = (): boolean => {
     if (!name || name.trim() === '') {
       setNameError(true);
-      message.error('Name is required');
+      message.error(t('auth.nameRequired'));
       return false;
     }
     setNameError(false);
@@ -61,7 +63,7 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
 
     if (password.length < 8) {
       setPasswordError(true);
-      message.error('Password must be at least 8 characters long');
+      message.error(t('auth.passwordMinLength'));
       return false;
     }
     setPasswordError(false);
@@ -103,7 +105,7 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
 
   return (
     <div className="w-full max-w-[300px]">
-      <div className="mb-5 text-center text-2xl font-bold">Sign up</div>
+      <div className="mb-5 text-center text-2xl font-bold">{t('auth.signUp')}</div>
 
       <div className="mt-4">
         <div className="space-y-2">
@@ -119,15 +121,15 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
           </div>
           <div className="relative flex justify-center text-sm">
             <span className="bg-white px-2 text-gray-500 dark:bg-gray-900 dark:text-gray-400">
-              or continue
+              {t('auth.orContinue')}
             </span>
           </div>
         </div>
       )}
 
-      <div className="my-1 text-xs font-semibold">Your name</div>
+      <div className="my-1 text-xs font-semibold">{t('auth.yourName')}</div>
       <Input
-        placeholder="John Doe"
+        placeholder={t('auth.namePlaceholder')}
         value={name}
         onChange={(e) => {
           setNameError(false);
@@ -136,9 +138,9 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
         status={nameError ? 'error' : undefined}
       />
 
-      <div className="my-1 text-xs font-semibold">Your email</div>
+      <div className="my-1 text-xs font-semibold">{t('auth.yourEmail')}</div>
       <Input
-        placeholder="your@email.com"
+        placeholder={t('auth.emailPlaceholder')}
         value={email}
         onChange={(e) => {
           setEmailError(false);
@@ -148,9 +150,9 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
         type="email"
       />
 
-      <div className="my-1 text-xs font-semibold">Password</div>
+      <div className="my-1 text-xs font-semibold">{t('auth.password')}</div>
       <Input.Password
-        placeholder="********"
+        placeholder={t('auth.passwordPlaceholder')}
         value={password}
         onChange={(e) => {
           setPasswordError(false);
@@ -161,9 +163,9 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
         visibilityToggle={{ visible: passwordVisible, onVisibleChange: setPasswordVisible }}
       />
 
-      <div className="my-1 text-xs font-semibold">Confirm password</div>
+      <div className="my-1 text-xs font-semibold">{t('auth.confirmPassword')}</div>
       <Input.Password
-        placeholder="********"
+        placeholder={t('auth.passwordPlaceholder')}
         value={confirmPassword}
         status={confirmPasswordError ? 'error' : undefined}
         onChange={(e) => {
@@ -190,7 +192,7 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
         }}
         type="primary"
       >
-        Sign up
+        {t('auth.signUp')}
       </Button>
 
       {signUpError && (
@@ -201,13 +203,13 @@ export function SignUpComponent({ onSwitchToSignIn }: SignUpComponentProps): JSX
 
       {onSwitchToSignIn && (
         <div className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-          Already have an account?{' '}
+          {t('auth.alreadyHaveAccount')}{' '}
           <button
             type="button"
             onClick={onSwitchToSignIn}
             className="cursor-pointer font-medium text-blue-600 hover:text-blue-700 dark:!text-blue-500"
           >
-            Sign in
+            {t('auth.signIn')}
           </button>
         </div>
       )}

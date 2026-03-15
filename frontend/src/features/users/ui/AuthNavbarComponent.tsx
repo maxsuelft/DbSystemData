@@ -1,4 +1,3 @@
-﻿import { StarButtonComponent } from '../../../shared/ui/StarButtonComponent';
 import { ThemeToggleComponent } from '../../../shared/ui/ThemeToggleComponent';
 
 export function AuthNavbarComponent() {
@@ -23,8 +22,6 @@ export function AuthNavbarComponent() {
 
       <div className="mr-3 ml-auto hidden items-center gap-5 sm:flex">
         <div className="flex items-center gap-2">
-          <StarButtonComponent />
-
           <ThemeToggleComponent />
         </div>
       </div>

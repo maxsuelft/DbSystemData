@@ -1,4 +1,4 @@
-﻿import { getApplicationServer } from '../../../constants';
+import { getApplicationServer } from '../../../constants';
 import RequestOptions from '../../../shared/api/RequestOptions';
 import { apiHelper } from '../../../shared/api/apiHelper';
 import type { GetBackupsResponse } from '../model/GetBackupsResponse';
@@ -37,8 +37,8 @@ export const backupsApi = {
       backupId: string;
     }>(`${getApplicationServer()}/api/v1/backups/${id}/download-token`, new RequestOptions());
 
-    // Create direct download link with token
-    const downloadUrl = `${getApplicationServer()}/api/v1/backups/${id}/file?token=${tokenResponse.token}`;
+    // Create direct download link with token (encode token to avoid query string corruption)
+    const downloadUrl = `${getApplicationServer()}/api/v1/backups/${id}/file?token=${encodeURIComponent(tokenResponse.token)}`;
 
     const link = document.createElement('a');
     link.href = downloadUrl;

@@ -1,3 +1,5 @@
+# CI: lint e testes do backend e frontend (roda em todo push/PR).
+# O workflow "Build and push Docker image" roda só em push para main/master.
 name: CI (backend + frontend)
 
 on:
@@ -65,11 +67,10 @@ jobs:
           cd frontend
           npm ci
 
-      - name: Check if prettier was run
+      - name: Check code format (Prettier)
         run: |
           cd frontend
-          npm run format
-          git diff --exit-code || (echo "Prettier made changes, please run 'npm run format' and commit the changes" && exit 1)
+          npx prettier --check "src/**/*.{ts,tsx,js,jsx,json,css,md}" || (echo "Execute 'npm run format' no frontend e faça commit." && exit 1)
 
       - name: Check if linter was run
         run: |

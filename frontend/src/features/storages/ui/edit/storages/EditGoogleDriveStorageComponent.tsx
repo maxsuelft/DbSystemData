@@ -37,7 +37,11 @@ export function EditGoogleDriveStorageComponent({ storage, setStorage, setUnsave
         <div className="hidden min-w-[110px] sm:block" />
 
         <div className="text-xs text-blue-600">
-          <a href="https://github.com/dbsystemdata/DbSystemData#readme" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/dbsystemdata/DbSystemData#readme"
+            target="_blank"
+            rel="noreferrer"
+          >
             How to connect Google Drive?
           </a>
         </div>

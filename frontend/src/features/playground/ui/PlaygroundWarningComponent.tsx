@@ -78,9 +78,9 @@ export const PlaygroundWarningComponent = (): JSX.Element => {
         <div>
           <h3 className="mb-2 text-lg font-semibold">What is Playground?</h3>
           <p className="text-gray-700 dark:text-gray-300">
-            Playground is a dev environment of DbSystemData development team. It is used by DbSystemData
-            dev team to test new features and see issues which hard to detect when using self hosted
-            (without logs or reports).{' '}
+            Playground is a dev environment of DbSystemData development team. It is used by
+            DbSystemData dev team to test new features and see issues which hard to detect when
+            using self hosted (without logs or reports).{' '}
             <b>Here you can make backups for small and not critical databases for free</b>
           </p>
         </div>

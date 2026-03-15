@@ -35,7 +35,11 @@ export function EditS3StorageComponent({
         <div className="hidden min-w-[110px] sm:block" />
 
         <div className="text-xs text-blue-600">
-          <a href="https://github.com/dbsystemdata/DbSystemData#readme" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/dbsystemdata/DbSystemData#readme"
+            target="_blank"
+            rel="noreferrer"
+          >
             How to use with Cloudflare R2?
           </a>
         </div>

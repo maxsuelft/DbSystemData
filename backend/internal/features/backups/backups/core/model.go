@@ -1,4 +1,4 @@
-﻿package backups_core
+package backups_core
 
 import (
 	"fmt"
@@ -46,13 +46,16 @@ type Backup struct {
 	CreatedAt time.Time `json:"createdAt" gorm:"column:created_at"`
 }
 
-func (b *Backup) GenerateFilename(dbName string) {
+// GenerateFilename sets the backup file name. When extension is non-empty (e.g. when
+// encryption is None), the file is stored with that extension so it keeps its real format.
+func (b *Backup) GenerateFilename(dbName string, extension string) {
 	timestamp := time.Now().UTC()
 
 	b.FileName = fmt.Sprintf(
-		"%s-%s-%s",
+		"%s-%s-%s%s",
 		files_utils.SanitizeFilename(dbName),
 		timestamp.Format("20060102-150405"),
 		b.ID.String(),
+		extension,
 	)
 }

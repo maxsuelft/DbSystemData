@@ -1,12 +1,12 @@
-﻿import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined } from '@ant-design/icons';
 import { Drawer, Tooltip } from 'antd';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { type DiskUsage } from '../../entity/disk';
 import { type UserProfile, UserRole } from '../../entity/users';
 import { useIsMobile } from '../../shared/hooks';
 import { useTheme } from '../../shared/theme';
-import { StarButtonComponent } from '../../shared/ui/StarButtonComponent';
 import { ThemeToggleComponent } from '../../shared/ui/ThemeToggleComponent';
 
 interface TabItem {
@@ -39,6 +39,7 @@ export const SidebarComponent = ({
   diskUsage,
   contentHeight,
 }: Props) => {
+  const { t } = useTranslation();
   const isMobile = useIsMobile();
   const { resolvedTheme } = useTheme();
 
@@ -169,11 +170,11 @@ export const SidebarComponent = ({
         <div className="border-t border-gray-200 bg-gray-50 px-3 py-4 dark:border-gray-700 dark:bg-gray-800">
           {diskUsage && (
             <div className="mb-4">
-              <Tooltip title="To make backups locally and restore them, you need to have enough space on your disk. For restore, you need to have same amount of space that the backup size.">
+              <Tooltip title={t('common.diskUsageTooltip')}>
                 <div
                   className={`cursor-pointer text-xs ${isUsedMoreThan95Percent ? 'text-red-500' : 'text-gray-600 dark:text-gray-400'}`}
                 >
-                  <div className="font-medium">Disk Usage</div>
+                  <div className="font-medium">{t('common.diskUsage')}</div>
                   <div className="mt-1">
                     {(diskUsage.usedSpaceBytes / 1024 ** 3).toFixed(1)} of{' '}
                     {(diskUsage.totalSpaceBytes / 1024 ** 3).toFixed(1)} GB used (
@@ -184,20 +185,6 @@ export const SidebarComponent = ({
             </div>
           )}
 
-          <div className="space-y-2">
-            <a
-              className="block rounded text-sm font-medium !text-gray-700 hover:bg-gray-100 hover:!text-blue-600 dark:!text-gray-300 dark:hover:bg-gray-700"
-              href="https://github.com/dbsystemdata/DbSystemData"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Repositório
-            </a>
-
-            <div className="flex pt-2">
-              <StarButtonComponent />
-            </div>
-          </div>
         </div>
       </div>
     </Drawer>

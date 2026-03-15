@@ -1,6 +1,7 @@
-﻿import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 import { App, Button, Input, Spin } from 'antd';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { databaseApi } from '../../../entity/databases/api/databaseApi';
 import type { UserProfile } from '../../../entity/users/model/UserProfile';
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHeight }: Props) {
+  const { t } = useTranslation();
   const { message, modal } = App.useApp();
   const isMobile = useIsMobile();
   const [workspace, setWorkspace] = useState<Workspace | undefined>(undefined);
@@ -61,7 +63,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
 
       setBasicInfoChanges(false);
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to load workspace';
+      const errorMessage = error instanceof Error ? error.message : t('workspace.failedToLoadWorkspace');
       message.error(errorMessage);
     } finally {
       setIsLoading(false);
@@ -82,7 +84,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
 
     if (!formWorkspace.name?.trim()) {
       setNameError(true);
-      message.error('Workspace name is required');
+      message.error(t('workspace.workspaceNameRequired'));
       return;
     }
     setNameError(false);
@@ -100,10 +102,10 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
       setBasicInfoChanges(false);
 
       setNameError(false);
-      message.success('Basic information updated successfully');
+      message.success(t('workspace.basicInfoUpdated'));
     } catch (error: unknown) {
       const errorMessage =
-        error instanceof Error ? error.message : 'Failed to update basic information';
+        error instanceof Error ? error.message : t('common.failedToUpdateProfile');
       message.error(errorMessage);
     } finally {
       setIsSaving(false);
@@ -172,7 +174,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
           className={`grow overflow-y-auto rounded bg-white shadow dark:bg-gray-800 ${isMobile ? 'p-3' : 'p-5'}`}
           style={{ height: contentHeight }}
         >
-          <h1 className="mb-6 text-2xl font-bold dark:text-white">Workspace settings</h1>
+          <h1 className="mb-6 text-2xl font-bold dark:text-white">{t('workspace.workspaceSettings')}</h1>
 
           {isLoading || !workspace ? (
             <Spin indicator={<LoadingOutlined spin />} size="large" />
@@ -181,7 +183,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
               {!canEdit && (
                 <div className="my-4 max-w-[500px] rounded-md bg-yellow-50 p-3 dark:bg-yellow-900/30">
                   <div className="text-sm text-yellow-800 dark:text-yellow-200">
-                    You don&apos;t have permission to modify these settings
+                    {t('workspace.noPermissionModify')}
                   </div>
                 </div>
               )}
@@ -190,7 +192,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                 <div className="max-w-2xl border-b border-gray-200 pb-6 dark:border-gray-700">
                   <div className="max-w-md">
                     <div className="mb-1 font-medium text-gray-900 dark:text-white">
-                      Workspace name
+                      {t('workspace.workspaceName')}
                     </div>
                     <Input
                       value={formWorkspace.name || ''}
@@ -199,7 +201,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                         handleFieldChange('name', e.target.value);
                       }}
                       disabled={!canEdit}
-                      placeholder="Enter workspace name"
+                      placeholder={t('workspace.enterWorkspaceName')}
                       maxLength={100}
                       status={nameError ? 'error' : undefined}
                     />
@@ -214,7 +216,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                         disabled={isSaving}
                         className="border-blue-600 bg-blue-600 hover:border-blue-700 hover:bg-blue-700"
                       >
-                        {isSaving ? 'Saving...' : 'Save Changes'}
+                        {isSaving ? t('workspace.saving') : t('common.saveChanges')}
                       </Button>
 
                       <Button
@@ -229,7 +231,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                         }}
                         disabled={isSaving}
                       >
-                        Reset
+                        {t('workspace.reset')}
                       </Button>
                     </div>
                   )}
@@ -242,7 +244,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                 {canEdit && (
                   <div className="max-w-2xl border-b border-gray-200 pb-6 dark:border-gray-700">
                     <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-                      Danger Zone
+                      {t('workspace.dangerZone')}
                     </h2>
 
                     <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900/30">
@@ -251,7 +253,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                       >
                         <div className="flex-1">
                           <div className="font-medium text-red-900 dark:text-red-200">
-                            Delete this workspace
+                            {t('workspace.deleteWorkspace')}
                           </div>
                           <div className="mt-1 text-sm text-red-700 dark:text-red-300">
                             Once you delete a workspace, there is no going back. All data and
@@ -268,7 +270,7 @@ export function WorkspaceSettingsComponent({ workspaceResponse, user, contentHei
                             loading={isDeleting}
                             className={`bg-red-600 hover:bg-red-700 ${isMobile ? 'w-full' : ''}`}
                           >
-                            {isDeleting ? 'Deleting...' : 'Delete workspace'}
+                            {isDeleting ? t('workspace.deleting') : t('workspace.deleteWorkspace')}
                           </Button>
                         </div>
                       </div>

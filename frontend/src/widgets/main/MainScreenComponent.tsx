@@ -1,4 +1,4 @@
-﻿import { LoadingOutlined, MenuOutlined } from '@ant-design/icons';
+import { LoadingOutlined, MenuOutlined } from '@ant-design/icons';
 import { App, Button, Spin, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -25,7 +25,6 @@ import {
   WorkspaceSettingsComponent,
 } from '../../features/workspaces';
 import { useIsMobile, useScreenHeight } from '../../shared/hooks';
-import { StarButtonComponent } from '../../shared/ui/StarButtonComponent';
 import { ThemeToggleComponent } from '../../shared/ui/ThemeToggleComponent';
 import { SidebarComponent } from './SidebarComponent';
 import { WorkspaceSelectionComponent } from './WorkspaceSelectionComponent';
@@ -38,7 +37,13 @@ export const MainScreenComponent = () => {
   const contentHeight = screenHeight - (isMobile ? 70 : 95);
 
   const [selectedTab, setSelectedTab] = useState<
-    'notifiers' | 'storages' | 'databases' | 'profile' | 'dbsystemdata-settings' | 'users' | 'settings'
+    | 'notifiers'
+    | 'storages'
+    | 'databases'
+    | 'profile'
+    | 'dbsystemdata-settings'
+    | 'users'
+    | 'settings'
   >('databases');
   const [diskUsage, setDiskUsage] = useState<DiskUsage | undefined>(undefined);
   const [user, setUser] = useState<UserProfile | undefined>(undefined);
@@ -199,7 +204,11 @@ export const MainScreenComponent = () => {
       <div className="mb-2 flex h-[50px] items-center rounded bg-white px-2 py-2 shadow md:mb-3 md:h-[60px] md:p-3 dark:bg-gray-800">
         <div className="flex items-center gap-2 hover:opacity-80 md:gap-3">
           <a href="https://github.com/dbsystemdata/DbSystemData" target="_blank" rel="noreferrer">
-            <img className="h-[30px] w-[30px] p-1 md:h-[40px] md:w-[40px]" src="/logo.svg" alt="DbSystemData" />
+            <img
+              className="h-[30px] w-[30px] p-1 md:h-[40px] md:w-[40px]"
+              src="/logo.svg"
+              alt="DbSystemData"
+            />
           </a>
         </div>
 
@@ -215,15 +224,6 @@ export const MainScreenComponent = () => {
         </div>
 
         <div className="ml-auto hidden items-center gap-5 md:flex">
-          <a
-            className="!text-black hover:opacity-80 dark:!text-gray-200"
-            href="https://github.com/dbsystemdata/DbSystemData"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Repositório
-          </a>
-
           {isUsedMoreThan85Percent && (
             <Tooltip title="To make backups locally and restore them, you need to have enough space on your disk. For restore, you need to have same amount of space that the backup size.">
               <div
@@ -239,8 +239,6 @@ export const MainScreenComponent = () => {
           )}
 
           <div className="flex items-center gap-2">
-            <StarButtonComponent />
-
             <ThemeToggleComponent />
           </div>
         </div>

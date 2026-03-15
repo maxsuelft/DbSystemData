@@ -49,9 +49,7 @@ export function ShowStorageComponent({ storage, user }: Props) {
           <ShowGoogleDriveStorageComponent storage={storage} />
         )}
 
-        {storage?.type === StorageType.DROPBOX && (
-          <ShowDropboxStorageComponent storage={storage} />
-        )}
+        {storage?.type === StorageType.DROPBOX && <ShowDropboxStorageComponent storage={storage} />}
 
         {storage?.type === StorageType.NAS && <ShowNASStorageComponent storage={storage} />}
 

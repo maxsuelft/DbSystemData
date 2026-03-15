@@ -1,4 +1,4 @@
-﻿package backuping
+package backuping
 
 import (
 	"context"
@@ -178,7 +178,8 @@ func (s *BackupsScheduler) StartBackup(database *databases.Database, isCallNotif
 		CreatedAt:    timestamp,
 	}
 
-	backup.GenerateFilename(database.Name)
+	ext := backups_config.GetStorageBackupFileExtension(database.Type, backupConfig.Encryption)
+	backup.GenerateFilename(database.Name, ext)
 
 	if err := s.backupRepository.Save(backup); err != nil {
 		s.logger.Error(

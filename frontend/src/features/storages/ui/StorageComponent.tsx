@@ -1,4 +1,4 @@
-﻿import {
+import {
   ArrowRightOutlined,
   CloseOutlined,
   DeleteOutlined,
@@ -7,6 +7,7 @@
 import { Button, Input, Spin } from 'antd';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { backupConfigApi } from '../../../entity/backups';
 import { storageApi } from '../../../entity/storages';
@@ -35,6 +36,7 @@ export const StorageComponent = ({
   isCanManageStorages,
   user,
 }: Props) => {
+  const { t } = useTranslation();
   const [storage, setStorage] = useState<Storage | undefined>();
 
   const [isEditName, setIsEditName] = useState(false);
@@ -59,8 +61,8 @@ export const StorageComponent = ({
       .testStorageConnection(storage.id)
       .then(() => {
         ToastHelper.showToast({
-          title: 'Connection test successful!',
-          description: 'Storage connection tested successfully',
+          title: t('storages.connectionTestSuccessTitle'),
+          description: t('storages.connectionTestSuccessDesc'),
         });
 
         if (storage.lastSaveError) {
@@ -84,7 +86,7 @@ export const StorageComponent = ({
     try {
       const isStorageUsing = await backupConfigApi.isStorageUsing(storage.id);
       if (isStorageUsing) {
-        alert('Storage is used by some databases. Please remove the storage from databases first.');
+        alert(t('storages.storageInUse'));
         setIsShowRemoveConfirm(false);
       } else {
         await storageApi.deleteStorage(storage.id);

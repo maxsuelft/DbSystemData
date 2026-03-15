@@ -3,10 +3,10 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import { createRoot } from 'react-dom/client';
 
-import './i18n';
 import './index.css';
 
 import App from './App.tsx';
+import './i18n';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
