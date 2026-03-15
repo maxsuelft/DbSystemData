@@ -441,8 +441,8 @@ gosu postgres \$PG_BIN/psql -p 5437 -h localhost -d postgres << 'SQL'
 
 # We use stub password, because internal DB is not exposed outside container
 ALTER USER postgres WITH PASSWORD 'Q1234567';
-SELECT 'CREATE DATABASE dbsystemdata OWNER postgres'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'dbsystemdata')
+SELECT 'CREATE DATABASE postgres_dbsystemdata OWNER postgres'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'postgres_dbsystemdata')
 \\gexec
 \\q
 SQL

@@ -48,8 +48,10 @@ type Backup struct {
 
 // GenerateFilename sets the backup file name. When extension is non-empty (e.g. when
 // encryption is None), the file is stored with that extension so it keeps its real format.
-// When databaseID is non-nil, the path is prefixed with databaseID so backups are stored
-// in a subfolder per database (e.g. dbsystemdata_backups/<databaseID>/file.dump).
+// When databaseID is non-nil, the path is prefixed with the sanitized database name so
+// backups are stored in a subfolder per database. Example: for root "dbsystemdata_backups",
+// FileName becomes "nomedobanco/nomedobanco-20060102-150405-uuid.dump", so the full path
+// is dbsystemdata_backups/nomedobanco/<file> (e.g. Dropbox, S3, local).
 func (b *Backup) GenerateFilename(dbName string, extension string, databaseID *uuid.UUID) {
 	timestamp := time.Now().UTC()
 
@@ -61,7 +63,7 @@ func (b *Backup) GenerateFilename(dbName string, extension string, databaseID *u
 		extension,
 	)
 	if databaseID != nil {
-		b.FileName = databaseID.String() + "/" + base
+		b.FileName = files_utils.SanitizeFilename(dbName) + "/" + base
 	} else {
 		b.FileName = base
 	}

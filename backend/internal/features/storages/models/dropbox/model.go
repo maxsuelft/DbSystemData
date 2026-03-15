@@ -19,9 +19,23 @@ import (
 )
 
 const (
+	// dropboxBackupsFolder is the root folder for all backups. Each database uses a subfolder
+	// so the structure is: /dbsystemdata_backups/<database_name>/<backup_file>.
+	// Backup FileName is generated as "databaseName/databaseName-timestamp-id.ext" in backup core.
 	dropboxBackupsFolder = "/dbsystemdata_backups"
 	dropboxTimeout       = 60 * time.Second
 )
+
+// buildStoragePath returns the full Dropbox path: /dbsystemdata_backups/<fileName>.
+// For backups, fileName is "databaseName/databaseName-timestamp-id.ext", so files end up
+// in subfolders per database: dbsystemdata_backups/nomedobancodedado/...
+func buildStoragePath(fileName string) string {
+	fileName = strings.TrimPrefix(fileName, "/")
+	if fileName == "" {
+		return dropboxBackupsFolder
+	}
+	return dropboxBackupsFolder + "/" + fileName
+}
 
 var dropboxOAuth2Endpoint = oauth2.Endpoint{
 	AuthURL:  "https://www.dropbox.com/oauth2/authorize",
@@ -51,7 +65,7 @@ func (s *DropboxStorage) SaveFile(
 		return err
 	}
 
-	path := dropboxBackupsFolder + "/" + fileName
+	path := buildStoragePath(fileName)
 
 	ctx, cancel := context.WithTimeout(ctx, dropboxTimeout)
 	defer cancel()
@@ -76,7 +90,7 @@ func (s *DropboxStorage) GetFile(
 		return nil, err
 	}
 
-	path := dropboxBackupsFolder + "/" + fileName
+	path := buildStoragePath(fileName)
 
 	_, content, err := client.Download(files.NewDownloadArg(path))
 	if err != nil {
@@ -95,7 +109,7 @@ func (s *DropboxStorage) DeleteFile(
 		return err
 	}
 
-	path := dropboxBackupsFolder + "/" + fileName
+	path := buildStoragePath(fileName)
 
 	_, err = client.DeleteV2(files.NewDeleteArg(path))
 	if err != nil {
@@ -137,7 +151,7 @@ func (s *DropboxStorage) TestConnection(encryptor encryption.FieldEncryptor) err
 		return err
 	}
 
-	testPath := dropboxBackupsFolder + "/test-connection-" + uuid.New().String()
+	testPath := buildStoragePath("test-connection-" + uuid.New().String())
 	testContent := strings.NewReader("test")
 
 	testArg := files.NewUploadArg(testPath)

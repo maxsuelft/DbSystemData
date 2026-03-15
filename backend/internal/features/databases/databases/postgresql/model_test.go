@@ -1058,25 +1058,25 @@ func Test_Validate_WhenLocalhostAndDbSystemData_ReturnsError(t *testing.T) {
 			name:     "localhost with dbsystemdata db",
 			host:     "localhost",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "127.0.0.1 with dbsystemdata db",
 			host:     "127.0.0.1",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "172.17.0.1 with dbsystemdata db",
 			host:     "172.17.0.1",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "host.docker.internal with dbsystemdata db",
 			host:     "host.docker.internal",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "LOCALHOST (uppercase) with DBSYSTEMDATA db",
@@ -1094,19 +1094,19 @@ func Test_Validate_WhenLocalhostAndDbSystemData_ReturnsError(t *testing.T) {
 			name:     "localhost with dbsystemdata and any username",
 			host:     "localhost",
 			username: "myuser",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "::1 (IPv6 loopback) with dbsystemdata db",
 			host:     "::1",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     ":: (IPv6 all interfaces) with dbsystemdata db",
 			host:     "::",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "::1 (uppercase) with DBSYSTEMDATA db",
@@ -1118,19 +1118,19 @@ func Test_Validate_WhenLocalhostAndDbSystemData_ReturnsError(t *testing.T) {
 			name:     "0.0.0.0 (all IPv4 interfaces) with dbsystemdata db",
 			host:     "0.0.0.0",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "127.0.0.2 (loopback range) with dbsystemdata db",
 			host:     "127.0.0.2",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "127.255.255.255 (end of loopback range) with dbsystemdata db",
 			host:     "127.255.255.255",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 	}
 
@@ -1163,7 +1163,7 @@ func Test_Validate_WhenNotLocalhostOrNotDbSystemData_ValidatesSuccessfully(t *te
 			name:     "different host (remote server) with dbsystemdata db",
 			host:     "192.168.1.100",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 		{
 			name:     "different database name on localhost",
@@ -1187,7 +1187,7 @@ func Test_Validate_WhenNotLocalhostOrNotDbSystemData_ValidatesSuccessfully(t *te
 			name:     "remote host with dbsystemdata db name (allowed)",
 			host:     "db.example.com",
 			username: "postgres",
-			database: "dbsystemdata",
+			database: "postgres_dbsystemdata",
 		},
 	}
 

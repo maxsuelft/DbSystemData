@@ -136,7 +136,7 @@ func (p *PostgresqlDatabase) Validate() error {
 			isLocalhost = true
 		}
 
-		if isLocalhost && strings.EqualFold(*p.Database, "dbsystemdata") {
+		if isLocalhost && strings.EqualFold(*p.Database, "postgres_dbsystemdata") {
 			return errors.New(
 				"backing up the application internal database is not allowed. See the repository documentation for how to backup the application itself",
 			)

@@ -429,19 +429,24 @@ func (m *MongodbDatabase) CreateReadOnlyUser(
 		newPassword := encryption.GenerateComplexPassword()
 
 		adminDB := client.Database(authDB)
+		roles := bson.A{
+			bson.D{
+				{Key: "role", Value: "backup"},
+				{Key: "db", Value: "admin"},
+			},
+		}
+		// Grant "read" on the target database only when Database is set; when empty (full dump),
+		// "backup" on admin is enough. Granting "read" with db "" causes MongoDB error (RoleNotFound: read@).
+		if strings.TrimSpace(m.Database) != "" {
+			roles = append(roles, bson.D{
+				{Key: "role", Value: "read"},
+				{Key: "db", Value: m.Database},
+			})
+		}
 		err = adminDB.RunCommand(ctx, bson.D{
 			{Key: "createUser", Value: newUsername},
 			{Key: "pwd", Value: newPassword},
-			{Key: "roles", Value: bson.A{
-				bson.D{
-					{Key: "role", Value: "backup"},
-					{Key: "db", Value: "admin"},
-				},
-				bson.D{
-					{Key: "role", Value: "read"},
-					{Key: "db", Value: m.Database},
-				},
-			}},
+			{Key: "roles", Value: roles},
 		}).Err()
 		if err != nil {
 			if attempt < maxRetries-1 {
