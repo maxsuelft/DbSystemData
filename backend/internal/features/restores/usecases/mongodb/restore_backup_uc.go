@@ -1,4 +1,4 @@
-﻿package usecases_mongodb
+package usecases_mongodb
 
 import (
 	"context"
@@ -59,9 +59,7 @@ func (uc *RestoreMongodbBackupUsecase) Execute(
 		return fmt.Errorf("mongodb configuration is required for restore")
 	}
 
-	if mdb.Database == "" {
-		return fmt.Errorf("target database name is required for mongorestore")
-	}
+	// Database is optional: when empty, mongorestore restores the entire archive (full restore)
 
 	fieldEncryptor := util_encryption.GetFieldEncryptor()
 	decryptedPassword, err := fieldEncryptor.Decrypt(restoringToDB.ID, mdb.Password)
@@ -103,7 +101,8 @@ func (uc *RestoreMongodbBackupUsecase) buildMongorestoreArgs(
 		"--drop",
 	}
 
-	if sourceDatabase != "" && sourceDatabase != mdb.Database {
+	// When target Database is set, restrict restore to that namespace; when empty, restore full archive
+	if sourceDatabase != "" && mdb.Database != "" && sourceDatabase != mdb.Database {
 		args = append(args, "--nsFrom="+sourceDatabase+".*")
 		args = append(args, "--nsTo="+mdb.Database+".*")
 	} else if mdb.Database != "" {

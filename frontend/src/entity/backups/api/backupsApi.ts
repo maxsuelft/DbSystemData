@@ -37,17 +37,33 @@ export const backupsApi = {
       backupId: string;
     }>(`${getApplicationServer()}/api/v1/backups/${id}/download-token`, new RequestOptions());
 
-    // Create direct download link with token (encode token to avoid query string corruption)
     const downloadUrl = `${getApplicationServer()}/api/v1/backups/${id}/file?token=${encodeURIComponent(tokenResponse.token)}`;
 
+    // Use fetch so the same token is used in a single request (link.click() can trigger
+    // multiple requests or fail with "Requires authorization" in some browsers)
+    const response = await fetch(downloadUrl, { credentials: 'include' });
+
+    if (!response.ok) {
+      let message: string;
+      try {
+        const json = (await response.json()) as { error?: string };
+        message = json.error ?? response.statusText;
+      } catch {
+        message = response.statusText;
+      }
+      throw new Error(message || `Download failed (${response.status})`);
+    }
+
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = downloadUrl;
+    link.href = url;
     link.download = tokenResponse.filename;
     link.style.display = 'none';
-
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   },
 
   async cancelBackup(id: string) {

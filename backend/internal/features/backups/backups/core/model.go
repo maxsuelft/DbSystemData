@@ -48,14 +48,21 @@ type Backup struct {
 
 // GenerateFilename sets the backup file name. When extension is non-empty (e.g. when
 // encryption is None), the file is stored with that extension so it keeps its real format.
-func (b *Backup) GenerateFilename(dbName string, extension string) {
+// When databaseID is non-nil, the path is prefixed with databaseID so backups are stored
+// in a subfolder per database (e.g. dbsystemdata_backups/<databaseID>/file.dump).
+func (b *Backup) GenerateFilename(dbName string, extension string, databaseID *uuid.UUID) {
 	timestamp := time.Now().UTC()
 
-	b.FileName = fmt.Sprintf(
+	base := fmt.Sprintf(
 		"%s-%s-%s%s",
 		files_utils.SanitizeFilename(dbName),
 		timestamp.Format("20060102-150405"),
 		b.ID.String(),
 		extension,
 	)
+	if databaseID != nil {
+		b.FileName = databaseID.String() + "/" + base
+	} else {
+		b.FileName = base
+	}
 }

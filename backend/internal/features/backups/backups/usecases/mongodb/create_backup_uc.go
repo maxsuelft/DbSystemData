@@ -1,4 +1,4 @@
-﻿package usecases_mongodb
+package usecases_mongodb
 
 import (
 	"context"
@@ -63,10 +63,7 @@ func (uc *CreateMongodbBackupUsecase) Execute(
 		return nil, fmt.Errorf("mongodb database configuration is required")
 	}
 
-	if mdb.Database == "" {
-		return nil, fmt.Errorf("database name is required for mongodump backups")
-	}
-
+	// When Database is empty, mongodump will perform a full dump (all databases)
 	decryptedPassword, err := uc.fieldEncryptor.Decrypt(db.ID, mdb.Password)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decrypt database password: %w", err)
@@ -95,12 +92,11 @@ func (uc *CreateMongodbBackupUsecase) buildMongodumpArgs(
 ) []string {
 	uri := mdb.BuildMongodumpURI(password)
 
-	args := []string{
-		"--uri=" + uri,
-		"--db=" + mdb.Database,
-		"--archive",
-		"--gzip",
+	args := []string{"--uri=" + uri}
+	if mdb.Database != "" {
+		args = append(args, "--db="+mdb.Database)
 	}
+	args = append(args, "--archive", "--gzip")
 
 	// Use numParallelCollections based on CPU count
 	// Cap between 1 and 16 to balance performance and resource usage

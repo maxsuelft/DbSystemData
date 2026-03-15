@@ -291,7 +291,7 @@ func (s *PostgreWalBackupService) ReportError(
 	}
 
 	ext := backups_config.GetStorageBackupFileExtension(database.Type, backupConfig.Encryption)
-	backup.GenerateFilename(database.Name, ext)
+	backup.GenerateFilename(database.Name, ext, &backup.DatabaseID)
 
 	if err := s.backupRepository.Save(backup); err != nil {
 		return fmt.Errorf("failed to save error backup record: %w", err)
@@ -373,7 +373,7 @@ func (s *PostgreWalBackupService) createBackupRecord(
 	}
 
 	ext := backups_config.GetStorageBackupFileExtension(databases.DatabaseTypePostgres, encryption)
-	backup.GenerateFilename(dbName, ext)
+	backup.GenerateFilename(dbName, ext, &backup.DatabaseID)
 
 	if uploadType == backups_core.PgWalUploadTypeBasebackup {
 		walBackupType := backups_core.PgWalBackupTypeFullBackup

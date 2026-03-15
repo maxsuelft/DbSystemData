@@ -179,7 +179,7 @@ func (s *BackupsScheduler) StartBackup(database *databases.Database, isCallNotif
 	}
 
 	ext := backups_config.GetStorageBackupFileExtension(database.Type, backupConfig.Encryption)
-	backup.GenerateFilename(database.Name, ext)
+	backup.GenerateFilename(database.Name, ext, &backup.DatabaseID)
 
 	if err := s.backupRepository.Save(backup); err != nil {
 		s.logger.Error(

@@ -58,9 +58,7 @@ func (m *MongodbDatabase) Validate() error {
 	if m.Password == "" {
 		return errors.New("password is required")
 	}
-	if m.Database == "" {
-		return errors.New("database is required")
-	}
+	// Database is optional: when empty, backup will dump all databases (full dump)
 	if m.CpuCount <= 0 {
 		return errors.New("cpu count must be greater than 0")
 	}
@@ -95,7 +93,11 @@ func (m *MongodbDatabase) TestConnection(
 	}()
 
 	if err := client.Ping(ctx, nil); err != nil {
-		return fmt.Errorf("failed to ping MongoDB database '%s': %w", m.Database, err)
+		target := m.Database
+		if target == "" {
+			target = "server"
+		}
+		return fmt.Errorf("failed to ping MongoDB %s: %w", target, err)
 	}
 
 	detectedVersion, err := detectMongodbVersion(ctx, client)
@@ -104,11 +106,18 @@ func (m *MongodbDatabase) TestConnection(
 	}
 	m.Version = detectedVersion
 
+	checkDB := m.Database
+	if checkDB == "" {
+		checkDB = m.AuthDatabase
+		if checkDB == "" {
+			checkDB = "admin"
+		}
+	}
 	if err := checkBackupPermissions(
 		ctx,
 		client,
 		m.Username,
-		m.Database,
+		checkDB,
 		m.AuthDatabase,
 	); err != nil {
 		return err
@@ -493,7 +502,8 @@ func (m *MongodbDatabase) BuildMongodumpURI(password string) string {
 	)
 }
 
-// buildConnectionURI builds a MongoDB connection URI
+// buildConnectionURI builds a MongoDB connection URI.
+// When Database is empty, the URI has no database path (same as mongodb://user:pass@host:port/?authSource=admin).
 func (m *MongodbDatabase) buildConnectionURI(password string) string {
 	authDB := m.AuthDatabase
 	if authDB == "" {
@@ -509,6 +519,16 @@ func (m *MongodbDatabase) buildConnectionURI(password string) string {
 	}
 
 	if m.IsSrv {
+		if m.Database == "" {
+			return fmt.Sprintf(
+				"mongodb+srv://%s:%s@%s/?authSource=%s&connectTimeoutMS=15000%s",
+				url.QueryEscape(m.Username),
+				url.QueryEscape(password),
+				m.Host,
+				authDB,
+				extraParams,
+			)
+		}
 		return fmt.Sprintf(
 			"mongodb+srv://%s:%s@%s/%s?authSource=%s&connectTimeoutMS=15000%s",
 			url.QueryEscape(m.Username),
@@ -525,6 +545,17 @@ func (m *MongodbDatabase) buildConnectionURI(password string) string {
 		port = *m.Port
 	}
 
+	if m.Database == "" {
+		return fmt.Sprintf(
+			"mongodb://%s:%s@%s:%d/?authSource=%s&connectTimeoutMS=15000%s",
+			url.QueryEscape(m.Username),
+			url.QueryEscape(password),
+			m.Host,
+			port,
+			authDB,
+			extraParams,
+		)
+	}
 	return fmt.Sprintf(
 		"mongodb://%s:%s@%s:%d/%s?authSource=%s&connectTimeoutMS=15000%s",
 		url.QueryEscape(m.Username),

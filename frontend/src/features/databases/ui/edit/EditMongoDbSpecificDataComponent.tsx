@@ -1,4 +1,4 @@
-﻿import { CopyOutlined, DownOutlined, InfoCircleOutlined, UpOutlined } from '@ant-design/icons';
+import { CopyOutlined, DownOutlined, InfoCircleOutlined, UpOutlined } from '@ant-design/icons';
 import { App, Button, Input, InputNumber, Switch, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
 
@@ -179,7 +179,7 @@ export const EditMongoDbSpecificDataComponent = ({
   if (!isSrvConnection && !editingDatabase.mongodb?.port) isAllFieldsFilled = false;
   if (!editingDatabase.mongodb?.username) isAllFieldsFilled = false;
   if (!editingDatabase.id && !editingDatabase.mongodb?.password) isAllFieldsFilled = false;
-  if (!editingDatabase.mongodb?.database) isAllFieldsFilled = false;
+  // Database is optional: when empty, backup dumps all databases (full dump)
 
   const isLocalhostDb =
     editingDatabase.mongodb?.host?.includes('localhost') ||
@@ -304,7 +304,7 @@ export const EditMongoDbSpecificDataComponent = ({
 
       {isShowDbName && (
         <div className="mb-1 flex w-full items-center">
-          <div className="min-w-[150px]">DB name</div>
+          <div className="min-w-[150px]">DB name (optional)</div>
           <Input
             value={editingDatabase.mongodb?.database}
             onChange={(e) => {
@@ -318,7 +318,7 @@ export const EditMongoDbSpecificDataComponent = ({
             }}
             size="small"
             className="max-w-[200px] grow"
-            placeholder="Enter MongoDB database name"
+            placeholder="Leave empty for full dump (all DBs)"
           />
         </div>
       )}
