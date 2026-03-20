@@ -15,6 +15,7 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/oauth2"
 
+	db "dbsystemdata-backend/internal/storage"
 	"dbsystemdata-backend/internal/util/encryption"
 )
 
@@ -231,6 +232,24 @@ func (s *DropboxStorage) getClient(encryptor encryption.FieldEncryptor) (files.C
 	accessToken, err := tokenSource.Token()
 	if err != nil {
 		return nil, fmt.Errorf("failed to get Dropbox access token: %w", err)
+	}
+
+	// If the access token was refreshed, persist the new token to the database.
+	// This avoids requiring manual re-authentication every 4 hours.
+	if accessToken.AccessToken != token.AccessToken {
+		// Preserve the original refresh token if the new token doesn't include one.
+		if accessToken.RefreshToken == "" {
+			accessToken.RefreshToken = token.RefreshToken
+		}
+
+		if newJSON, jsonErr := json.Marshal(accessToken); jsonErr == nil {
+			if encryptedJSON, encErr := encryptor.Encrypt(s.StorageID, string(newJSON)); encErr == nil {
+				s.TokenJSON = encryptedJSON
+				if dbErr := db.GetDb().Model(s).Update("token_json", encryptedJSON).Error; dbErr != nil {
+					slog.Warn("failed to persist refreshed Dropbox token", "storageId", s.StorageID, "error", dbErr)
+				}
+			}
+		}
 	}
 
 	dbxConfig := dropbox.Config{
